@@ -33,13 +33,13 @@ local WEATHER={
 		Sound="ambient/weather/rumble_rain.wav"
 	},
 	["dark"]={
-		Brightness=0,
+		Brightness=0.05,
 		Contrast=0.3,
 		Colour=1,
 		Precipitation=0,
 	},
 	["darkrain"]={
-		Brightness=0,
+		Brightness=0.05,
 		Contrast=0.3,
 		Colour=1,
 		Precipitation=5,
