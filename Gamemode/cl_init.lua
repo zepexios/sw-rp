@@ -1,6 +1,7 @@
 include( 'shared.lua' )
 include( 'cl_weather.lua' )
 include( 'cl_hud.lua' )
+function sw_menu() 
 
 local DermaPanel = vgui.Create( "DFrame" )
 DermaPanel:SetPos( 50,50 )
@@ -8,10 +9,12 @@ DermaPanel:SetSize( 150, 200 )
 DermaPanel:SetTitle( "Menu" )
 DermaPanel:SetVisible( true )
 DermaPanel:SetDraggable( true )
-DermaPanel:ShowCloseButton( false )
+DermaPanel:ShowCloseButton( true )
 DermaPanel:SetMouseInputEnabled(true)
 DermaPanel:SetKeyboardInputEnabled(true)
 DermaPanel:MakePopup()
+end
+concommand.Add("sw_menu", sw_menu)
  
 local MenuButton = vgui.Create("DButton")
 MenuButton:SetParent( DermaPanel )
