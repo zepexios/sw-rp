@@ -5,5 +5,6 @@
 
 --------------------------------------------------------------------------------------------------------------------------------
 Mandalore Added: Combat Level Script, Rifle Level Script, Realistic Bleeding and Bandaging, Menu, 
-Hiding Default HUD, Created basis for missions and terminals.
+Hiding Default HUD, Created basis for missions and terminals.  ( done on 5/22)
 Mandalore Added: Base to attribute Derma.
+5/23 Mandalore Added: Fixed Rifle XP "hopefully", Added Pistol XP.
