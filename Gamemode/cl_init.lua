@@ -24,7 +24,7 @@ MenuButton:SetSize( 100, 125 )
 MenuButton.DoClick = function ( btn )
     local MenuButtonOptions = DermaMenu() -- Creates the menu
     MenuButtonOptions:AddOption("Quit", function() RunConsoleCommand("disconnect") end ) -- Add options to the menu
-    MenuButtonOptions:AddOption("Skills", function() RunConsoleCommand("Skills") end )
+    MenuButtonOptions:AddOption("Skills", function() RunConsoleCommand("sw_skills") end )
     MenuButtonOptions:AddOption("Attributes", function() RunConsoleCommand("Attributes") end )
     MenuButtonOptions:AddOption("Check Force Sensitivity", function() RunConsoleCommand("Check") end )
     MenuButtonOptions:AddOption("Bug Report", function() RunConsoleCommand("Reportbug") end )
@@ -32,27 +32,43 @@ MenuButton.DoClick = function ( btn )
 end
 
 function GM:SWAttributes( ply )
-end
-
-function GM:SWSkills( ply )
-local DermaPanel = vgui.Create( "DFrame" )
+local DermaPanel = vgui.create( "DFrame" )
 DermaPanel:SetPos( 50, 50 )
-DermaPanel:SetSize( 200, 250 )
-DermaPanel:SetTitle( "Skills" )
+DermaPanel:SetSize( 250, 325 )
+DermaPanel:SetTitle( "Attributes" )
 DermaPanel:SetVisible( true )
 DermaPanel:SetDraggable( true )
 DermaPanel:ShowCloseButton( true )
 DermaPanel:MakePopup()
 
-local PropertySheet = vgui.Create( "DPropertySheet" )         // console command does not work for some reason
-PropertySheet:SetParent( DermaPanel )
-PropertySheet:SetPos( 5, 30 )
-PropertySheet:SetSize( 340, 315 )
+local PropertySheet = vgui.Create ( "DPropertySheet" ) ////////////////////////////////////////////////////////////////
+PropertySheet:SetParent( DermaPanel )                  // This is just a base for when the values actually get implemented not guranteed to work but is a start.
+PropertySheet:SetPos ( 5, 30 )                         //////////////////////////////////////////////////////////////////////////////////////
+PropertySheet:SetSize ( 500, 300 )
 
-local SheetItemOne = vgui.Create( "DListView" )
-SheetItemOne:SetParent (DermaPanel)
-SheetItemOne:AddColumn( "Current Rifle XP" )
-SheetItemOne:AddColumn( "Rifle XP To Go Till Skill Point" )
+local SheetItemOne = vgui.Create( "DCheckBoxLabel" )
+SheetItemOne:SetText( "Name" )
+SheetItemOne:SizeToContents()
+
+local SheetItemTwo = vgui.Create( "DCheckBoxLabel" )
+SheetItemTwo:SetText( "Use SENTs?" )
+SheetItemTwo:SetConVar( "some_convar" )
+SheetItemTwo:SetValue( 1 )
+SheetItemTwo:SizeToContents()
+
+PropertySheet:AddSheet( "Main", SheetItemOne, false, false, false, "Main Page" )
+PropertySheet:AddSheet( "Jobs", SheetItemTwo, false, false, false, "Jobs" ) 
+
+Dlabel = vgui.Create("DLabel" , Main)
+Dlabel:SetText( ply:Nick() )
+Dlabel:SizeToContents()
+
+Dlabel = vgui.Create("DLabel" , Jobs)
+Dlabel:SetText( GM:Team() )
+Dlabel:SizeToContents()
+end
+
+function GM:SWSkills( ply )
 end
 
 function force( ply )

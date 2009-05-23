@@ -6,3 +6,4 @@
 --------------------------------------------------------------------------------------------------------------------------------
 Mandalore Added: Combat Level Script, Rifle Level Script, Realistic Bleeding and Bandaging, Menu, 
 Hiding Default HUD, Created basis for missions and terminals.
+Mandalore Added: Base to attribute Derma.
