@@ -24,6 +24,10 @@ AddCSLuaFile( "cl_weather.lua" )
  DEFAULT_RIFLVL			= 0		--i THINK this is the starting rifle level/xp
  EXPERIENCE_RIFSCALE 	= 500	--How much each level costs in XP, times level
  REWARD_RXP				= 50	--How much XP is rewarded for a kill
+ DEFAULT_PIS			= 0		--starting pistol xp
+ DEFAULT_PISLVL			= 0		-- starting pistol level
+ EXPERIENCE_PISSSCALE 	= 500	--How much each level costs in XP, times level
+ REWARD_PXP				= 50	--How much XP is rewarded for a kill
  
  function GM:PlayerInitialSpawn( ply )
 	if(ply:Team() < 1) then ply:SetTeam(1)
@@ -250,7 +254,7 @@ function _R.Player:GetNeededRifXP( )
 end
 
 local function PrintRifLevel( pl )
-	pl:ChatPrint( "Your Riflelevel is now: " .. pl.RifLevel or DEFAULT_RIFLEVEL )
+	pl:ChatPrint( "Your Rifle level is now: " .. pl.RifLevel or DEFAULT_RIFLEVEL )
 end
 
 --NEVER CALL THIS FUNCTION FROM THE TOP WITH A VALID ARGUMENT
@@ -263,7 +267,7 @@ function _R.Player:RifLevelup( recur )
 
 		if not recur then
 			self:Save( )
-			timer.Simple( .1, PrintLevel, self )
+			timer.Simple( .1, PrintRifLevel, self )
 		end
 	end
 end
@@ -276,15 +280,15 @@ local function AutoSave( )
 	end
 end
 
-local function GM:SWOnNPCKilled( victim, killer )
-	if ValidEntity( killer ) and killer:IsPlayer( ) then
+local function GM:SWOnNPCKilled( victim, killer, weapon )
+	if ValidEntity( killer ) and killer:IsPlayer( ) and weapon:GetClass() == ("smg1") then
 		killer:AddRifXP( REWARD_RIFXP )
 		killer:RifLevelup( )
 	end
 end
 
-local function GM:SWPlayerDeath( victim, killer )
-      if ValidEntity( killer ) and killer:IsPlayer( ) then
+local function GM:SWPlayerDeath( victim, killer, weapon )
+      if ValidEntity( killer ) and killer:IsPlayer( ) and weapon:GetClass() == ("smg1") then
              killer:AddRifXP( REWARD_RIFXP )
              killer:RifLevelup( )
 end
@@ -323,3 +327,98 @@ function GM:SWPlayerSaid( ply, saywhat )
 end
  
 hook.Add ( "PlayerSay", "playerSaid", playerSaid )
+
+function EasyLog( s, ... )
+	local ns
+
+	ns = s:format( ... ) .. "\n"
+
+	Msg( ns )
+	ServerLog( ns )
+
+	if s:match( "error" ) then
+		ErrorNoHalt( ns )
+	end
+end
+
+function _R.Player:Save( )
+	EasyLog( "%q (%s) had their Pistol xp saved.", self:Nick( ), self:UniqueID( ) )
+	self:SetPData( "pxp"	, self.pxp or DEFAULT_PIS 	)
+	self:SetPData( "pislvl"	, self.Pislevel or DEFAULT_PISLVL 	)
+end
+
+function _R.Player:Load( )
+	EasyLog( "%q (%s) had their Pistol xp loaded.", self:Nick( ), self:UniqueID( ) )
+	self.XP 	= self:GetPData( "pxp"	, DEFAULT_PIS 	)
+	self.Level 	= self:GetPData( "pislvl"	, DEFAULT_PISLVL )
+end
+
+function _R.Player:GetPXP( )
+	return self.PXP
+end
+
+function _R.Player:AddPXP( n )
+	self.PXP = self.PXP + n
+end
+
+function _R.Player:GetNeededPXP( )
+	return self.PisLevel * EXPERIENCE_PISSCALE
+end
+
+local function PrintPisLevel( pl )
+	pl:ChatPrint( "Your Pistol level is now: " .. pl.PisLevel or DEFAULT_PISLEVEL )
+end
+
+--NEVER CALL THIS FUNCTION FROM THE TOP WITH A VALID ARGUMENT
+--Doing so will not allow it to save the player's data
+function _R.Player:PisLevelup( recur )
+	if self.PXP >= self:GetNeededPXP( ) then
+		self.PXP = self.PXP - self:GetNeededPXP( )
+		self.PisLevel = self.PisLevel + 1
+		self:PisLevelup( true )
+
+		if not recur then
+			self:Save( )
+			timer.Simple( .1, PrintPisLevel, self )
+		end
+	end
+end
+
+local function AutoSave( )
+	local k, v
+
+	for k, v in ipairs( player.GetAll( ) ) do
+		v:Save( )
+	end
+end
+
+local function GM:SWOnNPCKilled( victim, killer, weapon )
+	if ValidEntity( killer ) and killer:IsPlayer( ) and weapon:GetClass() == ("pistol","357") then
+		killer:AddPXP( REWARD_PXP )
+		killer:PisLevelup( )
+	end
+end
+
+local function GM:SWPlayerDeath( victim, killer, weapon )
+      if ValidEntity( killer ) and killer:IsPlayer( ) and weapon:GetClass() == ("pistol","357") then
+             killer:AddRifXP( REWARD_RIFXP )
+             killer:RifLevelup( )
+end
+end
+
+hook.Add( "PlayerInitialSpawn"	, "Level.InitSpawn", _R.Player.Load 	)
+hook.Add( "PlayerDisconnected"	, "Level.PlDiscnct", _R.Player.Save 	)
+hook.Add( "OnNPCKilled"		, "Level.NPCKilled", OnNPCKilled 	)
+hook.Add( "PlayerDeath", "Level.PlayerDeath", playerDies )
+timer.Create( "SaveXP", 600, 0, AutoSave )
+
+
+
+function GM:SWNPCDamage( npc, hitgroup, dmginfo )
+	local Attacker = dmginfo:GetAttacker()
+	if Attacker:IsPlayer() then
+		dmginfo:ScaleDamage( 1 + (Attacker.Level / 2)) 
+	end
+end
+
+hook.Add( "ScaleNPCDamage", "NPCDamageHook", NPCDamage ) 
