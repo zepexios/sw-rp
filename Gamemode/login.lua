@@ -28,8 +28,8 @@ function GM:SWSetPlayerData( ply )		//player data, and any files can access this
 		Class = GM:SWGetClass(), 
 		CombatLvl = GM:SWGetCombatLvl(), 
 		CombatXP = GM:SWGetCombatXP(), 
-		RifleLvl = GM:SWGetRifleLvl
-		RifleXP = GM:SWGetRifleXP(),
+		RifleLvl = GM:SWGetRifleLvl()  
+		RifleXP = GM:SWGetRifleXP(), // There has to be a function argument here getting the rifle xp till then this does nothing. because its a GM function im pretty sure
 		}
 	
 	GM:SWWritePlayerData( PlayerData )

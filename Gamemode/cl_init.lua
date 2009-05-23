@@ -24,7 +24,7 @@ MenuButton:SetSize( 100, 125 )
 MenuButton.DoClick = function ( btn )
     local MenuButtonOptions = DermaMenu() -- Creates the menu
     MenuButtonOptions:AddOption("Quit", function() RunConsoleCommand("disconnect") end ) -- Add options to the menu
-    MenuButtonOptions:AddOption("Skills", function() RunConsoleCommand("sw_skills") end )
+    MenuButtonOptions:AddOption("Skills", function() RunConsoleCommand("sw_skills") end ) //  chunk has too many syntax levels unsure why console is saying this
     MenuButtonOptions:AddOption("Attributes", function() RunConsoleCommand("Attributes") end )
     MenuButtonOptions:AddOption("Check Force Sensitivity", function() RunConsoleCommand("Check") end )
     MenuButtonOptions:AddOption("Bug Report", function() RunConsoleCommand("Reportbug") end )
