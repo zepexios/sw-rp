@@ -1,0 +1,13 @@
+"AddonInfo"
+{
+	"name"		"F302"
+	"version"	"1.0"
+	"up_date"	""
+	"author_name"	"Kadingir"
+	"author_email"	"hlifecell@gmail.com"
+	"author_url"	""
+	
+	"info"		""
+	"override"	"0"
+
+}

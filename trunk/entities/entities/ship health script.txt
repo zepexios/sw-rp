@@ -1,0 +1,7 @@
+ENT.aHealth = 25
+function ENT:OnTakeDamage(dmg)
+	self.aHealth = self.aHealth - dmg:GetDamage()
+	if self.aHealth <= 0 then
+		self.Entity:Remove()
+	end
+end
