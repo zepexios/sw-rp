@@ -1,7 +1,7 @@
 include( 'cl_init.lua' )
 if(SERVER) then include( 'login.lua' ) end
-local PlayerInfo = GM:SWReadPlayerData()
-local CombatLvl = PlayerInfo.ply:UniqueID().CombatLvl
+local PlayerInfo = GM:SWReadPlayerData() // This calls a nil value PlayerData is not defined.  Maybe this should be GM:SWGetClassInfo() ?
+local CombatLvl = PlayerInfo.ply:UniqueID().CombatLvl 
 
 local CivColor = GM:SWGetClassInfo( "Civilian", CombatLvl )
 local RebColor = GM:SWGetClassInfo( "Rebel", CombatLvl )

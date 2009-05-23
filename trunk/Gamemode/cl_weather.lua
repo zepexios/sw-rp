@@ -65,7 +65,7 @@ function WeatherOverlay()
 
 	local WeatherName=GetGlobalString("weather")
 	
-	if not WeatherName or not WEATHER[WeatherName] then WeatherName="sunny" end
+	if not WeatherName or not WEATHER[WeatherName] then WeatherName="sunny" end //chunk has too many syntax levels not sure why console is saying this there is no syntax here maybe missing ends?
 	
 	local traced = {}
 	traced.start = LocalPlayer():GetPos()
