@@ -38,7 +38,7 @@ end
 function GM:SWLogIn( ply )
 	local PlayerData = GM:SWReadPlayerData()
 	PlayerInfo = PlayerData.ply:UniqueID()
-	ply:PrintMessage(HUD_PRINTTALK, "[SW-RP Mod] You were successfuly loged in!")
+	ply:PrintMessage(HUD_PRINTTALK, "[SW-RP Mod] You were successfuly logged in!")
 	ply:PrintMessage(HUD_PRINTTALK, "[SW-RP Mod] Type \"!info\" to see your Player info.")
 	
 	

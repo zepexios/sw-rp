@@ -2,7 +2,7 @@ include( 'shared.lua' )
 include( 'cl_weather.lua' )
 include( 'cl_hud.lua' )
 include( 'login.lua' )
-function GM:SWMenu() 
+function sw_menu() 
 
 local DermaPanel = vgui.Create( "DFrame" )
 DermaPanel:SetPos( 50,50 )
@@ -61,7 +61,7 @@ end
 function bug( ply )
 end
 
-concommand.Add("sw_menu", GM:SWMenu)
+concommand.Add("sw_menu", sw_menu)
 concommand.Add("sw_skills", GM.SWSkills)
 
 

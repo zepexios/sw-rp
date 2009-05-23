@@ -4,4 +4,5 @@
 	Added: Change Log... :P just Copy/Past above this, so the newest changes are at the top.
 
 --------------------------------------------------------------------------------------------------------------------------------
-
+Mandalore Added: Combat Level Script, Rifle Level Script, Realistic Bleeding and Bandaging, Menu, 
+Hiding Default HUD, Created basis for missions and terminals.
