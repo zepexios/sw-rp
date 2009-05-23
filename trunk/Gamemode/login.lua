@@ -9,7 +9,7 @@ end
 function GM:ReadPlayerData()
 	io.input(CharData.lua)
 
-	io.read("*all")
+	return io.read("*all")
 end
 
 
@@ -18,6 +18,7 @@ function GM:SetPlayerData( ply )
 	PlayerData = {}
 	
 	PlayerData[ply:UniqueID()] = {Name = ply:Nick(), Money = GM:GetSWMoney(), Class = GM:GetSWClass(), RifleXP = GM:GetRifleXP() }
+	GM:StorePlayerData( PlayerData )
 	
 end
 
