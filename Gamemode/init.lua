@@ -58,7 +58,7 @@ end
  
  
  function GM:SWProfessions( ply )
-	if (Team == "2" and RifLvl > 50) then (RifLvl = 50 ) 
+	 if ((Team == 2) and (RifLvl > 50)) then (RifLvl = 50) end
 	end
  end
 
