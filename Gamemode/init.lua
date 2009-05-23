@@ -312,16 +312,17 @@ end
 hook.Add( "ScaleNPCDamage", "NPCDamageHook", NPCDamage ) 
 
 function Maxlevel( ply )
-if self:SetPData(( "lvl" >= 75) then "lvl" = 75 )
-end
+	if self:GetPData( "lvl" ) >= 75 then
+		self:SetPData( "lvl", 75 )
+	end
 end
 
 function GM:SWPlayerSaid( ply, saywhat )
 	local playerName = ply:GetName()
 	if string.find(saywhat, "!info") == 1 then
 	local InfoTable = GM:SWReadPlayerData()
-		for key,value in pairs(InfoTable)
-			ply:PrintMessage(HUD_PRINTTALK, key..": "..value.."\n"
+		for key,value in pairs(InfoTable) do
+			ply:PrintMessage(HUD_PRINTTALK, key..": "..value.."\n")
 		end
 	end
 end
@@ -392,15 +393,15 @@ local function AutoSave( )
 	end
 end
 
-local function GM:SWOnNPCKilled( victim, killer, weapon )
-	if ValidEntity( killer ) and killer:IsPlayer( ) and weapon:GetClass() == ("pistol","357") then
+local function SWOnNPCKilled( victim, killer, weapon )
+	if ValidEntity( killer ) and killer:IsPlayer( ) and weapon:GetClass() == ("pistol") then
 		killer:AddPXP( REWARD_PXP )
 		killer:PisLevelup( )
 	end
 end
 
-local function GM:SWPlayerDeath( victim, killer, weapon )
-      if ValidEntity( killer ) and killer:IsPlayer( ) and weapon:GetClass() == ("pistol","357") then
+local function SWPlayerDeath( victim, killer, weapon )
+      if ValidEntity( killer ) and killer:IsPlayer( ) and weapon:GetClass() == ("pistol") then
              killer:AddRifXP( REWARD_RIFXP )
              killer:RifLevelup( )
 end
