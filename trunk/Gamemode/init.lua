@@ -4,6 +4,12 @@ AddCSLuaFile( "cl_weather.lua" )
 
  include( 'shared.lua' )
  include( 'missions.lua' )
+ include( 'login.lua' )
+ /*********************NOTE!******************************************************************
+ // try and prefix all functions with "GM:" , and satrt the function name with "SW"
+ // makes it easyer for us all to read/understand, i will change this, then place it in another folder for now ;)
+ // MGinshe
+ ***********************************************************************************************/
  
  function GM:PlayerSpawn( ply )
  
