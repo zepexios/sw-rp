@@ -62,20 +62,20 @@ end
  
  
  function GM:SWProfessions( ply )
-	 if ((Team == 2) and (RifLvl > 50)) then (RifLvl = 50) end
-	end
- end
+      if ply:Team( ) == 2 then RifLvl = math.Clamp( RifLvl, 0, 50 ) end
+end
+
+
 
 
 function _R.Player:Bleed( )
   if ValidEntity( self ) and self.Bleeding and self:Alive( ) then
     self:TakeDamage( 5 )
-	self:
     timer.Simple( 3, self.Bleed, self )
   end
 end
 
-local function GM:SWBandage( pl )
+local function Bandage( pl )
   if not pl:Alive( ) then
    return
   end
@@ -95,7 +95,7 @@ local function GM:SWBandage( pl )
   end
 end
 
-local function GM:PlayerSpawn( pl )
+local function PlayerSpawn( pl )
   pl.Bleeding = false
   pl.Bandages = MAX_BANDAGES
 end
@@ -147,7 +147,7 @@ function _R.Player:GetNeededXP( )
 	return self.Level * EXPERIENCE_SCALE
 end
 
-local function GM:SWPrintLevel( pl )
+local function SWPrintLevel( pl )
 	pl:ChatPrint( "Your level is now: " .. pl.Level or DEFAULT_LEVEL )
 end
 
@@ -174,14 +174,14 @@ local function AutoSave( )
 	end
 end
 
-local function GM:SWOnNPCKilled( victim, killer ) //note: GM:OnNPCKilled() is a real function from GMOD!!
+local function SWOnNPCKilled( victim, killer ) //note: GM:OnNPCKilled() is a real function from GMOD!!
 	if ValidEntity( killer ) and killer:IsPlayer( ) then
 		killer:AddXP( REWARD_XP )
 		killer:Levelup( )
 	end
 end
 
-local function GM:SWPlayerDeath( victim, killer )
+local function SWPlayerDeath( victim, killer )
       if ValidEntity( killer ) and killer:IsPlayer( ) then
              killer:AddXP( REWARD_XP )
              killer:Levelup( )
@@ -280,14 +280,14 @@ local function AutoSave( )
 	end
 end
 
-local function GM:SWOnNPCKilled( victim, killer, weapon )
+local function SWOnNPCKilled( victim, killer, weapon )
 	if ValidEntity( killer ) and killer:IsPlayer( ) and weapon:GetClass() == ("smg1") then
 		killer:AddRifXP( REWARD_RIFXP )
 		killer:RifLevelup( )
 	end
 end
 
-local function GM:SWPlayerDeath( victim, killer, weapon )
+local function SWPlayerDeath( victim, killer, weapon )
       if ValidEntity( killer ) and killer:IsPlayer( ) and weapon:GetClass() == ("smg1") then
              killer:AddRifXP( REWARD_RIFXP )
              killer:RifLevelup( )
@@ -302,7 +302,7 @@ timer.Create( "SaveXP", 600, 0, AutoSave )
 
 
 
-function GM:SWNPCDamage( npc, hitgroup, dmginfo )
+function SWNPCDamage( npc, hitgroup, dmginfo )
 	local Attacker = dmginfo:GetAttacker()
 	if Attacker:IsPlayer() then
 		dmginfo:ScaleDamage( 1 + (Attacker.Level / 2)) 
@@ -312,7 +312,7 @@ end
 hook.Add( "ScaleNPCDamage", "NPCDamageHook", NPCDamage ) 
 
 function Maxlevel( ply )
-if self:SetPData( "lvl" >= 75 then "lvl" = 75 )
+if self:SetPData(( "lvl" >= 75) then "lvl" = 75 )
 end
 end
 
