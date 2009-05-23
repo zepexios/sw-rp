@@ -7,7 +7,7 @@ AddCSLuaFile( "cl_weather.lua" )
  include( 'login.lua' )
 /*********************NOTE!*******************************************************************
  // try and prefix all functions with "GM:" , and satrt the function name with "SW"
- // makes it easyer for us all to read/understand, i will change this, then place it in another folder for now ; )
+ // makes it easyer for us all to read/understand, i will change this, then place it in another folder for now ;)
  // MGinshe
  ***********************************************************************************************/
  
@@ -25,12 +25,6 @@ AddCSLuaFile( "cl_weather.lua" )
  EXPERIENCE_RIFSCALE 	= 500	--How much each level costs in XP, times level
  REWARD_RXP				= 50	--How much XP is rewarded for a kill
  
- function GM:PlayerInitialSpawn( ply )
-	if(ply:Team() < 1) then ply:SetTeam(1)
-	
-	end	
-end
- 
  
  function GM:PlayerSpawn( ply )
  
@@ -42,9 +36,7 @@ end
  ply:SetWalkSpeed( 250 )
  ply:SetRunSpeed( 400 )
  
- //ply:SetTeam( 1 ) // Team 1 is guests the default joining team 
- //NOTE!: that would have set them to team 1 every time they spawned...
- //FIX: put that in GM:PlayerInitialSpawn()  with an if statment
+ ply:SetTeam( 1 ) // Team 1 is guests the default joining team
  
  end
  
@@ -55,9 +47,7 @@ end
 	end 
  end
  
- 
- 
- function GM:SWProfessions( ply )
+ function professions( ply )
 	if (Team == "2" and RifLvl > 50) then (RifLvl = 50 ) 
 	end
  end
@@ -66,12 +56,11 @@ end
 function _R.Player:Bleed( )
   if ValidEntity( self ) and self.Bleeding and self:Alive( ) then
     self:TakeDamage( 5 )
-	self:
     timer.Simple( 3, self.Bleed, self )
   end
 end
 
-local function GM:SWBandage( pl )
+local function Bandage( pl )
   if not pl:Alive( ) then
    return
   end
@@ -91,7 +80,7 @@ local function GM:SWBandage( pl )
   end
 end
 
-local function GM:PlayerSpawn( pl )
+local function PlayerSpawn( pl )
   pl.Bleeding = false
   pl.Bandages = MAX_BANDAGES
 end
@@ -143,7 +132,7 @@ function _R.Player:GetNeededXP( )
 	return self.Level * EXPERIENCE_SCALE
 end
 
-local function GM:SWPrintLevel( pl )
+local function PrintLevel( pl )
 	pl:ChatPrint( "Your level is now: " .. pl.Level or DEFAULT_LEVEL )
 end
 
@@ -170,14 +159,14 @@ local function AutoSave( )
 	end
 end
 
-local function GM:SWOnNPCKilled( victim, killer ) //note: GM:OnNPCKilled() is a real function from GMOD!!
+local function OnNPCKilled( victim, killer )
 	if ValidEntity( killer ) and killer:IsPlayer( ) then
 		killer:AddXP( REWARD_XP )
 		killer:Levelup( )
 	end
 end
 
-local function GM:SWPlayerDeath( victim, killer )
+local function PlayerDeath( victim, killer )
       if ValidEntity( killer ) and killer:IsPlayer( ) then
              killer:AddXP( REWARD_XP )
              killer:Levelup( )
@@ -276,14 +265,14 @@ local function AutoSave( )
 	end
 end
 
-local function GM:SWOnNPCKilled( victim, killer )
+local function OnNPCKilled( victim, killer )
 	if ValidEntity( killer ) and killer:IsPlayer( ) then
 		killer:AddRifXP( REWARD_RIFXP )
 		killer:RifLevelup( )
 	end
 end
 
-local function GM:SWPlayerDeath( victim, killer )
+local function PlayerDeath( victim, killer )
       if ValidEntity( killer ) and killer:IsPlayer( ) then
              killer:AddRifXP( REWARD_RIFXP )
              killer:RifLevelup( )
@@ -298,7 +287,7 @@ timer.Create( "SaveXP", 600, 0, AutoSave )
 
 
 
-function GM:SWNPCDamage( npc, hitgroup, dmginfo )
+function NPCDamage( npc, hitgroup, dmginfo )
 	local Attacker = dmginfo:GetAttacker()
 	if Attacker:IsPlayer() then
 		dmginfo:ScaleDamage( 1 + (Attacker.Level / 2)) 
@@ -312,14 +301,3 @@ if self:SetPData( "lvl" >= 75 then "lvl" = 75 )
 end
 end
 
-function GM:SWPlayerSaid( ply, saywhat )
-	local playerName = ply:GetName()
-	if string.find(saywhat, "!info") == 1 then
-	local InfoTable = GM:SWReadPlayerData()
-		for key,value in pairs(InfoTable)
-			ply:PrintMessage(HUD_PRINTTALK, key..": "..value.."\n"
-		end
-	end
-end
- 
-hook.Add ( "PlayerSay", "playerSaid", playerSaid )

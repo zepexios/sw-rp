@@ -1,7 +1,8 @@
 include( 'shared.lua' )
 include( 'cl_weather.lua' )
 include( 'cl_hud.lua' )
-function sw_menu() 
+include( 'login.lua' )
+function GM:SWMenu() 
 
 local DermaPanel = vgui.Create( "DFrame" )
 DermaPanel:SetPos( 50,50 )
@@ -14,7 +15,6 @@ DermaPanel:SetMouseInputEnabled(true)
 DermaPanel:SetKeyboardInputEnabled(true)
 DermaPanel:MakePopup()
 end
-concommand.Add("sw_menu", sw_menu)
  
 local MenuButton = vgui.Create("DButton")
 MenuButton:SetParent( DermaPanel )
@@ -31,14 +31,11 @@ MenuButton.DoClick = function ( btn )
     MenuButtonOptions:Open() -- Open the menu AFTER adding your options
 end
 
-function login( ply )
+function GM:SWAttributes( ply )
 end
 
-function attributes( ply )
-end
-
-function skills( ply )
-local DermaPanel = vgui.create( "DFrame" )
+function GM:SWSkills( ply )
+local DermaPanel = vgui.Create( "DFrame" )
 DermaPanel:SetPos( 50, 50 )
 DermaPanel:SetSize( 200, 250 )
 DermaPanel:SetTitle( "Skills" )
@@ -52,11 +49,10 @@ PropertySheet:SetParent( DermaPanel )
 PropertySheet:SetPos( 5, 30 )
 PropertySheet:SetSize( 340, 315 )
 
-local SheetItemOne = cgui.Create( "DListView" )
+local SheetItemOne = vgui.Create( "DListView" )
 SheetItemOne:SetParent (DermaPanel)
 SheetItemOne:AddColumn( "Current Rifle XP" )
 SheetItemOne:AddColumn( "Rifle XP To Go Till Skill Point" )
-concommand.Add("sw_skills", skills)
 end
 
 function force( ply )
@@ -64,6 +60,22 @@ end
 
 function bug( ply )
 end
+
+concommand.Add("sw_menu", GM:SWMenu)
+concommand.Add("sw_skills", GM.SWSkills)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
