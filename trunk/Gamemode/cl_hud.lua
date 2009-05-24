@@ -5,16 +5,11 @@ function hidehud(name)
 end
 hook.Add("HUDShouldDraw", "hidehud", hidehud)
 
-function myhud()
-local client = LocalPlayer()
-if !client:Alive() then return end
-if (client:GetActiveWeapon() == NULL or client:GetActiveWeapon() == "Camera") then return end
+function DrawHud()
 
-draw.RoundedBox(3, 5, 5, 400, 300, Color(51, 58, 51, 255))
-draw.SimpleText(client:Health() .. "%", "ScoreBoardText", 150, 100, Color(86, 104, 86, 255), 0, 0)
+	health = LocalPlayer():Health()
+	draw.RoundedBox( 2, 3, 6, 300, 15, Color( 51, 50, 0, 150 ) )
+	draw.RoundedBox( 2, 4, 7, health, 12, Color( 255, 0, 0, 255 ) )
+	
 end
-
-//if (ply:Team() == "jedi") then jedi is not made yet for future use
-//draw.SimpleText(Client:Force() ("ScoreBoardText", 300, 250, Color(218, 112, 214, 255), 0, 0)  // not defined yet  
-
-// just a base HUD until my friend jammie tells me how to create health boxes = D
+hook.Add("HUDPaint", "DrawHud", DrawHud)
