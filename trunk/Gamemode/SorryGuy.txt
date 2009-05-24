@@ -1,0 +1,3 @@
+not gona be on till about 4:00p.m. (NZ time) and im too tired to figure out what time it will be there...random guess: about 10:00 - 12:00 p.m. :P
+
+GMod would'nt load when I commented out login.lua, and everything after my functions (ask mandalore)
