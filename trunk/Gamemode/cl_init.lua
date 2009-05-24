@@ -2,8 +2,8 @@ include( 'shared.lua' )
 include( 'cl_weather.lua' )
 include( 'cl_hud.lua' )
 include( 'login.lua' )
-function sw_menu() 
 
+function SWmenu()
 local DermaPanel = vgui.Create( "DFrame" )
 DermaPanel:SetPos( 50,50 )
 DermaPanel:SetSize( 150, 200 )
@@ -15,7 +15,8 @@ DermaPanel:SetMouseInputEnabled(true)
 DermaPanel:SetKeyboardInputEnabled(true)
 DermaPanel:MakePopup()
 end
- 
+
+function sw_menu() 
 local MenuButton = vgui.Create("DButton")
 MenuButton:SetParent( DermaPanel )
 MenuButton:SetText( "Menu >" )
@@ -29,6 +30,7 @@ MenuButton.DoClick = function ( btn )
     MenuButtonOptions:AddOption("Check Force Sensitivity", function() RunConsoleCommand("Check") end )
     MenuButtonOptions:AddOption("Bug Report", function() RunConsoleCommand("Reportbug") end )
     MenuButtonOptions:Open() -- Open the menu AFTER adding your options
+end
 end
 
 function GM:SWAttributes( ply )
