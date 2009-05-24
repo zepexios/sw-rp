@@ -28,12 +28,4 @@ end
 
 hook.Add( "OnNPCKilled"	, "KillGman", QUESTS.KillGMan.DoneIt)
 
-//QUESTS["Kill GMAN"] = {}
-//QUESTS["Kill GMAN"].Reward = 3000
-//QUESTS["Kill GMAN"].DoneIt = function(victim, killer)
-	//if victim:GetClass() == "npc_gman" and killer:IsPlayer() then
-		//Msg("YOU KILLED GMAN AND GOT: "..QUESTS["Kill GMAN"].Reward.." Credits.") // doesnt work right now
-	//end
-//end
 
-//hook.Add( "OnNPCKilled"	, "LOLLOLKILLGMANUNIQUENAMEIWIN", QUESTS["Kill GMAN"].DoneIt)
