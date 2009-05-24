@@ -1,5 +1,5 @@
 include( 'init.lua' )
-
+/*
 function SWWritePlayerData( table )	//stores the content of "table" ( a param, :O) NOTE! NEVER CALL THIS FUNCION: DOING SO WILL DELETE ALL THE PLAYERS DATA AND/OR SAVE NOTHING!!!!
 	
 	local SaveTable = util.TableToKeyValues(table)
@@ -52,9 +52,7 @@ function SWLogIn( ply )
 	
 	return PlayerInfo
 end
-
-
-	
+*/
 	
 	
 	
