@@ -47,4 +47,10 @@ team.SetUp( 4, "Imperial", Color( 178, 34, 34, 255 ) )
 team.SetUp( 5, "Mercenary", Color( 	49, 79, 79, 255 ) )
 */
 
+ local randomweathers = {"sunny", "cloudy", "rain", "sunnyrain", "storm", "dark", "darkrain"}
+function randomweather()
+SetGlobalString("weather",table.Random( randomweathers ))
+timer.simple(math.random(10,300),randomweather)
+end
+randomweather()
 
