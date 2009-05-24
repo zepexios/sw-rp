@@ -28,4 +28,22 @@ end
 
 hook.Add( "OnNPCKilled"	, "KillGman", QUESTS.KillGMan.DoneIt)
 
+CUSTOMNPC = {}
+
+-- Example Quest
+CUSTOMNPC["example"] = {}
+CUSTOMNPC["example"].name = "Ex. Ample"
+CUSTOMNPC["example"].quests = {"quest_example_one", "quest_example_two" }
+CUSTOMNPC["example"].position = Vector(1200.405151, 383.012970, 95.031250) -- VECTOR // Unsure if this works but a more indepth quest system = D
+CUSTOMNPC["example"].model = nil --"models/port1.mdl"
+CUSTOMNPC["example"].OnSpawn =	function()
+							--What happens when the NPC spawns
+							end
+CUSTOMNPC["example"].OnKill =		function()
+							--What happens when the NPC spawns
+							end
+CUSTOMNPC["example"].OnInteract = function()
+							--What happens when the NPC spawns
+							end
+
 
