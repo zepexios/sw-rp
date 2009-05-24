@@ -56,8 +56,6 @@ end
  
  end
  
- 
-
 function SWSetRifleXP( ply, XPAmount )
 	NewRifleXP = DataTable.RifleXP + XPAmount	
 	if(NewRifleXP >= (DataTable.RifleLvl * 100)) then
@@ -455,3 +453,6 @@ function GM:SWNPCDamage( npc, hitgroup, dmginfo )
 end
 
 hook.Add( "ScaleNPCDamage", "NPCDamageHook", NPCDamage ) 
+
+
+
