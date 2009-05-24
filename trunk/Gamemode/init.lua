@@ -14,6 +14,9 @@ AddCSLuaFile( "cl_weather.lua" )
 //Desc: Variable Set Up here
 //Reason: you can see at a glance what variables are what, and change them without having to go through LOTS of code.
 
+
+DataTable = SWReadPlayerData( ply )							//defines the player data table, lots of functions need to access this!
+
  
  MAX_BANDAGES			= 5 	--How many bandages the player has and is set to this number on (re)spawn
  DEFAULT_XP 			= 0		--Amount of XP player first starts playing SW-RP with
@@ -29,7 +32,8 @@ AddCSLuaFile( "cl_weather.lua" )
  EXPERIENCE_PISSSCALE 	= 500	--How much each level costs in XP, times level
  REWARD_PXP				= 50	--How much XP is rewarded for a kill
  
- function GM:PlayerInitialSpawn( ply )
+ function GM:PlayerInitialSpawn( ply ) 	//if they have no team (first time on server) set them to civ
+	ply = Ply 							//dosent make sense? dw...
 	if(ply:Team() < 1) then ply:SetTeam(1)
 	
 	end	
@@ -51,6 +55,42 @@ end
  //FIX: put that in GM:PlayerInitialSpawn()  with an if statment
  
  end
+ 
+ 
+//aint this hard D:
+function SWSetRifleXP( ply, XPAmount,)
+	NewRifleXP = DataTable.RifleXP + XPAmount			//adds amount of xp defined in a param to NewRifleXp :D
+	if(NewRifleXP >= (((DataTable.RifleLvl /2) /2) /2)) then
+		RifleLvlUp = true
+		NewRifleLvl = DataTable.RifleLvl + 1
+		ply:PrintMessage(HUD_PRINTTALK, "[SW-RP] You leveld your Rifle skill up! It's now Lvl " ..NewRifleLvl.." !"
+	end
+	SWSetPlayerData( ply )
+	RifleLvlUp = false
+end
+function SWGetRifleLvl()
+	if(RifleLvlUp) then
+		return NewRifleLvl
+	end
+	else 
+	return DataTable.RifleLvl
+end
+function SWGetRifleXP()
+	return NewRifleXP
+end
+function SWGetTotalRifleXP()
+	local TotalRifleXP = DataTable.RifleXP + DataTable.TotalRifleXP
+	return TotalRifleXP
+end
+ 
+//to use this, callSWSetRifleXP( ply, <ammount of Xp to give> )
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  function GM:PlayerLoadout( ply )
 	if ply:Team() == (2) then
