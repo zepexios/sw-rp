@@ -1,0 +1,7 @@
+// Translate
+
+Uses the select command to select what entities you would like to translate
+
+Commands:
+
+ss translate <Freeze 1|0> (Enter or exit translate mode then use keys to move)

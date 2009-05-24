@@ -1,7 +1,0 @@
-"vertexlitgeneric"
-{
-	"$basetexture" "models\jumper\vitre"
-	"$envmap" "env_cubemap"
-	"$surfaceprop" "glass"
-	"$translucent" 1
-}

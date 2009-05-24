@@ -1,0 +1,3 @@
+// Limit
+
+Limit amount of entities you can spawn by flags

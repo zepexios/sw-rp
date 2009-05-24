@@ -1,0 +1,7 @@
+// Tree
+
+Plant a tree that over time drops points
+
+Commands:
+
+ss tree <Amount> <Time> (Spawn a tree)

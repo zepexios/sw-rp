@@ -1,0 +1,4 @@
+// PurchaseFlags
+
+Goto Config.lua and you can add flags you wish to be up for purchase there
+Some examples are already included!
