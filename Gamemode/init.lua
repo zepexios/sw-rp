@@ -103,12 +103,15 @@ end
 hook.Add( "PlayerSpawn", "Bleeding.Reset", PlayerSpawn )
 concommand.Add( "/bandage", Bandage )
 
+local function  ScaleDamage( ply, hitgroup, dmginfo )
 if damage_info:IsBulletDamage( ) then
   if not pl.Bleeding then
     pl.Bleeding = true
     timer.Simple( 3, pl.Bleed, pl )
   end
 end
+end 
+hook.Add("ScalePlayerDamage","ScaleDamage",ScaleDamage)
 
 function EasyLog( s, ... )
 	local ns
