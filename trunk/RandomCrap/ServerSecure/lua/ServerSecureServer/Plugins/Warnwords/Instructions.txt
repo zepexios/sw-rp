@@ -1,0 +1,3 @@
+// Warnwords
+
+People get warnings for saying certain words see Config.lua to configure it

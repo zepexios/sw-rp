@@ -1,9 +1,0 @@
-"vertexlitgeneric"
-{
-	"$basetexture" "models/alienate/f302/flamme"
-	"$nocull" "1"
-	"$nodecal" "1"
-	"$additive" "1"
-	"$translucent" "1"
-	"$model" "1"
-}

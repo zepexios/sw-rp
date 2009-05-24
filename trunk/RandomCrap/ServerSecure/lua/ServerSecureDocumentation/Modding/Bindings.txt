@@ -1,0 +1,78 @@
+// Bindings
+
+// Points 
+
+SS.Points.PlayerGain(Player, Amount)
+SS.Points.PlayerTake(Player, Amount)
+
+// Meta 
+
+Player:IsPlayerReady() (Used to check if a players values have been set)
+Player:SetTextReturn() (Used on PlayerSay hooks will return nil for that one time)
+Player:HideServerSecureGUI(ID, Type, Bool) (Enable or disable GUI elements for a player)
+Player:DeleteOnDeath(Entity) (Delete an entity when a player dies)
+Player:ServerSecureTraceLine() (Returns trace from player)
+Player:ServerSecurePlaySound(Sound) (Play a sound on the client)
+
+// Select 
+
+Player:EntitiesSelected() (Get selected entities that a player currently has)
+Player:DeselectEntities() (Deselect all of a players currently selected props)
+
+// Config 
+
+SS.Config.New(ID, ...) (Create a new config variable, can be used to update a previous one)
+SS.Config.Request(ID) (Get a new config variable)
+
+// Clientside only 
+
+SS.Config.Request(ID) (Returns a config variable from the server, returns as a string)
+SS.Parts.Add(ID, Type) (Add a part to the GUI)
+
+// Flags 
+
+SS.Flags.PlayerHas(Player, Flag) (Returns true if player has flag)
+SS.Flags.PlayerGive(Player, Flag) (Give player a flag, returns false if player has it already)
+SS.Flags.Branch(Tree, Flag) (Branch a flag to a flag tree)
+SS.Flags.PlayerTakeGroupFlags(Player, Group) (Take flags from a player that are specific to a group)
+SS.Flags.PlayerTake(Player, Flag) (Take flag from player, returns false if player doesn't have it)
+SS.Flags.GiveFree(Player, Bool) (Give free flags to players don't call this)
+
+// Lib 
+
+SS.Lib.GetTable(Table) (Returns a table no matter what value you put in)
+SS.Lib.ConCommand(Command, Args, Args, ETC, ETC) (Unlimited arguments allowed)
+SS.Lib.FolderIncludeFolders(Location, Extension) (Include all files in folders in a folder)
+SS.Lib.IncludeFolder(Location, Extension) (Include all files in a folder)
+SS.Lib.Error(Text) (Print an error to the console)
+SS.Lib.CreateSmokeTrail(Entity, Col) (Make a trail on entity, Col = {"R G B", "R G B"})
+SS.Lib.StringBoolean(String) (Convert string or number to boolean)
+SS.Lib.StringChop(String, Amount) (Cut a string into pieces and return a table)
+SS.Lib.EntityExplode(Entity) (Explode an entity)
+SS.Lib.StringExplode(String, Seperator) (Enhanced string.Explode)
+SS.Lib.StringNumber(Number) (Convert string to number, returns nil if cannot convert)
+SS.Lib.StringColor(String, Bool) (Converts a string like "100, 200, 100, 255" to a color, if not Bool then returns table)
+SS.Lib.PlayersConnected() (Get amount of players connected)
+SS.Lib.RandomTableEntry(Table) (Get random entry from table)
+SS.Lib.Find(String) (Search through all players for matching string in name and return player object)
+SS.Lib.IncludeFolder(Folder, Extension) (Include all files in a folder)
+SS.Lib.FolderIncludeFolders(Folder, Extension) (Include all files in folders in a folder)
+SS.Lib.ConCommand(Key, ...) (Run a console command like SS.Lib.ConCommand("banid", "0", "1", "kick"))
+SS.Lib.PlayerKick(Person, Reason) (Kick a player, Player is the person who kicked him)
+SS.Lib.PlayerBan(Person, Time, Reason, Announce) (Ban a player, Player is the person who banned him)
+SS.Lib.PlayerSlay(Person) (Slay a player, Player is the person who slayed him)
+SS.Lib.PlayerFreeze(Person, Bool) (Freeze a player, Player is the person who froze him)
+SS.Lib.PlayerBlind(Person, Bool) (Blind a player, Player is the person who blinded him)
+SS.Lib.PlayerGod(Person, Bool) (God a player, Player is the person who godded him)
+SS.Lib.PlayerInvis(Person, Bool) (Make a player invisible, Player is the person who made him invisible)
+SS.Lib.StringReplace(Text, Capital, Higher, Amount) (string.Replace but can specify how many times to do)
+SS.Lib.Valid(Entity) (Better IsValid check)
+SS.Lib.StringValue(String) (Format string so if it can be a number then convert to number, if it's "true" then make it true etc)
+SS.Lib.StringRandom(Characters) (Returns a random string of a certain amount of characters)
+SS.Lib.TableToKeyValues(Table) (util.TableToKeyValues but doesn't make keys lowercase)
+SS.Lib.AddCSLuaFolder(Folder) (Add a whole folder to the client download list)
+
+// Clientside
+
+SS.Clientside.Add(Location, Bool) (Add and include a clientside file)
+SS.Clientside.Folder(Location, Extension, Bool) (Add and include all clientside files in a folder)

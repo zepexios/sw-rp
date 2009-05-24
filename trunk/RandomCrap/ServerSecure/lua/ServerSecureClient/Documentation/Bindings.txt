@@ -1,0 +1,23 @@
+// Bindings
+
+// Lib
+
+SS.Lib.GetTeamColor() (Get team color of the local player)
+SS.Lib.HiddenGUI(Player, Type) (Check if a GUI part is hidden)
+
+// Groups
+
+SS.Groups.Rank(ID) (Get groups rank from ID)
+
+// GUI
+
+SS.GUI.DrawShadowedText(Text, Font, X, Y, Col, XA, YA)
+SS.GUI.Box(X, Y, W, H, Col, Shadow)
+
+// Parts
+
+SS.Parts.Add(ID, Type) (Types include "Hover", "Bar" and "Name", the ID is a NetworkedString)
+
+// Config
+
+SS.Config.Request(ID, Type, Replacement) (Gets information from the serverside config, last two arguments are optional)

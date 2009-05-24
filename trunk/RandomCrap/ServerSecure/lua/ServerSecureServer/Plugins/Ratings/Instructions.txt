@@ -1,0 +1,7 @@
+// Ratings
+
+Rate users, you can add new ratings in the Config.lua
+
+Commands:
+
+ss rate <Player> <Rating> (Rate a player)
