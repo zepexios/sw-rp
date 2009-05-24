@@ -13,8 +13,8 @@ function SWReadPlayerData( ply )
 	local ReadTable = file.Read("UserData"..ply:UniqueID().."/Data.txt")
 	table = util.KeyValuesToTable(ReadTable)
 	else
-		print"[SW-RP]Error Loading " ..ply:UniqueID().. "'s Data.txt"
-		print"[SW-RP]Player Data File dosent exist..."
+		print("[SW-RP]Error Loading " ..ply:UniqueID().. "'s Data.txt")
+		print("[SW-RP]Player Data File dosent exist...")
 	end
 return LoadTab
 end

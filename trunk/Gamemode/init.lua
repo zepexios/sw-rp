@@ -58,12 +58,12 @@ end
  
  
 
-function SWSetRifleXP( ply, XPAmount,)
+function SWSetRifleXP( ply, XPAmount )
 	NewRifleXP = DataTable.RifleXP + XPAmount	
-	if(NewRifleXP >= (DataTable.RifleLvl * 100 ) then
+	if(NewRifleXP >= (DataTable.RifleLvl * 100)) then
 		RifleLvlUp = true
 		NewRifleLvl = DataTable.RifleLvl + 1
-		ply:PrintMessage(HUD_PRINTTALK, "[SW-RP] You leveld your Rifle skill up! It's now Lvl " ..NewRifleLvl.." !"
+		ply:PrintMessage(HUD_PRINTTALK, "[SW-RP] You leveld your Rifle skill up! It's now Lvl " ..NewRifleLvl.." !")
 	end
 	SWSetPlayerData( ply )
 	RifleLvlUp = false
@@ -71,9 +71,9 @@ end
 function SWGetRifleLvl()
 	if(RifleLvlUp) then
 		return NewRifleLvl
-	end
 	else 
 	return DataTable.RifleLvl
+	end
 end
 function SWGetRifleXP()
 	return NewRifleXP
