@@ -9,7 +9,7 @@ function GM:SWWritePlayerData( table )	//stores the content of "table" ( a param
 end
 
 function GM:SWReadPlayerData( ply )
-	if(file.Exists("UserData"..ply:UniqueID()../Data.txt")) then
+	if(file.Exists("UserData"..ply:UniqueID().."/Data.txt")) then
 	local ReadTable = file.Read("UserData"..ply:UniqueID()../Data.txt")
 	table = util.KeyValuesToTable(ReadTable)
 	end
