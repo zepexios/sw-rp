@@ -57,10 +57,10 @@ end
  end
  
  
-//aint this hard D:
+
 function SWSetRifleXP( ply, XPAmount,)
-	NewRifleXP = DataTable.RifleXP + XPAmount			//adds amount of xp defined in a param to NewRifleXp :D
-	if(NewRifleXP >= (((DataTable.RifleLvl /2) /2) /2)) then
+	NewRifleXP = DataTable.RifleXP + XPAmount	
+	if(NewRifleXP >= (DataTable.RifleLvl * 100 ) then
 		RifleLvlUp = true
 		NewRifleLvl = DataTable.RifleLvl + 1
 		ply:PrintMessage(HUD_PRINTTALK, "[SW-RP] You leveld your Rifle skill up! It's now Lvl " ..NewRifleLvl.." !"
@@ -82,16 +82,8 @@ function SWGetTotalRifleXP()
 	local TotalRifleXP = DataTable.RifleXP + DataTable.TotalRifleXP
 	return TotalRifleXP
 end
- 
-//to use this, callSWSetRifleXP( ply, <ammount of Xp to give> )
- 
- 
- 
- 
- 
- 
- 
- 
+concommand.Add( "AddXp", SWSetRifleXP( ply, 100 ))
+
  function GM:PlayerLoadout( ply )
 	if ply:Team() == (2) then
 		ply:Give( "weapon_mp5" ) // Will spawn with hands when implemented
@@ -143,15 +135,12 @@ end
 hook.Add( "PlayerSpawn", "Bleeding.Reset", PlayerSpawn )
 concommand.Add( "/bandage", Bandage )
 
-local function  ScaleDamage( ply, hitgroup, dmginfo )
 if damage_info:IsBulletDamage( ) then
   if not pl.Bleeding then
     pl.Bleeding = true
     timer.Simple( 3, pl.Bleed, pl )
   end
 end
-end 
-hook.Add("ScalePlayerDamage","ScaleDamage",ScaleDamage)
 
 function EasyLog( s, ... )
 	local ns
