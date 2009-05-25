@@ -3,24 +3,24 @@ include( 'cl_weather.lua' )
 include( 'cl_hud.lua' )
 include( 'login.lua' )
 
-function SWmenu()
-local DermaPanel = vgui.Create( "DFrame" )
-DermaPanel:SetPos( ScrW() / 2 )
-DermaPanel:SetSize( 150, 200 )
-DermaPanel:SetTitle( "Menu" )
-DermaPanel:SetVisible( true )
-DermaPanel:SetDraggable( true )
-DermaPanel:ShowCloseButton( true )
-DermaPanel:SetMouseInputEnabled(true)
-DermaPanel:SetKeyboardInputEnabled(true)
-DermaPanel:MakePopup()
-end
+//function SWmenu()
+//local DermaPanel = vgui.Create( "DFrame" )
+//DermaPanel:SetPos( ScrH() / 2 )
+//DermaPanel:SetSize( 150, 200 )  -- wonder what happens if we comment this out
+//DermaPanel:SetTitle( "Menu" )
+//DermaPanel:SetVisible( true )
+//DermaPanel:SetDraggable( true )
+//DermaPanel:ShowCloseButton( true )
+//DermaPanel:SetMouseInputEnabled(true)
+//DermaPanel:SetKeyboardInputEnabled(true)
+//DermaPanel:MakePopup()
+//end
 
 function sw_menu() 
 local MenuButton = vgui.Create("DButton")
 MenuButton:SetParent( DermaPanel )
 MenuButton:SetText( "Menu >" )
-MenuButton:SetPos(ScrW() / 2 )
+MenuButton:SetPos(ScrH() / 2, ScrW() / 2 )
 MenuButton:SetSize( 100, 125 )
 MenuButton.DoClick = function ( btn )
     local MenuButtonOptions = DermaMenu() -- Creates the menu
@@ -34,40 +34,6 @@ end
 end
 
 function GM:SWAttributes( ply )
-local DermaPanel = vgui.create( "DFrame" )
-DermaPanel:SetPos( 50, 50 )
-DermaPanel:SetSize( 250, 325 )
-DermaPanel:SetTitle( "Attributes" )
-DermaPanel:SetVisible( true )
-DermaPanel:SetDraggable( true )
-DermaPanel:ShowCloseButton( true )
-DermaPanel:MakePopup()
-
-local PropertySheet = vgui.Create ( "DPropertySheet" ) ////////////////////////////////////////////////////////////////
-PropertySheet:SetParent( DermaPanel )                  // This is just a base for when the values actually get implemented not guranteed to work but is a start.
-PropertySheet:SetPos ( 5, 30 )                         //////////////////////////////////////////////////////////////////////////////////////
-PropertySheet:SetSize ( 500, 300 )
-
-local SheetItemOne = vgui.Create( "DCheckBoxLabel" )
-SheetItemOne:SetText( "Name" )
-SheetItemOne:SizeToContents()
-
-local SheetItemTwo = vgui.Create( "DCheckBoxLabel" )
-SheetItemTwo:SetText( "Use SENTs?" )
-SheetItemTwo:SetConVar( "some_convar" )
-SheetItemTwo:SetValue( 1 )
-SheetItemTwo:SizeToContents()
-
-PropertySheet:AddSheet( "Main", SheetItemOne, false, false, false, "Main Page" )
-PropertySheet:AddSheet( "Jobs", SheetItemTwo, false, false, false, "Jobs" ) 
-
-Dlabel = vgui.Create("DLabel" , Main)
-Dlabel:SetText( ply:Nick() )
-Dlabel:SizeToContents()
-
-Dlabel = vgui.Create("DLabel" , Jobs)
-Dlabel:SetText( GM:Team() )
-Dlabel:SizeToContents()
 end
 
 function GM:SWSkills( ply )
@@ -79,8 +45,53 @@ end
 function bug( ply )
 end
 
+function sw_start()
+local StarwarsPanel = vgui.Create( "DFrame" ) -- creates the frame itself
+StarwarsPanel:SetPos( 50, 50 ) -- Position on the players screen
+StarwarsPanel:SetSize( 1000, 900 ) -- size of the frame
+StarwarsPanel:SetTitle( "Welcome To SW Online!" ) -- title of the frame
+StarwarsPanel:SetVisible( true ) -- whether we can see it or not
+StarwarsPanel:SetDraggable( true ) -- can you drag the frame by mouse?
+StarwarsPanel:ShowCloseButton( true ) -- Show the close button?
+StarwarsPanel:MakePopup() -- Show the frame 
+
+local StarwarsButton = vgui.Create( "DButton" )
+StarwarsButton:SetParent( StarwarsPanel ) // set parent to our StarwarsPanel
+StarwarsButton:SetText( "Create New Character" )
+StarwarsButton:SetPos( 80, 80 )
+StarwarsButton:SetSize( 50, 80 )
+StarwarsButton.DoClick = function ( sw_character ) // MG you will have to write the function to go with your login screen.
+
+local StardelButton = vgui.Create( "DButton" )
+StardelButton:SetParent( StarwarsPanel ) // set parent to our StarwarsPanel
+StardelButton:SetText( "Delete Character" )
+StarwarsButton:SetPos( 80, 120 )
+StarwarsButton:SetSize( 50, 80 )
+StarwarsButton.DoClick = function ( sw_delcharacter ) // again you will have to write the function to delete the character
+
+local StarstartButton = vgui.Create( "DButton" )
+StarstartButton:SetParent( StarwarsPanel ) // set parent to our StarwarsPanel
+StarstartButton:SetText( "Play!" )
+StarstartButton:SetPos( 100, 100 )
+StarstartButton:SetSize( 50, 80 )
+StarwarsButton.DoClick = function ( sw_selectcharacter ) // you will have to write the function this panel is designed to work with your login script if possible if needed make changes.
+end
+end
+end
+end
+
+function sw_character() 
+end
+
+function sw_delcharacter()
+end
+
+function sw_selectcharacter()
+end
+// design to come up if the player presses new character
 concommand.Add("sw_menu", sw_menu)
-concommand.Add("sw_skills", GM.SWSkills)
+concommand.Add("sw_start", sw_start)
+
 
 
 
