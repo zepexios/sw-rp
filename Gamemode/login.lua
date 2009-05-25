@@ -42,8 +42,8 @@ function SWSetPlayerData( ply )		//player data, and any files can access this
 	SWWritePlayerData( PlayerData )
 end
 
-function SWLogIn( ply )
-	local PlayerData = GM:SWReadPlayerData()
+function GM:SWLogIn( ply )
+	local PlayerData = SWReadPlayerData( ply )
 	PlayerInfo = PlayerData.ply:UniqueID()
 	ply:PrintMessage(HUD_PRINTTALK, "[SW-RP Mod] You were successfuly logged in!")
 	ply:PrintMessage(HUD_PRINTTALK, "[SW-RP Mod] Type \"!info\" to see your Player info.")

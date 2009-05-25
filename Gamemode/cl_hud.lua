@@ -15,9 +15,9 @@ function DrawHud()
 	draw.RoundedBox( 4, 10, 20, 100, 15, Color( 50, 205, 50, 100) )
 	draw.RoundedBox( 4, 11, 21, armor, 12, Color( 65, 105, 225, 255) )
 	
-	name = LocalPlayer():UniqueID()  Unique ID is outputting Nil?
-	draw.RoundedBox( 4, 17, 34, 100, 15, Color( 50, 205, 50, 100 ) )
-	draw.RoundedBox( 4, 18, 35, name, 12, Color( 255, 255, 255, 255 ) )
+	//name = LocalPlayer():UniqueID()  
+	//draw.RoundedBox( 4, 17, 34, 100, 15, Color( 50, 205, 50, 100 ) )
+	//draw.RoundedBox( 4, 18, 35, name, 12, Color( 255, 255, 255, 255 ) )
     	
 end
 hook.Add("HUDPaint", "DrawHud", DrawHud)

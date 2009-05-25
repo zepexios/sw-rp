@@ -5,7 +5,6 @@ AddCSLuaFile( "cl_weather.lua" )
  include( 'shared.lua' )
  include( 'missions.lua' )
  include( 'login.lua' )
- include( 'chat.lua' )
 /*********************NOTE!*******************************************************************
  // try and prefix all functions with "GM:" , and satrt the function name with "SW"
  // makes it easyer for us all to read/understand, i will change this, then place it in another folder for now ; )
@@ -91,9 +90,9 @@ concommand.Add( "AddXp", SWSetRifleXP( ply, 100 ))
 	end 
  end
  
- function GM:PlayerConnect( UniqueID ) 
- ply:SetNetworkedString("UniqueID", ply:UniqueID)
- end 
+ //function GM:PlayerConnect( UniqueID ) 
+ //ply:SetNetworkedString("UniqueID", ply:UniqueID)
+ //end 
  
  
  
