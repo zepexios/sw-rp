@@ -20,4 +20,5 @@ function Chatting(ply, text)
 					  return "";
         end
 end
+end
 hook.Add("PlayerSay", "ChatCommands", Chatting)
