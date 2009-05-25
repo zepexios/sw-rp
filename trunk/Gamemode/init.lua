@@ -91,6 +91,10 @@ concommand.Add( "AddXp", SWSetRifleXP( ply, 100 ))
 	end 
  end
  
+ function GM:PlayerConnect( UniqueID ) 
+ ply:SetNetworkedString("UniqueID", ply:UniqueID)
+ end 
+ 
  
  
  function GM:SWProfessions( ply )
