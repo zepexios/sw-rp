@@ -57,14 +57,14 @@ end
  
  end
  
-function SWSetRifleXP( ply, XPAmount )
+function SWSetRifleXP( player, XPAmount )
 	NewRifleXP = DataTable.RifleXP + XPAmount	
 	if(NewRifleXP >= (DataTable.RifleLvl * 100)) then
 		RifleLvlUp = true
 		NewRifleLvl = DataTable.RifleLvl + 1
 		ply:PrintMessage(HUD_PRINTTALK, "[SW-RP] You leveld your Rifle skill up! It's now Lvl " ..NewRifleLvl.." !")
 	end
-	SWSetPlayerData( ply )
+	SWSetPlayerData( player )
 	RifleLvlUp = false
 end
 function SWGetRifleLvl()
@@ -84,6 +84,7 @@ end
 concommand.Add( "AddXp", SWSetRifleXP( ply, 100 ))
 
  function GM:PlayerLoadout( ply )
+	player = ply
 	if ply:Team() == (2) then
 		ply:Give( "weapon_mp5" ) // Will spawn with hands when implemented
 		ply:Spawn()
