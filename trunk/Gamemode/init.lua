@@ -33,7 +33,7 @@ DataTable = SWReadPlayerData( ply )							//defines the player data table, lots 
  REWARD_PXP				= 50	--How much XP is rewarded for a kill
  
  function GM:PlayerInitialSpawn( ply ) 	//if they have no team (first time on server) set them to civ
-	ply = Ply 							//dosent make sense? dw...
+	ply = Ply 							//dosent make sense? dw...//my futile attampt at mkiang "ply" global D: ..MGinshe.. :D
 	if(ply:Team() < 1) then ply:SetTeam(1)
 	
 	end	
@@ -80,6 +80,41 @@ function SWGetTotalRifleXP()
 	local TotalRifleXP = DataTable.RifleXP + DataTable.TotalRifleXP
 	return TotalRifleXP
 end
+
+
+//test function, that will lvl all skills up :)
+function SWSetXP( player, XPAmount, Type )
+	ID = player:UniqueID()
+	NewXP = DataTable.ID.XP.TypeXP + XPAmount	
+	if(NewXP >= (DataTable.ID.XP.TypeLvl * 100)) then
+		LvlUp = true
+		NewRifleLvl = DataTable.ID.XP.TypeLvl + 1
+		player:PrintMessage(HUD_PRINTTALK, "[SW-RP] You leveld your "..Type.." skill up! It's now Lvl " ..NewRifleLvl.." !")
+	end
+	SWSetPlayerData( player )
+	SWReadPlayerData( player )
+	LvlUp = false
+end
+function SWGetRifleLvl()
+	if(RifleLvlUp) then
+		return NewRifleLvl
+	else 
+	return DataTable.RifleLvl
+	end
+end
+function SWGetRifleXP()
+	return NewRifleXP
+end
+function SWGetTotalRifleXP()
+	local TotalRifleXP = DataTable.RifleXP + DataTable.TotalRifleXP
+	return TotalRifleXP
+end
+
+function GM:OnNPCKilled( victim, killer, weapon )
+   for k,v in pairs(DataTable.
+end
+
+
 concommand.Add( "AddXp", SWSetRifleXP( ply, 100 ))
 
  function GM:PlayerLoadout( ply )

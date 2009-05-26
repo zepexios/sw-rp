@@ -2,19 +2,29 @@ include( 'shared.lua' )
 include( 'cl_weather.lua' )
 include( 'cl_hud.lua' )
 include( 'login.lua' )
-
-//function SWmenu()
-//local DermaPanel = vgui.Create( "DFrame" )
-//DermaPanel:SetPos( ScrH() / 2 )
-//DermaPanel:SetSize( 150, 200 )  -- wonder what happens if we comment this out
-//DermaPanel:SetTitle( "Menu" )
-//DermaPanel:SetVisible( true )
-//DermaPanel:SetDraggable( true )
-//DermaPanel:ShowCloseButton( true )
-//DermaPanel:SetMouseInputEnabled(true)
-//DermaPanel:SetKeyboardInputEnabled(true)
-//DermaPanel:MakePopup()
-//end
+/************************NOTE!*********************************
+ *
+ *my login system is gona go thru a majour re-do (wont take long)
+ *so that i can delete Characters, create character, and select Character.
+ *sorry about the HUGE "NOTE!" abnner, but it looks cool and if any of you
+ *edit this file you will surely see it :D Fell free to overwirte if everyone 
+ *who needs to know, knows
+ *
+ *cya's on wednesday...:)
+ * ..MGinshe..
+ ***************************************************************/
+function SWmenu()
+local DermaPanel = vgui.Create( "DFrame" )
+DermaPanel:SetPos( ScrH() - 20, ScrW() - 20 ) // you only have the Height value? ima change that...and testing placing soz ..MGinshe..
+DermaPanel:SetSize( 150, 200 )  -- wonder what happens if we comment this out // baad things :D
+DermaPanel:SetTitle( "Menu" )
+DermaPanel:SetVisible( true )
+DermaPanel:SetDraggable( true 
+DermaPanel:ShowCloseButton( true )
+DermaPanel:SetMouseInputEnabled(true)
+DermaPanel:SetKeyboardInputEnabled(true)
+DermaPanel:MakePopup()
+end
 
 function sw_menu() 
 local MenuButton = vgui.Create("DButton")
@@ -25,7 +35,7 @@ MenuButton:SetSize( 100, 125 )
 MenuButton.DoClick = function ( btn )
     local MenuButtonOptions = DermaMenu() -- Creates the menu
     MenuButtonOptions:AddOption("Quit", function() RunConsoleCommand("disconnect") end ) -- Add options to the menu
-    MenuButtonOptions:AddOption("Skills", function() RunConsoleCommand("sw_skills") end ) //  chunk has too many syntax levels unsure why console is saying this
+    MenuButtonOptions:AddOption("Skills", function() RunConsoleCommand("sw_skills") end ) //  chunk has too many syntax levels unsure why console is saying this//i think its because "SWSkills" is in like 5 Syntax lvls? ..MGinshe..
     MenuButtonOptions:AddOption("Attributes", function() RunConsoleCommand("Attributes") end )
     MenuButtonOptions:AddOption("Check Force Sensitivity", function() RunConsoleCommand("Check") end )
     MenuButtonOptions:AddOption("Bug Report", function() RunConsoleCommand("Reportbug") end )
@@ -60,7 +70,7 @@ StarwarsButton:SetParent( StarwarsPanel ) // set parent to our StarwarsPanel
 StarwarsButton:SetText( "Create New Character" )
 StarwarsButton:SetPos( 80, 80 )
 StarwarsButton:SetSize( 50, 80 )
-StarwarsButton.DoClick = function ( sw_character ) // MG you will have to write the function to go with your login screen.
+StarwarsButton.DoClick = function ( sw_character ) // MG you will have to write the function to go with your login screen. // kay kay ..Mginshe..
 
 local StardelButton = vgui.Create( "DButton" )
 StardelButton:SetParent( StarwarsPanel ) // set parent to our StarwarsPanel
@@ -76,9 +86,10 @@ StarstartButton:SetPos( 100, 100 )
 StarstartButton:SetSize( 50, 80 )
 StarwarsButton.DoClick = function ( sw_selectcharacter ) // you will have to write the function this panel is designed to work with your login script if possible if needed make changes.
 end
+end // Ummm....are all these "end"s ment to be here...? that wont work, i think D: ..MGinshe..
 end
 end
-end
+
 
 function sw_character() 
 end
