@@ -18,7 +18,7 @@ hook.Add("PlayerUse", "MyUseHook", Useing)
 //im goingto see why this isnt wkoring. mabe you implemented the table wrong?
 //yep... : ) fixed
 
-QUESTS[KillGMan] = {}
+QUESTS[KillGMan] = {} // [QUESTS} is nil?
 QUESTS.KillGMan[Reward] = 3000
 QUESTS.KillGMan[DoneIt] = function(victim, killer)
 	if victim:GetClass() == "npc_gman" and killer:IsPlayer() then
