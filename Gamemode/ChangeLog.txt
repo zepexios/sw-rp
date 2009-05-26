@@ -9,3 +9,4 @@ Hiding Default HUD, Created basis for missions and terminals.  ( done on 5/22)
 Mandalore Added: Base to attribute Derma.
 5/23 Mandalore Added: Fixed Rifle XP "hopefully", Added Pistol XP.
 5/24 Mandalore Added: Added Health bar to HUD, Added A new mission system (example), Added a timer for the weather, Added a basic chat system such as ooc yell and whisper.
+5/26 Mandalore: Debugged a bit LOGIN NEEDS TO BE FINISHED THIS WIL CLEAR UP A LOT OF BUGS.

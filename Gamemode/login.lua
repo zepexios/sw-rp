@@ -21,8 +21,8 @@ function SWSetPlayerData( ply )		//player data, and any files can access this
 
 	 local PlayerData = {}				//table for the data (so i dont need 10000 params for the write func)
 	
-	PlayerData[ply:UniqueID()] = {)
-	PlayerData.ply:UniqueID()[XP] = (
+	PlayerData[ply:UniqueID()] = {} 
+	PlayerData.ply:UniqueID()[XP] = ()
 		Name = ply:Nick(), 
 		Money = SWGetSWMoney(), 
 		Team = GM:Team(),
@@ -41,7 +41,7 @@ function SWSetPlayerData( ply )		//player data, and any files can access this
 	SWWritePlayerData( PlayerData )
 end
 
-function GM:SWLogIn( ply )
+function GM:SWLogIn( ply ) // this is not finished Because you arnt calling this function anywhere therefore the function will never intialize.
 	local PlayerData = SWReadPlayerData( ply )
 	PlayerInfo = PlayerData.ply:UniqueID()
 	ply:PrintMessage(HUD_PRINTTALK, "[SW-O Mod] You were successfuly logged in!")

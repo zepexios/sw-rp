@@ -15,7 +15,7 @@ AddCSLuaFile( "cl_weather.lua" )
 //Reason: you can see at a glance what variables are what, and change them without having to go through LOTS of code.
 
 
-DataTable = SWReadPlayerData( ply )							//defines the player data table, lots of functions need to access this!
+DataTable = SWReadPlayerData( ply )		//calling a nil value finish login errors should disappear by then					//defines the player data table, lots of functions need to access this!
 
  
  MAX_BANDAGES			= 5 	--How many bandages the player has and is set to this number on (re)spawn
@@ -111,8 +111,10 @@ function SWGetTotalRifleXP()
 end
 
 function GM:OnNPCKilled( victim, killer, weapon )
-   for k,v in pairs(DataTable.
+   for k,v in pairs(DataTable.RifleXP + DataTable.XP) do
 end
+end
+
 
 
 concommand.Add( "AddXp", SWSetRifleXP( ply, 100 ))

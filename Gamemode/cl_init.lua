@@ -19,7 +19,7 @@ DermaPanel:SetPos( ScrH() - 20, ScrW() - 20 ) // you only have the Height value?
 DermaPanel:SetSize( 150, 200 )  -- wonder what happens if we comment this out // baad things :D
 DermaPanel:SetTitle( "Menu" )
 DermaPanel:SetVisible( true )
-DermaPanel:SetDraggable( true 
+DermaPanel:SetDraggable( true )
 DermaPanel:ShowCloseButton( true )
 DermaPanel:SetMouseInputEnabled(true)
 DermaPanel:SetKeyboardInputEnabled(true)
