@@ -1,0 +1,5 @@
+Login script has to be completed since its not complete its causing TONS of errors
+
+Also shepard and i have been thinking and want to get your say on this should we get rid of rifle xp pistol xp etc and just utilize combat levels
+this would allow for us to code a lot faster but we wanted to go over it with you first.  
+Without rifles and pistols to worry about it makes menus and such easier as well as your login script.
