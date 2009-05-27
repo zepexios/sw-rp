@@ -13,7 +13,7 @@ include( 'login.lua' )
  *cya's on wednesday...:)
  * ..MGinshe..
  ***************************************************************/
-function SWmenu()
+function sw_menu()
 local DermaPanel = vgui.Create( "DFrame" )
 DermaPanel:SetPos( ScrH() - 20, ScrW() - 20 ) // you only have the Height value? ima change that...and testing placing soz ..MGinshe..
 DermaPanel:SetSize( 150, 200 )  -- wonder what happens if we comment this out // baad things :D
@@ -24,12 +24,12 @@ DermaPanel:ShowCloseButton( true )
 DermaPanel:SetMouseInputEnabled(true)
 DermaPanel:SetKeyboardInputEnabled(true)
 DermaPanel:MakePopup()
-end
 
-function sw_menu() 
+
+
 local MenuButton = vgui.Create("DButton")
 MenuButton:SetParent( DermaPanel )
-MenuButton:SetText( "Menu >" )
+MenuButton:SetText( "Menu" )
 MenuButton:SetPos(ScrH() / 2, ScrW() / 2 )
 MenuButton:SetSize( 100, 125 )
 MenuButton.DoClick = function ( btn )
@@ -65,40 +65,75 @@ StarwarsPanel:SetDraggable( true ) -- can you drag the frame by mouse?
 StarwarsPanel:ShowCloseButton( true ) -- Show the close button?
 StarwarsPanel:MakePopup() -- Show the frame 
 
-local StarwarsButton = vgui.Create( "DButton" )
-StarwarsButton:SetParent( StarwarsPanel ) // set parent to our StarwarsPanel
+local TestingPanel = vgui.Create( "DPanel", DermaPanel )
+TestingPanel:SetPos( 50, 50 )
+TestingPanel:SetSize( 900, 800 )
+TestingPanel.Paint = function() -- paint function
+    surface.SetDrawColor( 127, 255, 212, 255 ) -- set our rect color below us; we do this so you can see items added to this pane
+	surface.DrawRect( 0, 0, TestingPanel:GetWide(), TestingPanel:GetTall() ) -- draw the rect
+	end
+
+
+local StarwarsButton = vgui.Create( "DButton", TestingPanel )
 StarwarsButton:SetText( "Create New Character" )
 StarwarsButton:SetPos( 80, 80 )
 StarwarsButton:SetSize( 50, 80 )
-StarwarsButton.DoClick = function ( sw_character ) // MG you will have to write the function to go with your login screen. // kay kay ..Mginshe..
+StarwarsButton.DoClick = function ( )
+     print( "Debugging" )
+	 end
 
-local StardelButton = vgui.Create( "DButton" )
-StardelButton:SetParent( StarwarsPanel ) // set parent to our StarwarsPanel
+local StardelButton = vgui.Create( "DButton", TestingPanel )
 StardelButton:SetText( "Delete Character" )
 StarwarsButton:SetPos( 80, 120 )
 StarwarsButton:SetSize( 50, 80 )
-StarwarsButton.DoClick = function ( sw_delcharacter ) // again you will have to write the function to delete the character
-
+StarwarsButton.DoClick = function ( ) 
+     print( "Debugging" )
+	 end
+	 
 local StarstartButton = vgui.Create( "DButton" )
-StarstartButton:SetParent( StarwarsPanel ) // set parent to our StarwarsPanel
 StarstartButton:SetText( "Play!" )
 StarstartButton:SetPos( 100, 100 )
 StarstartButton:SetSize( 50, 80 )
-StarwarsButton.DoClick = function ( sw_selectcharacter ) // you will have to write the function this panel is designed to work with your login script if possible if needed make changes.
-end
-end // Ummm....are all these "end"s ment to be here...? that wont work, i think D: ..MGinshe..
-end
-end
-
-
-function sw_character() 
+StarwarsButton.DoClick = function (  ) 
+     print( "Debugging" )
+	 end
 end
 
-function sw_delcharacter()
-end
+function sw_race()
+local DermaPanel = vgui.Create( "DFrame" )
+DermaPanel:SetPos( ScrH() - 20, ScrW() - 20 ) // you only have the Height value? ima change that...and testing placing soz ..MGinshe..
+DermaPanel:SetSize( 150, 200 )  -- wonder what happens if we comment this out  baad things :D
+DermaPanel:SetTitle( "Choose Your Race" )
+DermaPanel:SetVisible( true )
+DermaPanel:SetDraggable( true )
+DermaPanel:ShowCloseButton( true )
+DermaPanel:SetMouseInputEnabled(true)
+DermaPanel:SetKeyboardInputEnabled(true)
+DermaPanel:MakePopup()
 
-function sw_selectcharacter()
-end
+local RaceSelectBox = vgui.Create( "DComboBox", DermaFrame )
+RaceSelectBox:SetPos( 50, 50 )
+RaceSelectBox:SetSize( 100, 185 )
+RaceSelectBox:SetMultiple( false )
+RaceSelectBox:AddItem( "Human" )
+RaceSelectBox:AddItem( "Wookie" )
+RaceSelectBox:Additem( "Jawa" )
+RaceSelectBox:AddItem( "Rodian" )
+RaceSelectBox:AddItem( "Mandalorian" )
+
+local RaceMenuSheet = vgui.Create( "DPanel", DermaFrame )
+RaceMenuSheet:SetPos( 125, 50 )
+RaceMenuSheet:SetSize( DermaFrame:GetWide() - 25, DermaFrame:GetTall() - 25 )
+RaceMenuSheet.Paint = function()
+    if RaceSelectBox.GetSelectedItems() and RaceSelectBox:GetSelectedItems() [1] then
+	local OurStringThing = -- need some sort of function for when a race is selected it displays seperate info on each race.
+	end
+	end
+	end
+	
+
+
+
 // design to come up if the player presses new character
 concommand.Add("sw_menu", sw_menu)
 concommand.Add("sw_start", sw_start)
