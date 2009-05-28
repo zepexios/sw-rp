@@ -33,6 +33,10 @@ abp1192 - Mapper / Texturer - SteamID: abp1192
 
 Jarlan - Mapper - SteamID: Jarlan
 
+polkm - Lead Coder - SteamID: Polkm
+
+Sharq - Mapper - SteamID: Judge Sharq
+
 
 
 ---------------------------------------------------------------------------------------------------
@@ -46,25 +50,65 @@ The coders will have to fill most of this in, We're relying on you to keep us up
 - QUest System
 
 	- Players will go to a console which corresponds to their faction and be able to take on 		  missions. Maybe one day they'll be cross-server, eh MGinshe? =D
-	- Players will receive rewards of XP and credits(what is the money in Star Wars anyway?)
+	- Players will receive rewards of XP and credits
 	  and can even receive items or weapons for some key quests.
+                  - Bounty hunters have their own terminal for hunting anyone with a bounty on them
 
-- Inventory System?
+- Inventory System
 
 - Money System
 
 - XP System
+- Get xp for each weapon class 
+-Saber
+-HandToHand
+-Melee
+-Rifle
 
 - Login Screen 
 
-- Factions
+- Factions - can join one at any time
 	- Empire
 	
 	- Rebel Alliance
 
 	- Mercenaries
 	
-	- Bounty Hunters
+Custom HUD
+Display title (can only be a title of badges earned not a custom set one)
+Show health
+Show Armor
+Mini map?
+North South East West
+EXP bar (fades)
+
+PvP
+- Toggleable
+
+Professions
+-Marksman
+-Scout
+-Medic
+-Brawler
+(for now)
+
+Badges
+-earn milestones that you can view and other players can view.
+
+Jedis
+-To gain must master 1 profession and have 20 badges
+- Once accomplished guy spawns near you and talks to you
+- Complete force and saber training quests in the village
+- Complete padawan trials
+- Your now a jedi
+
+- bounty system
+- Bounty hunters have own mission terminal displays availible bounties
+- On player death menu pops up asking if you want to set a bounty on your killer (pvp only)
+- if yes enter credit amount and BH can go hunt him
+
+Guilds
+
 
 
 
