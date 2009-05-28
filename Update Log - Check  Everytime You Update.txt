@@ -1,7 +1,9 @@
 
 
 
- The Star Wars Online Update Log and To-do List
+ 		The Star Wars Online Update Log and To-do List
+___________________________________________________________________________________________________
+
 
 ...Because I thought we need one.
 
@@ -12,19 +14,32 @@ Also, with this document, new members of the team will very quickly and easily b
 NOTE: Anything which has been overlooked, PLEASE ADD TO IT. This needs to be a complete Manifesto of all the things to be included, otherwise it's pointless.
 
 ---------------------------------------------------------------------------------------------------
+	
+
 	The Team
 
 
-Mandalore - Leader/Coder - SteamID: Mandalore
-MGInshe - Lead Coder - 
-Shepard	- Another Lead COder? - 
-Raiden44
-Deadchicken
-abp
+Mandalore - Leader / Coder - SteamID: Mandalore
+
+MGInshe - Lead Coder - SteamID: MGinshe
+
+Col. Shepard	- Another Lead COder? - SteamID: Shepard
+
+Raiden - Graphic Designer / Moderator - SteamID: Raiden
+
+Deadchicken - Mapper / Modeler - SteamID: Deadchicken01
+
+abp1192 - Mapper / Texturer - SteamID: abp1192
+
+Jarlan - Mapper - SteamID: Jarlan
+
 
 
 ---------------------------------------------------------------------------------------------------
+	
+
 	The Gameplay Features
+
 
 The coders will have to fill most of this in, We're relying on you to keep us up to date with things as and when you complete them.
 
@@ -56,12 +71,17 @@ The coders will have to fill most of this in, We're relying on you to keep us up
 - Any more? Add them!
 
 ---------------------------------------------------------------------------------------------------
+
+
 	The Mapping Features
 
 
 ---------------------------------------------------------------------------------------------------
 	
+	
+
 	Quests - We need some, any ideas to be placed here for integration into the map.
 
-Thanks, Deadchicken.
+
+	Thanks, Deadchicken.
 
