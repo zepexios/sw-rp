@@ -71,6 +71,8 @@ The coders will have to fill most of this in, We're relying on you to keep us up
 	- Empire
 		Emipre Ldr - 
 		<other ranks go here, with name> ?
+		Members:
+			Members go here?
 		Features:
 blah blah blah blah
 blha blah
@@ -79,6 +81,8 @@ blha blah
 	- Rebel Alliance
 		Rebel Ldr - 
 		<other ranks go here, with name> ?
+		Members:
+			Members go here?
 		Features:
 blah blah blah blah
 blha blah
@@ -87,6 +91,8 @@ blha blah
 	- Mercenaries
 		Merc Ldr - MGinshe and Polkm
 		<other ranks go here, with name> ?
+		Members:
+			Members go here?
 		Features:
 	
 Custom HUD
