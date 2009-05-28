@@ -1,0 +1,67 @@
+
+
+
+ The Star Wars Online Update Log and To-do List
+
+...Because I thought we need one.
+
+This will contain fully up to date information on the status, and progress of the gamemode, because everything has been a little bit sketchy up to now.
+
+Also, with this document, new members of the team will very quickly and easily become familiar with the team and the project and can jump right in on features that haven't been started or finished.
+
+NOTE: Anything which has been overlooked, PLEASE ADD TO IT. This needs to be a complete Manifesto of all the things to be included, otherwise it's pointless.
+
+---------------------------------------------------------------------------------------------------
+	The Team
+
+
+Mandalore - Leader/Coder - SteamID: Mandalore
+MGInshe - Lead Coder - 
+Shepard	- Another Lead COder? - 
+Raiden44
+Deadchicken
+abp
+
+
+---------------------------------------------------------------------------------------------------
+	The Gameplay Features
+
+The coders will have to fill most of this in, We're relying on you to keep us up to date with things as and when you complete them.
+
+- QUest System
+
+	- Players will go to a console which corresponds to their faction and be able to take on 		  missions. Maybe one day they'll be cross-server, eh MGinshe? =D
+	- Players will receive rewards of XP and credits(what is the money in Star Wars anyway?)
+	  and can even receive items or weapons for some key quests.
+
+- Inventory System?
+
+- Money System
+
+- XP System
+
+- Login Screen 
+
+- Factions
+	- Empire
+	
+	- Rebel Alliance
+
+	- Mercenaries
+	
+	- Bounty Hunters
+
+
+
+- Any more? Add them!
+
+---------------------------------------------------------------------------------------------------
+	The Mapping Features
+
+
+---------------------------------------------------------------------------------------------------
+	
+	Quests - We need some, any ideas to be placed here for integration into the map.
+
+Thanks, Deadchicken.
+
