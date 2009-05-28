@@ -8,7 +8,10 @@ function SWLightSaberDeflect( ply )						//most of this is self-explantory
 			if(SaberAttacker:GetWeapon() != (LightSaber or Hands or and ply:GetWeapon() = LightSaber)
 			end
 		end
-	if(ply:GetWeapon() == LightSaber and ply:OnPlayerDamage( victim, killer, weapon))
+	if(ply:GetWeapon() == LightSaber and ply:OnPlayerDamage( victim, killer, weapon)) then
+	
+	end
+end
 
 // chat such as ooc etc stated below
 	
@@ -36,9 +39,9 @@ function Chatting(ply, text)
                       v:PrintMessage(3, ply:Nick()..": "..text)   
                       return "";
         end   
-end   
+	end   
+end
 hook.Add("PlayerSay", "ChatCommands", Chatting) 
-
 function ScaleDamage( ply, hitgroup, dmginfo )
 
 	if ( hitgroup == HITGROUP_HEAD ) then
@@ -56,12 +59,14 @@ function ScaleDamage( ply, hitgroup, dmginfo )
  
 end 
 hook.Add("ScalePlayerDamage","ScaleDamage",ScaleDamage)	
-
 function GM:KeyPress( Ply, key )
 	if(key == "q") then
 		RunConsoleCommand( "+SW_menu" )
 	end
-	if(key == "
+	if(key == "f") then		//can be overrited by changing the flashlighty key, will fix this after Login.lua si done
+		SWInventory( Flashlight )
+	end
+end
 	
 	
 	
