@@ -496,5 +496,11 @@ end
 
 hook.Add( "ScaleNPCDamage", "NPCDamageHook", NPCDamage ) 
 
+function LevelSound(ply)
+if ply.Levelup == (true) then 
+self.EmitSound("StarWars Soundtrack - Luke's Theme.mp3")
+end
+end
+
 
 
