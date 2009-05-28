@@ -59,11 +59,11 @@ The coders will have to fill most of this in, We're relying on you to keep us up
 - Money System                                	- Il do this, because i have half of it done from another GameMode ..MGinshe..
 
 - XP System					- Was this not going to be part of the Login/Save system? ..MGinshe..
-- Get xp for each weapon class 
--Saber
--HandToHand
--Melee
--Rifle
+	- Get xp for each weapon class 
+	- Saber
+	- HandToHand
+	- Melee
+	- Rifle
 
 - Login Screen                               	- Me and Polkm are both having a crack at this ..MGinshe..
 
@@ -71,11 +71,8 @@ The coders will have to fill most of this in, We're relying on you to keep us up
 	- Empire
 		Emipre Ldr - 
 		<other ranks go here, with name> ?
-		Members:
-			Members go here?
-		Features:
-blah blah blah blah
-blha blah
+		Members: Members go here?
+		Features: blah blah blah blah blha blah
 <features go here :D >
 	
 	- Rebel Alliance
@@ -95,40 +92,41 @@ blha blah
 			Members go here?
 		Features:
 	
-Custom HUD
-Display title (can only be a title of badges earned not a custom set one)
-Show health
-Show Armor
-Mini map?
-North South East West
-EXP bar (fades)
 
-PvP
-- Toggleable
+- Custom HUD
+	Display title (can only be a title of badges earned not a custom set one)
+	Show health
+	Show Armor
+	Mini map?
+	North South East West
+	EXP bar (fades)
 
-Professions
--Marksman
--Scout
--Medic
--Brawler
-(for now)
+- PvP
+	- Toggleable
 
-Badges
--earn milestones that you can view and other players can view.
+- Professions
+	-Marksman
+	-Scout
+	-Medic
+	-Brawler
+	(for now)
 
-Jedis
--To gain must master 1 profession and have 20 badges
-- Once accomplished guy spawns near you and talks to you
-- Complete force and saber training quests in the village
-- Complete padawan trials
-- Your now a jedi
+- Badges
+	-earn milestones that you can view and other players can view.
+
+- Jedis
+	-To gain must master 1 profession and have 20 badges
+	- Once accomplished guy spawns near you and talks to you
+	- Complete force and saber training quests in the village
+	- Complete padawan trials
+	- Your now a jedi
 
 - bounty system
-- Bounty hunters have own mission terminal displays availible bounties
-- On player death menu pops up asking if you want to set a bounty on your killer (pvp only)
-- if yes enter credit amount and BH can go hunt him
+	- Bounty hunters have own mission terminal displays availible bounties
+	- On player death menu pops up asking if you want to set a bounty on your killer (pvp only)
+	- if yes enter credit amount and BH can go hunt him
 
-Guilds
+- Guilds
 
 
 
