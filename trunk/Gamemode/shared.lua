@@ -1,7 +1,8 @@
 include( 'cl_init.lua' )
 include( 'login.lua' )
+ply = LocalPlayer()
 local PlayerInfo = SWReadPlayerData( ply ) // This calls a nil value the login script is not finished  which is why we are having so many errors
-local CombatLvl = PlayerInfo.ply:UniqueID().CombatLvl 
+local CombatLvl = PlayerInfo.CombatLvl 
 
 local CivColor = GM:SWGetClassInfo( "Civilian", CombatLvl )
 local RebColor = GM:SWGetClassInfo( "Rebel", CombatLvl )
@@ -20,7 +21,7 @@ team.SetUp( 3, "Rebel", RebColor)
 team.SetUp( 4, "Imperial", ImpColor)
 team.SetUp( 5, "Mercenary", MercColor)
 
-function GM:SWGetClassInfo( Team, CombatLvl )
+function SWGetClassInfo( Team, CombatLvl )
 	local Alpha = (ComatLvl * 2) + 105
 	if( Team == "Rebel" ) then
 		local Color = Color( 34, 139, 34, Alpha )
@@ -53,4 +54,36 @@ SetGlobalString("weather",table.Random( randomweathers ))
 timer.Simple(math.random(10,300),randomweather)
 end
 randomweather()
+
+function SW
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

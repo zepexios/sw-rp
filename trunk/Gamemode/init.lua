@@ -33,9 +33,9 @@ DataTable = SWReadPlayerData( ply )		//calling a nil value finish login errors s
  REWARD_PXP				= 50	--How much XP is rewarded for a kill
  
  function GM:PlayerInitialSpawn( ply ) 	//if they have no team (first time on server) set them to civ
-	ply = Ply 							//dosent make sense? dw...//my futile attampt at mkiang "ply" global D: ..MGinshe.. :D
 	if(ply:Team() < 1) then ply:SetTeam(1)
 	
+	SWLogIn( ply )
 	end	
 end
  

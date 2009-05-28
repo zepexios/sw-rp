@@ -22,14 +22,11 @@ function DrawHud()
 end
 hook.Add("HUDPaint", "DrawHud", DrawHud)
 
-function DrawPlayerInfo( )
+function DrawPlayerInfo( ) //made it look...less same-ish...mandylore will know what im talking about
 
 	for k, v in pairs( player.GetAll( ) ) do	
-	
 		if( v != LocalPlayer( ) ) then
-		
-			if( v:Alive( ) ) then
-			
+			if( v:Alive() ) then
 				local alpha = 0
 				local position = v:GetPos( )
 				local position = Vector( position.x, position.y, position.z + 75 )
@@ -39,23 +36,14 @@ function DrawPlayerInfo( )
 				local dist = math.floor( dist )
 				
 				if( dist > 100 ) then
-				
 					alpha = 255 - ( dist - 100 )
-					
 				else
-				
 					alpha = 255
-					
 				end
-				
 				if( alpha > 255 ) then
-				
 					alpha = 255
-					
 				elseif( alpha < 0 ) then
-				
 					alpha = 0
-					
 				end
 				
 				draw.DrawText( v:Nick( ), "DefaultSmall", screenpos.x, screenpos.y, Color( 255, 255, 255, alpha ), 1 )
@@ -63,15 +51,9 @@ function DrawPlayerInfo( )
 				draw.DrawText( v:GetNWString( "title" ), "DefaultSmall", screenpos.x, screenpos.y + 20, Color( 255, 255, 255, alpha ), 1 )
 				
 				if( v:GetNWInt( "chatopen" ) == 1 ) then
-				
 					draw.DrawText( "Typing..", "ChatFont", screenpos.x, screenpos.y - 50, Color( 255, 255, 255, alpha ), 1 )
-					
 				end
-				
 			end
-			
 		end
-		
 	end
-	
 end
