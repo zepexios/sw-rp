@@ -14,7 +14,7 @@ Also, with this document, new members of the team will very quickly and easily b
 NOTE: Anything which has been overlooked, PLEASE ADD TO IT. This needs to be a complete Manifesto of all the things to be included, otherwise it's pointless.
 
 ---------------------------------------------------------------------------------------------------
-	
+---------------------------------------------------------------------------------------------------	
 
 	The Team
 
@@ -40,58 +40,94 @@ Sharq - Mapper - SteamID: Judge Sharq
 
 
 ---------------------------------------------------------------------------------------------------
-	
+---------------------------------------------------------------------------------------------------	
 
 	The Gameplay Features
 
 
 The coders will have to fill most of this in, We're relying on you to keep us up to date with things as and when you complete them.
 
+__________________________________
+
 - QUest System
 
 	- Players will go to a console which corresponds to their faction and be able to take on 		  missions. Maybe one day they'll be cross-server, eh MGinshe? =D
+	
 	- Players will receive rewards of XP and credits
 	  and can even receive items or weapons for some key quests.
-                  - Bounty hunters have their own terminal for hunting anyone with a bounty on them
+	
+	- Bounty hunters have their own terminal for hunting anyone with a bounty on them
+
+__________________________________
+
 
 - Inventory System
 
-- Money System                                	- Il do this, because i have half of it done from another GameMode ..MGinshe..
+	- Weight of items/ weapons?
+	
+__________________________________
 
-- XP System					- Was this not going to be part of the Login/Save system? ..MGinshe..
+
+- Money System         
+	- Il do this, because i have half of it done from 						another GameMode ..MGinshe..
+
+__________________________________
+
+
+- XP System					
+	- Was this not going to be part of the Login/Save 							system? ..MGinshe.. Yeah, but its a 									system which affect other stuff,we keep everything separate so as not to confuse.
+	
 	- Get xp for each weapon class 
 	- Saber
 	- HandToHand
 	- Melee
 	- Rifle
 
-- Login Screen                               	- Me and Polkm are both having a crack at this ..MGinshe..
+__________________________________
+
+
+- Login Screen                               	- Me and Polkm are both having a crack at this 						..MGinshe..
+
+__________________________________
+
 
 - Factions - can join one at any time
 	- Empire
-		Emipre Ldr - 
-		<other ranks go here, with name> ?
-		Members: Members go here?
-		Features: blah blah blah blah blha blah
-<features go here :D >
+		- Emipre Ldr 
+		- Commander
+		- Captain
+		- Sergeant
+		- Bitch, hehe (Deadchcken's suggestion)
+
+		Members: 
+		Features:
+
+
+
 	
 	- Rebel Alliance
-		Rebel Ldr - 
-		<other ranks go here, with name> ?
+		- Rebel Ldr - 
+		- Commander
+		- Captain
+		- Sergeant
+		- Bitch, hehe (Deadchcken's suggestion)
+
 		Members:
-			Members go here?
 		Features:
-blah blah blah blah
-blha blah
-<features go here :D >
+
+
+
 
 	- Mercenaries
 		Merc Ldr - MGinshe and Polkm
-		<other ranks go here, with name> ?
+		
+		
 		Members:
-			Members go here?
 		Features:
 	
+
+__________________________________
+
 
 - Custom HUD
 	Display title (can only be a title of badges earned not a custom set one)
@@ -101,8 +137,14 @@ blha blah
 	North South East West
 	EXP bar (fades)
 
+__________________________________
+
+
 - PvP
 	- Toggleable
+
+__________________________________
+
 
 - Professions
 	-Marksman
@@ -111,8 +153,14 @@ blha blah
 	-Brawler
 	(for now)
 
+__________________________________
+
+
 - Badges
 	-earn milestones that you can view and other players can view.
+
+__________________________________
+
 
 - Jedis
 	-To gain must master 1 profession and have 20 badges
@@ -121,30 +169,74 @@ blha blah
 	- Complete padawan trials
 	- Your now a jedi
 
+__________________________________
+
+
+
 - bounty system
 	- Bounty hunters have own mission terminal displays availible bounties
 	- On player death menu pops up asking if you want to set a bounty on your killer (pvp only)
 	- if yes enter credit amount and BH can go hunt him
 
+__________________________________
+
+
 - Guilds
 
-
+__________________________________
 
 
 - Any more? Add them!
 
 ---------------------------------------------------------------------------------------------------
-
+---------------------------------------------------------------------------------------------------
 
 	The Mapping Features
 
-
----------------------------------------------------------------------------------------------------
+- Tatooine
 	
+	- Mos Eisley
+		- Cantina
+		- Mission consoles
+		- Shops
+		- npc's walking around ( hopefully )
+
+	- Jabba's Palace
+	
+	- Sandcrawler
+	
+	- Caves + Canyons
+	
+	- Tusken Raider tribes
+
+	- Desert, duh.
+
+	- Sarlaac
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------	
 	
 
 	Quests - We need some, any ideas to be placed here for integration into the map.
 
 
 	Thanks, Deadchicken.
+
+
+THE FIRST QUEST: <name>
+
+you start in the desrt? outside Mos Eisley. you walk in and are greeted by an npc, who tells you how to play, and will give you your first quest, find someone and give them something, and return, get money, exp, and direction for the next mission.
+
+__________________________________
+
+
+THE SECOND QUEST: <name>
+
+You go to the next mission, Weapon dealer? he gives you a gun, tells you to go round back and kill the rats/ antlions hanging around there... you go back, get to keep a pistol,and get exp + moneys.
+
+__________________________________
+
+
+THE THIRD QUEST: <name>
+
+Im bored, somebody else do one...
 
