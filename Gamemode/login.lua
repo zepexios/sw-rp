@@ -1,5 +1,5 @@
 
-function SWWritePlayerData( ply ,table, CharName, )	//lol got rid of long comment
+function SWWritePlayerData( ply ,table, CharName )	//lol got rid of long comment
 	
 	local SaveTable = util.TableToKeyValues(table)
 	if(file.Exists("UserData"..ply:UniqueID().."/"..CharName..".txt")) then
@@ -40,8 +40,8 @@ function SWSetPlayerData( ply )		//player data, and any files can access this
 	SWWritePlayerData( PlayerData )
 end
 
-function SWLogIn( ply ) // this is not finished Because you arnt calling this function anywhere therefore the function will never intialize. //will be initialised in PlayerInitialSpawn, and in the SW_menu vgui ?
-	RunConsoleCommand("SW_login")
+function SWLogIn( ply ) // this is not finished Because you arnt calling this function anywhere therefore the function will never intialize. //will be initialized in PlayerInitialSpawn, and in the SW_menu vgui ?
+	
 	local PlayerData = SWReadPlayerData( ply )
 	PlayerInfo = PlayerData.ply:UniqueID()
 	ply:PrintMessage(HUD_PRINTTALK, "[SW-O Mod] You were successfuly logged in!")
