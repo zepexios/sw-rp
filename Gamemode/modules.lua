@@ -1,11 +1,12 @@
 include( 'init.lua' )
 include( 'cl_init.lua' )
+include( 'cl_scoredoard.lua' )
  
 function SWLightSaberDeflect( ply )						//most of this is self-explantory
 	local UserData = GM:SWReadPlayerData( ply )			//reads the users data from a function (see login.lua)
 	local SaberLvl = UserData.SaberLvl					//gets the players SaberLvl from the data store Table
 		function GM:PlayerHurt( player, SaberAttacker ) 
-			if(SaberAttacker:GetWeapon() != (LightSaber or Hands or and ply:GetWeapon() = LightSaber)
+			if(SaberAttacker:GetWeapon() != (LightSaber or Hands or Grenade) and player:GetWeapon() = LightSaber)
 			end
 		end
 	if(ply:GetWeapon() == LightSaber and ply:OnPlayerDamage( victim, killer, weapon)) then
@@ -46,6 +47,7 @@ function ScaleDamage( ply, hitgroup, dmginfo )
 
 	if ( hitgroup == HITGROUP_HEAD ) then
 		dmginfo:ScaleDamage( 2 )
+		SWScoreBoard( HeadShot, Add, 1 ) 
 	end
 	if (hitgroup == HITGROUP_LEFTARM or
 		hitgroup == HITGROUP_RIGHTARM or 

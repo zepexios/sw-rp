@@ -35,7 +35,7 @@ DataTable = SWReadPlayerData( ply )		//calling a nil value finish login errors s
  function GM:PlayerInitialSpawn( ply ) 	//if they have no team (first time on server) set them to civ
 	if(ply:Team() < 1) then ply:SetTeam(1)
 	
-	SWLogIn( ply )
+	SWPlayerData( ply, ReadTable, table, Main )
 	end	
 end
  
@@ -55,37 +55,12 @@ end
  //FIX: put that in GM:PlayerInitialSpawn()  with an if statment
  
  end
- 
-function SWSetRifleXP( player, XPAmount )
-	NewRifleXP = DataTable.RifleXP + XPAmount	
-	if(NewRifleXP >= (DataTable.RifleLvl * 100)) then
-		RifleLvlUp = true
-		NewRifleLvl = DataTable.RifleLvl + 1
-		ply:PrintMessage(HUD_PRINTTALK, "[SW-RP] You leveld your Rifle skill up! It's now Lvl " ..NewRifleLvl.." !")
-	end
-	SWSetPlayerData( player )
-	RifleLvlUp = false
-end
-function SWGetRifleLvl()
-	if(RifleLvlUp) then
-		return NewRifleLvl
-	else 
-	return DataTable.RifleLvl
-	end
-end
-function SWGetRifleXP()
-	return NewRifleXP
-end
-function SWGetTotalRifleXP()
-	local TotalRifleXP = DataTable.RifleXP + DataTable.TotalRifleXP
-	return TotalRifleXP
-end
-
 
 //test function, that will lvl all skills up :)
-function SWSetXP( player, XPAmount, Type )
+function SWXPSystem( player, XPAmount, Type, TType )
 	ID = player:UniqueID()
-	NewXP = DataTable.ID.XP.TypeXP + XPAmount	
+	NewXP = DataTable.TypeXP + XPAmount	
+	DataTable.
 	if(NewXP >= (DataTable.ID.XP.TypeLvl * 100)) then
 		LvlUp = true
 		NewRifleLvl = DataTable.ID.XP.TypeLvl + 1
@@ -94,7 +69,23 @@ function SWSetXP( player, XPAmount, Type )
 	SWSetPlayerData( player )
 	SWReadPlayerData( player )
 	LvlUp = false
+	if(TType == TotalXP) then
+		local TotalTypeXP = DataTable.TypeXP + DataTable.TotalTypeXP
+		return DataTabe.TotalTypeXP
+	end
+	if(TType == XP) then
+		return DataTabe.TypeXP
+	end
+	if(TType == Lvl) then
+		if(RifleLvlUp) then
+			return NewRifleLvl
+		else 
+		return DataTable.RifleLvl
+	end
+	end
 end
+
+
 function SWGetRifleLvl()
 	if(RifleLvlUp) then
 		return NewRifleLvl

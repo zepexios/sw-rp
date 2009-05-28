@@ -78,9 +78,26 @@ local StarwarsButton = vgui.Create( "DButton", TestingPanel )
 StarwarsButton:SetText( "Create New Character" )
 StarwarsButton:SetPos( 80, 80 )
 StarwarsButton:SetSize( 50, 80 )
-StarwarsButton.DoClick = function ( )
-     print( "Debugging" )
-	 end
+StarwarsButton.DoClick = function ()
+		local DermaPanel = vgui.Create( "DFrame" )
+		DermaPanel:SetPos( 250,250 )
+		DermaPanel:SetSize( 500, 50 )
+		DermaPanel:SetTitle( "Derma Testing Stuff" )
+		DermaPanel:ShowCloseButton( true )
+		DermaPanel:SetVisible( true )
+		DermaPanel:MakePopup()
+ 
+		local DermaText = vgui.Create( "DTextEntry", DermaPanel )
+		DermaText:SetPos( 20,25 )
+		DermaText:SetTall( 20 )
+		DermaText:SetWide( 450 )
+		DermaText:SetEnterAllowed( true )
+		DermaText.OnEnter = function()
+			datastream.StreamToServer( "LogInUserName", DermaText:GetValue() )
+			Msg("You entered -"..DermaText:GetValue().."-!" )
+			DermaPanel:SetVisible( false )
+		end
+end
 
 local StardelButton = vgui.Create( "DButton", TestingPanel )
 StardelButton:SetText( "Delete Character" )
@@ -120,6 +137,7 @@ RaceSelectBox:AddItem( "Wookie" )
 RaceSelectBox:Additem( "Jawa" )
 RaceSelectBox:AddItem( "Rodian" )
 RaceSelectBox:AddItem( "Mandalorian" )
+local
 
 local RaceMenuSheet = vgui.Create( "DPanel", DermaFrame )
 RaceMenuSheet:SetPos( 125, 50 )

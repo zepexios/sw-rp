@@ -1,4 +1,3 @@
-
 function SWWritePlayerData( ply ,table, CharName )	//lol got rid of long comment
 	
 	local SaveTable = util.TableToKeyValues(table)
@@ -6,7 +5,6 @@ function SWWritePlayerData( ply ,table, CharName )	//lol got rid of long comment
 	file.Write("UserData"..ply:UniqueID().."/"..CharName.."txt",SaveTable)
 	end
 end
-
 function SWReadPlayerData( ply, CharName )
 	if(file.Exists("UserData"..ply:UniqueID().."/Data.txt")) then
 	local ReadTable = file.Read("UserData"..ply:UniqueID().."/Data.txt")
@@ -14,8 +12,6 @@ function SWReadPlayerData( ply, CharName )
 	end
 return LoadTab
 end
-
-
 function SWSetPlayerData( ply )		//player data, and any files can access this
 
 	 local PlayerData = {}				//table for the data (so i dont need 10000 params for the write func)
@@ -26,7 +22,7 @@ function SWSetPlayerData( ply )		//player data, and any files can access this
 		Money = SWGetSWMoney(), 
 		Team = GM:Team(),
 		Class = SWGetClass(), 
-		CombatLvl = SWGetCombatLvl(), 
+		CombatLvl = SWXPSystem( player, XPAmount, Type, TType ), 
 		CombatXP = SWGetCombatXP(), 
 		TotalCombatXP = SWGetTotalCombatXP(),
 		RifleLvl = SWGetRifleLvl(),  
@@ -39,7 +35,6 @@ function SWSetPlayerData( ply )		//player data, and any files can access this
 	
 	SWWritePlayerData( PlayerData )
 end
-
 function SWLogIn( ply ) // this is not finished Because you arnt calling this function anywhere therefore the function will never intialize. //will be initialized in PlayerInitialSpawn, and in the SW_menu vgui ?
 	
 	local PlayerData = SWReadPlayerData( ply )
@@ -51,20 +46,81 @@ function SWLogIn( ply ) // this is not finished Because you arnt calling this fu
 	return PlayerInfo
 end
 
+
+function SWPlayerData( ply, ToDo, table, FileName )
+	if(ToDO == WirteTable) then
+		local SaveTable = util.TableToKeyValues(table)
+		if(file.Exists("UserData"..ply:UniqueID().."/"..FileName..".txt")) then
+		file.Write("UserData"..ply:UniqueID().."/"..FileName.."txt",SaveTable)
+		end
+	end
 	
+	if(ToDo == ReadTable) then
+		if(file.Exists("UserData"..ply:UniqueID().."/Data.txt")) then
+		local ReadTable = file.Read("UserData"..ply:UniqueID().."/Data.txt")
+		table = util.KeyValuesToTable(ReadTable)
+		end
+	return LoadTab
+	end
 	
+	if(ToDo == LogIn) then
+		RunConsoleCommand("SW_login")
+		
+	function get_datastream( pl, handler, id, encoded, decoded )
+		local receivedstring = decoded //decoded is an array [1] is the string
+	end
+datastream.Hook( "Name_of_stream", get_datastream )
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
