@@ -56,23 +56,38 @@ The coders will have to fill most of this in, We're relying on you to keep us up
 
 - Inventory System
 
-- Money System
+- Money System                                	- Il do this, because i have half of it done from another GameMode ..MGinshe..
 
-- XP System
+- XP System					- Was this not going to be part of the Login/Save system? ..MGinshe..
 - Get xp for each weapon class 
 -Saber
 -HandToHand
 -Melee
 -Rifle
 
-- Login Screen 
+- Login Screen                               	- Me and Polkm are both having a crack at this ..MGinshe..
 
 - Factions - can join one at any time
 	- Empire
+		Emipre Ldr - 
+		<other ranks go here, with name> ?
+		Features:
+blah blah blah blah
+blha blah
+<features go here :D >
 	
 	- Rebel Alliance
+		Rebel Ldr - 
+		<other ranks go here, with name> ?
+		Features:
+blah blah blah blah
+blha blah
+<features go here :D >
 
 	- Mercenaries
+		Merc Ldr - MGinshe and Polkm
+		<other ranks go here, with name> ?
+		Features:
 	
 Custom HUD
 Display title (can only be a title of badges earned not a custom set one)
