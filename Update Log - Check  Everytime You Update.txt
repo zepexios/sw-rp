@@ -287,7 +287,11 @@ __________________________________
 
 THE FIRST QUEST: "Unexpected Beginnings"
 
-you start in the desrt? outside Mos Eisley. you walk in and are greeted by an npc, who tells you how to play, and will give you your first quest, find someone and give them something, and return, get money, exp, and direction for the next mission.
+you start in the desert? outside Mos Eisley. you are greeted by an npc, who tells you how to play, and will give you your first quest.
+
+You must find someone and give them a package from the mysterious person, perhaps a jedi?
+
+When you go back, he give you a reward, tells you where to go next, nad dissappears.
 
 REWARD:
 
