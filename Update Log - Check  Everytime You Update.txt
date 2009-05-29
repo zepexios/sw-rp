@@ -255,7 +255,7 @@ __________________________________
 ---------------------------------------------------------------------------------------------------	
 	
 
-	Quests - We need some, any ideas to be placed here for integration into the map.
+	Quests - We need some, any ideas to be placed here for integration into the map(s).
 
 
 	Thanks, Deadchicken.
