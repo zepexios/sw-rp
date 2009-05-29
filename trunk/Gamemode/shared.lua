@@ -55,7 +55,6 @@ timer.Simple(math.random(10,300),randomweather)
 end
 randomweather()
 
-function SW
 
 
 
