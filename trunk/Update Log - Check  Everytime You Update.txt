@@ -399,7 +399,7 @@ Weapons:old fasioned blaster
 
 __________________________________________________________________________________________________
 
-THE 7TH QUEST: ""
+THE 7TH QUEST: "Of all the men and all the land"
 
 Go to the badlands and kill some Tusken Raiders, kill the leader, and collect something from him and return it to Nek Cihcdaed.
 
@@ -411,6 +411,70 @@ Items:small bacta injection (+5 to max health)
 Weapons:none
 
 __________________________________________________________________________________________________
+
+The 7th quest: "imperial spice? wtf?"
+
+Nek has found some smugglers bringing spice to imperials. the smugglers go by the names ge and min. kill them and bring the spice back to Nek.
+
+exp:30
+money:30
+items:spice (3)
+weapons:none
+
+
+____________________________________________________________________________________________________
+
+The 8th quest: "tattoine: cannoks? cannot be!"
+
+Nek has a serious problem. his caravans have been getting attacked. not by sand people or bandits but vermin! somehow there are cannoks on tattoine and they love to eat anything they see. these pests need to be exterminated. they have already eaten an entire shipment of spice and guns. the spice has also made them extreamly dangerous and much stronger. Warning: these cannoks are powerful. 3 man group suggested
+
+exp:100 (group quest)
+money:50
+items:cannok stomache (contains an item or weapon)
+weapons:none (go by some decent weapons damit! you've done enough quests now, you should have enough credits for a carbine)
+
+____________________________________________________________________________________________________
+
+The 9th quest: "seriously? am i tripping?"
+
+Nek has found out who brought the cannoks here and why. a bounty hunter didnt get paid for capturing leia and he wants to kill jabba for it. the guy never captured leia. the person he brought in was a middle aged man in a leia costume. anyways the man had taken a few dozen cannoks from dxun and planned to release them in jabba's palace so they would eat him. on his way there, the cannoks broke free and the man fled. nek believes he is in a cave somewhere near the sandcrawler. Warning: the caves are dangerous. recomend exercising caution. the man himself is easy to kill. challenge is getting to him
+
+exp:20 (what did you expect? the guy barely put up a fight)
+money:20 (there was no bounty on him. be glad your getting money
+items:none
+weapons:none
+
+Note: Nek is now done with you. all quests beond this point you will have to find for yourself
+
+___________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
