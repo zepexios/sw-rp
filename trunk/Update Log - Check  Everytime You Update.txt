@@ -162,6 +162,7 @@ ________________________________________________________________________________
 
 	- Nomads
 		Classes:
+			- This is the beginning, you start, a nomad.
 			- None, they are factionless
 		
 		Members:		
@@ -429,7 +430,7 @@ The 8th quest: "tattoine: cannoks? cannot be!"
 Nek has a serious problem. his caravans have been getting attacked. not by sand people or bandits but vermin! somehow there are cannoks on tattoine and they love to eat anything they see. these pests need to be exterminated. they have already eaten an entire shipment of spice and guns. the spice has also made them extreamly dangerous and much stronger. Warning: these cannoks are powerful. 3 man group suggested
 
 exp:100 (group quest)
-money:50
+money:50	
 items:cannok stomache (contains an item or weapon)
 weapons:none (go by some decent weapons damit! you've done enough quests now, you should have enough credits for a carbine)
 
