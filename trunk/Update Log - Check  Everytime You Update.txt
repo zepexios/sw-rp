@@ -27,7 +27,7 @@ Col. Shepard	- Lead swep and entity coder - SteamID: Shepard
 
 Raiden - Graphic Designer / Moderator - SteamID: Raiden
 
-Deadchicken - Mapper / Modeler - SteamID: Deadchicken01
+Deadchicken - Lead Mapper / Modeler - SteamID: Deadchicken01
 
 abp1192 - Mapper / Texturer - SteamID: abp1192
 
@@ -47,7 +47,7 @@ Sharq - Mapper - SteamID: Judge Sharq
 
 The coders will have to fill most of this in, We're relying on you to keep us up to date with things as and when you complete them.
 
-__________________________________
+__________________________________________________________________________________________________
 
 - QUest System
 
@@ -58,7 +58,7 @@ __________________________________
 	
 	- Bounty hunters have their own terminal for hunting anyone with a bounty on them
 
-__________________________________
+__________________________________________________________________________________________________
 
 
 - Inventory System
@@ -69,7 +69,7 @@ __________________________________
 
 	- Slots perhaps? like in Diablo/Baldurs Gate?
 	
-__________________________________
+__________________________________________________________________________________________________
 
 
 - Money System         
@@ -78,7 +78,7 @@ __________________________________
 	- Sell junk you find in the map? I might need  help with this ( Deadchicken )
 	  perhaps a random item spawned at a random place after a random time? keep them guessing =D
 
-__________________________________
+__________________________________________________________________________________________________
 
 
 - XP System					
@@ -94,52 +94,82 @@ __________________________________
 
 	- Rifle
 
-__________________________________
+__________________________________________________________________________________________________
 
 
-- Login Screen                               	- Me and Polkm are both having a crack at this 						..MGinshe..
+- Login Screen                               	- Me and Polkm are both having a crack at this 						..MGinshe..ss
 
-	- Will this have a picture of your characters? like select which one?
+	- Will this have a picture of each of your characters? like select which one?
 
-__________________________________
+__________________________________________________________________________________________________
+
+
+- Help Menu
+	
+	- F1 Button opens up a oanel, with help.
+	
+	- Has tabs for different help topics. 
+
+__________________________________________________________________________________________________
 
 
 - Factions - can join one at any time
 	- Empire
-		- Emipre Ldr - Shepard
-		- Commander - some epic people
-		- Captain - very smart people that are almost epic
-		- Sergeant - smart people
-		- Bitch, hehe (Deadchcken's suggestion)
+		Classes: 
+			- Emipre Ldr - Shepard
+			- Commander - some epic people
+			- Captain - very smart people that are almost epic
+			- Sergeant - smart people
+			- Bitch, hehe (Deadchcken's suggestion)
 
-		Members: 
+		Members: --- 
+
 		Features:
+			- They "keep the peace" so they have authority around other factions.
+			- Ability to become a Sith
 
-
-
+	----------------------------------------------------------------
 	
 	- Rebel Alliance
-		- Rebel Ldr - Mandalore (of course)
-		- Commander
-		- Captain
-		- Sergeant
-		- Bitch, hehe (Deadchcken's suggestion)
+		Classes:
+			- Rebel Ldr - Mandalore (of course)
+			- Commander
+			- Captain
+			- Sergeant
+			- Bitch, hehe (Deadchcken's suggestion)
 
-		Members:
+		Members: ---
+
 		Features:
+			- Have the support of the townspeople ( some nice feature?)
+			- Ability to become a Jedi
 
-
+	----------------------------------------------------------------
 
 
 	- Mercenaries
-		Merc Ldr - MGinshe and Polkm (note from Shepard: these 2 are the greatest. hire them damit!!!!)
+		Classes:
+			- Mercenary Ldr - MGinshe and Polkm
+			- Mercenary, no need for classes, they all do the same thing.
 		
 		
-		Members:
-		Features:
-	
+		Members: ---
 
-__________________________________
+		Features:
+			- Can take on Bounty Hunter Missions
+
+	----------------------------------------------------------------	
+
+	- Nomads
+		Classes:
+			- None, they are factionless
+		
+		Members:		
+
+		Features:		
+			- None, they're featureless
+
+__________________________________________________________________________________________________
 
 
 - Custom HUD
@@ -156,7 +186,7 @@ __________________________________
 
 	- EXP bar (fades)
 
-__________________________________
+__________________________________________________________________________________________________
 
 
 - PvP
@@ -165,7 +195,7 @@ __________________________________
 
 	- OR Only outside of the Towns/Cities (Safe Zones)
 
-__________________________________
+__________________________________________________________________________________________________
 
 
 - Professions
@@ -180,7 +210,7 @@ __________________________________
 
 	(for now)
 
-__________________________________
+__________________________________________________________________________________________________
 
 
 - Badges
@@ -198,7 +228,7 @@ __________________________________
 		- killed xxx players
 		
 
-__________________________________
+__________________________________________________________________________________________________
 
 
 - Jedis
@@ -213,7 +243,7 @@ __________________________________
 
 	- Your now a jedi
 
-__________________________________
+__________________________________________________________________________________________________
 
 
 
@@ -225,13 +255,13 @@ __________________________________
 
 	- if yes enter credit amount and BH can go hunt him
 
-__________________________________
+__________________________________________________________________________________________________
 
 
 - Guilds
 
 	- Guild Wars? go to a place where it teleports you to a field with that planet's them so you 		  can have battles? -Deadchicken-
-__________________________________
+__________________________________________________________________________________________________
 
 
 - Any more? Add them!
@@ -268,7 +298,7 @@ __________________________________
 
 		- (note from darth vader- All your base are belong to us)
 
-__________________________________
+__________________________________________________________________________________________________
 
 - Dantooine (a mapper needs to fill this in, I dunno about it -Deadchicken-)
 
@@ -282,7 +312,7 @@ __________________________________
 	Thanks, Deadchicken.
 
 
-__________________________________
+__________________________________________________________________________________________________
 
 
 THE FIRST QUEST: "Unexpected Beginnings"
@@ -300,7 +330,7 @@ Money:10
 Items:none
 Weapons:none
 
-__________________________________
+__________________________________________________________________________________________________
 
 
 THE SECOND QUEST: "Open Fire"
@@ -314,7 +344,7 @@ Money:20
 Items:none
 Weapons:blaster pistol
 
-__________________________________
+__________________________________________________________________________________________________
 
 
 THE THIRD QUEST: "Courier"
@@ -328,7 +358,7 @@ Money:20
 Items:spice (1)
 Weapons:none
 
-__________________________________
+__________________________________________________________________________________________________
 
 THE FOURTH QUEST: "Discovered!"
 
@@ -341,7 +371,7 @@ Money:none
 Items:none
 Weapons:none
 
-__________________________________
+__________________________________________________________________________________________________
 
 THE FIFTH QUEST: "Jabba's Wrath"
 
@@ -354,7 +384,7 @@ Money:30
 Items:none
 Weapons:none
 
-__________________________________
+__________________________________________________________________________________________________
 
 THE 6TH quest: "Nek Cihcdaed"
 
@@ -367,7 +397,7 @@ Money:20
 Items:none
 Weapons:old fasioned blaster
 
-__________________________________
+__________________________________________________________________________________________________
 
 THE 7TH QUEST: ""
 
@@ -380,7 +410,7 @@ Money:50
 Items:small bacta injection (+5 to max health)
 Weapons:none
 
-__________________________________
+__________________________________________________________________________________________________
 
 
 
