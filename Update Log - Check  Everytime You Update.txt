@@ -23,7 +23,7 @@ Mandalore - Leader / Coder - SteamID: Mandalore
 
 MGInshe - Lead Coder - SteamID: MGinshe
 
-Col. Shepard	- Another Lead COder? - SteamID: Shepard
+Col. Shepard	- Lead swep and entity coder - SteamID: Shepard
 
 Raiden - Graphic Designer / Moderator - SteamID: Raiden
 
@@ -106,10 +106,10 @@ __________________________________
 
 - Factions - can join one at any time
 	- Empire
-		- Emipre Ldr 
-		- Commander
-		- Captain
-		- Sergeant
+		- Emipre Ldr - Shepard
+		- Commander - some epic people
+		- Captain - very smart people that are almost epic
+		- Sergeant - smart people
 		- Bitch, hehe (Deadchcken's suggestion)
 
 		Members: 
@@ -119,7 +119,7 @@ __________________________________
 
 	
 	- Rebel Alliance
-		- Rebel Ldr - 
+		- Rebel Ldr - Mandalore (of course)
 		- Commander
 		- Captain
 		- Sergeant
@@ -132,7 +132,7 @@ __________________________________
 
 
 	- Mercenaries
-		Merc Ldr - MGinshe and Polkm
+		Merc Ldr - MGinshe and Polkm (note from Shepard: these 2 are the greatest. hire them damit!!!!)
 		
 		
 		Members:
@@ -251,6 +251,7 @@ __________________________________
 	- Sarlaac
 
 	- Luke's House
+		- (note from darth vader- All your base are belong to us)
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------	
 	
@@ -270,12 +271,33 @@ __________________________________
 
 THE SECOND QUEST: <name>
 
-You go to the next mission, Weapon dealer? he gives you a gun, tells you to go round back and kill the rats/ antlions hanging around there... you go back, get to keep a pistol,and get exp + moneys.
+You go to the next mission, Weapon dealer? he gives you a gun, tells you to go round back and kill the rats/ antlions hanging around there... you go back, get to keep a pistol,and get exp + moneys. tells you where to get next quest
 
 __________________________________
 
 
 THE THIRD QUEST: <name>
 
-Im bored, somebody else do one... -Deadchicken-
+You go to an old woman's shop. she explains to you what spice is and why it is illegal. she has you deliver a package of spice to a friend on the other side of town. you deilver it and get exp + credits and next quest
+
+
+__________________________________
+
+THE FOURTH QUEST: <name>
+
+You were seen by another smuggler with the spice. he told local athorities then ran. you must find him at jabba's palace and kill him. exp awarded on his death (sry no money for this one) 
+
+_________________________________
+
+THE FIFTH QUEST: <name> 
+
+Jabba the Hutt is angry with you. you killed one of his smugglers. for this, you must work for him. go down to the cellars of his palace and eliminate the monster. WARNING: this monster is actually, a white guy. you fight him. exp awarded when you go back to jabba.
+
+_________________________________
+
+THE 6TH quest: <name>
+
+jabba sends you to mos eisley to work for one of his contacts by the name of nek cihcdaed. exp + money + cheap rifle awarded when you meet nek.
+
+
 
