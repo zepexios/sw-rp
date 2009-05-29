@@ -234,11 +234,12 @@ ________________________________________________________________________________
 		- killed a leader
 
 		- completed 100 missions from mission terminals (missions are not quests)
+
 		- killed jabba's rancor
 
 		- had a bounty of over 100,000 on you
 
-		- had a bounty of over 1 million on you
+		- had a bounty of over 1 million on you (we're gonna have that much money?!)
 
 		- captured someone with a bounty of over 1 million
 
@@ -266,7 +267,7 @@ ________________________________________________________________________________
 
 		- helped develop SWO
 
-		- joining SWO (this badge will only exist if you have no other badges. once you get another badge, this one goes away)
+		- joining SWO (this badge will only exist if you have no other badges. once you get another badge, this one goes away) seems kinda pointless - Deadchicken
 		
 
 __________________________________________________________________________________________________
