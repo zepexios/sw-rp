@@ -1,7 +1,6 @@
 include( 'shared.lua' )
 include( 'cl_weather.lua' )
 include( 'cl_hud.lua' )
-include( 'login.lua' )
 /************************NOTE!*********************************
  *
  *my login system is gona go thru a majour re-do (wont take long)
@@ -13,6 +12,7 @@ include( 'login.lua' )
  *cya's on wednesday...:)
  * ..MGinshe..
  ***************************************************************/
+ /*
 function sw_menu()
 local DermaPanel = vgui.Create( "DFrame" )
 DermaPanel:SetPos( ScrH() - 20, ScrW() - 20 ) // you only have the Height value? ima change that...and testing placing soz ..MGinshe..
@@ -137,16 +137,16 @@ RaceSelectBox:AddItem( "Wookie" )
 RaceSelectBox:Additem( "Jawa" )
 RaceSelectBox:AddItem( "Rodian" )
 RaceSelectBox:AddItem( "Mandalorian" )
-local
 
 local RaceMenuSheet = vgui.Create( "DPanel", DermaFrame )
 RaceMenuSheet:SetPos( 125, 50 )
 RaceMenuSheet:SetSize( DermaFrame:GetWide() - 25, DermaFrame:GetTall() - 25 )
 RaceMenuSheet.Paint = function()
-    if RaceSelectBox.GetSelectedItems() and RaceSelectBox:GetSelectedItems() [1] then
-	local OurStringThing = -- need some sort of function for when a race is selected it displays seperate info on each race.
+		if RaceSelectBox.GetSelectedItems() and RaceSelectBox:GetSelectedItems() [1] then
+		local OurStringThing = -- need some sort of function for when a race is selected it displays seperate info on each race.
+		end
 	end
-	end
+
 	end
 	
 
@@ -156,7 +156,7 @@ RaceMenuSheet.Paint = function()
 concommand.Add("sw_menu", sw_menu)
 concommand.Add("sw_start", sw_start)
 
-
+*/
 
 
 

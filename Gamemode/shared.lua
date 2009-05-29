@@ -1,5 +1,4 @@
 include( 'cl_init.lua' )
-include( 'login.lua' )
 ply = LocalPlayer()
 local PlayerInfo = SWReadPlayerData( ply ) // This calls a nil value the login script is not finished  which is why we are having so many errors
 local CombatLvl = PlayerInfo.CombatLvl 
