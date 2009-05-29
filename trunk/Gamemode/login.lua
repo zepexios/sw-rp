@@ -64,13 +64,7 @@ function SWPlayerData( ply, ToDo, table, FileName )
 	end
 	
 	if(ToDo == LogIn) then
-		RunConsoleCommand("SW_login")
-		
-	function get_datastream( pl, handler, id, encoded, decoded )
-		local receivedstring = decoded //decoded is an array [1] is the string
 	end
-datastream.Hook( "Name_of_stream", get_datastream )
-	
 end
 
 
