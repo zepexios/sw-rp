@@ -64,12 +64,19 @@ __________________________________
 - Inventory System
 
 	- Weight of items/ weapons?
+
+	- Maximum weight
+
+	- Slots perhaps? like in Diablo/Baldurs Gate?
 	
 __________________________________
 
 
 - Money System         
 	- Il do this, because i have half of it done from 						another GameMode ..MGinshe..
+	
+	- Sell junk you find in the map? I might need  help with this ( Deadchicken )
+	  perhaps a random item spawned at a random place after a random time? keep them guessing =D
 
 __________________________________
 
@@ -78,15 +85,21 @@ __________________________________
 	- Was this not going to be part of the Login/Save 							system? ..MGinshe.. Yeah, but its a 									system which affect other stuff,we keep everything separate so as not to confuse.
 	
 	- Get xp for each weapon class 
+
 	- Saber
-	- HandToHand
-	- Melee
+
+	- HandToHand = Melee
+
+	- Pistol
+
 	- Rifle
 
 __________________________________
 
 
 - Login Screen                               	- Me and Polkm are both having a crack at this 						..MGinshe..
+
+	- Will this have a picture of your characters? like select which one?
 
 __________________________________
 
@@ -130,43 +143,63 @@ __________________________________
 
 
 - Custom HUD
-	Display title (can only be a title of badges earned not a custom set one)
-	Show health
-	Show Armor
-	Mini map?
-	North South East West
-	EXP bar (fades)
+
+	- Display title (can only be a title of badges earned not a custom set one)
+	
+	- Show health
+
+	- Show Armor
+
+	- Mini map?
+
+	- North South East West
+
+	- EXP bar (fades)
 
 __________________________________
 
 
 - PvP
+
 	- Toggleable
+
+	- OR Only outside of the Towns/Cities (Safe Zones)
 
 __________________________________
 
 
 - Professions
+
 	-Marksman
+
 	-Scout
+
 	-Medic
+
 	-Brawler
+
 	(for now)
 
 __________________________________
 
 
 - Badges
+
 	-earn milestones that you can view and other players can view.
 
 __________________________________
 
 
 - Jedis
-	-To gain must master 1 profession and have 20 badges
+
+	- To gain must master 1 profession and have 20 badges
+
 	- Once accomplished guy spawns near you and talks to you
+
 	- Complete force and saber training quests in the village
+
 	- Complete padawan trials
+
 	- Your now a jedi
 
 __________________________________
@@ -174,8 +207,11 @@ __________________________________
 
 
 - bounty system
+
 	- Bounty hunters have own mission terminal displays availible bounties
+
 	- On player death menu pops up asking if you want to set a bounty on your killer (pvp only)
+
 	- if yes enter credit amount and BH can go hunt him
 
 __________________________________
@@ -183,6 +219,7 @@ __________________________________
 
 - Guilds
 
+	- Guild Wars? go to a place where it teleports you to a field with that planet's them so you 		  can have battles? -Deadchicken-
 __________________________________
 
 
@@ -212,6 +249,8 @@ __________________________________
 	- Desert, duh.
 
 	- Sarlaac
+
+	- Luke's House
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------	
 	
@@ -238,5 +277,5 @@ __________________________________
 
 THE THIRD QUEST: <name>
 
-Im bored, somebody else do one...
+Im bored, somebody else do one... -Deadchicken-
 
