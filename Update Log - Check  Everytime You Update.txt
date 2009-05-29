@@ -262,42 +262,48 @@ __________________________________
 	Thanks, Deadchicken.
 
 
-THE FIRST QUEST: <name>
+THE FIRST QUEST: "Unexpected Beginnings"
 
 you start in the desrt? outside Mos Eisley. you walk in and are greeted by an npc, who tells you how to play, and will give you your first quest, find someone and give them something, and return, get money, exp, and direction for the next mission.
 
 __________________________________
 
 
-THE SECOND QUEST: <name>
+THE SECOND QUEST: "Open Fire"
 
 You go to the next mission, Weapon dealer? he gives you a gun, tells you to go round back and kill the rats/ antlions hanging around there... you go back, get to keep a pistol,and get exp + moneys. tells you where to get next quest
 
 __________________________________
 
 
-THE THIRD QUEST: <name>
+THE THIRD QUEST: "Courier"
 
 You go to an old woman's shop. she explains to you what spice is and why it is illegal. she has you deliver a package of spice to a friend on the other side of town. you deilver it and get exp + credits and next quest
 
 
 __________________________________
 
-THE FOURTH QUEST: <name>
+THE FOURTH QUEST: "Discovered!"
 
 You were seen by another smuggler with the spice. he told local athorities then ran. you must find him at jabba's palace and kill him. exp awarded on his death (sry no money for this one) 
 
-_________________________________
+__________________________________
 
-THE FIFTH QUEST: <name> 
+THE FIFTH QUEST: "Jabba's Wrath"
 
 Jabba the Hutt is angry with you. you killed one of his smugglers. for this, you must work for him. go down to the cellars of his palace and eliminate the monster. WARNING: this monster is actually, a white guy. you fight him. exp awarded when you go back to jabba.
 
-_________________________________
+__________________________________
 
-THE 6TH quest: <name>
+THE 6TH quest: "Nek Cihcdaed"
 
 jabba sends you to mos eisley to work for one of his contacts by the name of nek cihcdaed. exp + money + cheap rifle awarded when you meet nek.
 
+__________________________________
 
+THE 7TH QUEST: ""
+
+Go to the badlands and kill some Tusken Raiders, kill the leader, and collect something from him and return it to Nec Cihcdaed.
+
+__________________________________
 
