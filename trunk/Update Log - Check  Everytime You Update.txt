@@ -268,10 +268,10 @@ you start in the desrt? outside Mos Eisley. you walk in and are greeted by an np
 
 REWARD:
 
-Exp:
-Money:
-Items:
-Weapons:
+Exp:20
+Money:10
+Items:none
+Weapons:none
 
 __________________________________
 
@@ -282,10 +282,10 @@ You go to the next mission, Weapon dealer? he gives you a gun, tells you to go r
 
 REWARD:
 
-Exp:
-Money:
-Items:
-Weapons:
+Exp:50
+Money:20
+Items:none
+Weapons:blaster pistol
 
 __________________________________
 
@@ -296,10 +296,10 @@ You go to an old woman's shop. she explains to you what spice is and why it is i
 
 REWARD:
 
-Exp:
-Money:
-Items:
-Weapons:
+Exp:20
+Money:20
+Items:spice (1)
+Weapons:none
 
 __________________________________
 
@@ -309,10 +309,10 @@ You were seen by another smuggler with the spice. he told local athorities then 
 
 REWARD:
 
-Exp:
-Money:
-Items:
-Weapons:
+Exp:100
+Money:none
+Items:none
+Weapons:none
 
 __________________________________
 
@@ -322,10 +322,10 @@ Jabba the Hutt is angry with you. you killed one of his smugglers. for this, you
 
 REWARD:
 
-Exp:
-Money:
-Items:
-Weapons:
+Exp:50
+Money:30
+Items:none
+Weapons:none
 
 __________________________________
 
@@ -335,23 +335,23 @@ jabba sends you to mos eisley to work for one of his contacts by the name of nek
 
 REWARD:
 
-Exp:
-Money:
-Items:
-Weapons:
+Exp:10
+Money:20
+Items:none
+Weapons:old fasioned blaster
 
 __________________________________
 
 THE 7TH QUEST: ""
 
-Go to the badlands and kill some Tusken Raiders, kill the leader, and collect something from him and return it to Nec Cihcdaed.
+Go to the badlands and kill some Tusken Raiders, kill the leader, and collect something from him and return it to Nek Cihcdaed.
 
 REWARD:
 
-Exp:
-Money:
-Items:
-Weapons:
+Exp:50
+Money:50
+Items:small bacta injection (+5 to max health)
+Weapons:none
 
 __________________________________
 
