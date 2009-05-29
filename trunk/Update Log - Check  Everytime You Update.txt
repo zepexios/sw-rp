@@ -187,6 +187,17 @@ __________________________________
 
 	-earn milestones that you can view and other players can view.
 
+		- Top Level in specific field
+
+		- Jedi Training Complete
+
+		- Has more than xxxx$
+
+		- killed xxx npc's
+
+		- killed xxx players
+		
+
 __________________________________
 
 
@@ -234,8 +245,11 @@ __________________________________
 	
 	- Mos Eisley
 		- Cantina
+
 		- Mission consoles
+
 		- Shops
+
 		- npc's walking around ( hopefully )
 
 	- Jabba's Palace
@@ -251,6 +265,7 @@ __________________________________
 	- Sarlaac
 
 	- Luke's House
+
 		- (note from darth vader- All your base are belong to us)
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------	
@@ -260,6 +275,9 @@ __________________________________
 
 
 	Thanks, Deadchicken.
+
+
+__________________________________
 
 
 THE FIRST QUEST: "Unexpected Beginnings"
