@@ -160,9 +160,9 @@ ________________________________________________________________________________
 
 	----------------------------------------------------------------	
 
-	- Nomads
+	- Civillians
 		Classes:
-			- This is the beginning, you start, a nomad.
+			- This is the beginning, you start, a civillian
 			- None, they are factionless
 		
 		Members:		
