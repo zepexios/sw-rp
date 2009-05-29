@@ -120,7 +120,7 @@ ________________________________________________________________________________
 			- Commander - some epic people
 			- Captain - very smart people that are almost epic
 			- Sergeant - smart people
-			- Bitch, hehe (Deadchcken's suggestion)
+			- Bitch - Deadchicken (Deadchcken's idea)
 
 		Members: --- 
 
@@ -136,7 +136,7 @@ ________________________________________________________________________________
 			- Commander
 			- Captain
 			- Sergeant
-			- Bitch, hehe (Deadchcken's suggestion)
+			- Bitch
 
 		Members: ---
 
@@ -160,9 +160,8 @@ ________________________________________________________________________________
 
 	----------------------------------------------------------------	
 
-	- Civillians
+	- Nomads
 		Classes:
-			- This is the beginning, you start, a civillian
 			- None, they are factionless
 		
 		Members:		
@@ -196,8 +195,6 @@ ________________________________________________________________________________
 
 	- OR Only outside of the Towns/Cities (Safe Zones)
 
-	- When a player enters a safe zone, that zone's laws are shown on ther screen, breaking these 	  laws results in being detained or killed by the Imperial Forces.
-
 __________________________________________________________________________________________________
 
 
@@ -229,6 +226,47 @@ ________________________________________________________________________________
 		- killed xxx npc's
 
 		- killed xxx players
+
+		- killed a rebel commander
+
+		- killed an imperial commander
+
+		- killed a leader
+
+		- completed 100 missions from mission terminals (missions are not quests)
+		- killed jabba's rancor
+
+		- had a bounty of over 100,000 on you
+
+		- had a bounty of over 1 million on you
+
+		- captured someone with a bounty of over 1 million
+
+		- killed 10 jedi
+
+		- captured 10 jedi
+
+		- completed every single quest
+
+		- became an imperial commander
+
+		- became a rebel leader
+
+		- infiltrated an imperial base as a rebel spy
+
+		- raided a rebel base as a stormtrooper
+
+		- raided an imperial base as a rebel
+
+		- relized your just a fat guy that lives in his mom's basement playing SWO 24/7 and you currently hold the record for longest time on the server at once (9000 hours)
+
+		- played for 9000 hours
+
+		- became an admin
+
+		- helped develop SWO
+
+		- joining SWO (this badge will only exist if you have no other badges. once you get another badge, this one goes away)
 		
 
 __________________________________________________________________________________________________
@@ -432,7 +470,7 @@ The 8th quest: "tattoine: cannoks? cannot be!"
 Nek has a serious problem. his caravans have been getting attacked. not by sand people or bandits but vermin! somehow there are cannoks on tattoine and they love to eat anything they see. these pests need to be exterminated. they have already eaten an entire shipment of spice and guns. the spice has also made them extreamly dangerous and much stronger. Warning: these cannoks are powerful. 3 man group suggested
 
 exp:100 (group quest)
-money:50	
+money:50
 items:cannok stomache (contains an item or weapon)
 weapons:none (go by some decent weapons damit! you've done enough quests now, you should have enough credits for a carbine)
 
