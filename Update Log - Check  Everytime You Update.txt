@@ -196,6 +196,8 @@ ________________________________________________________________________________
 
 	- OR Only outside of the Towns/Cities (Safe Zones)
 
+	- When a player enters a safe zone, that zone's laws are shown on ther screen, breaking these 	  laws results in being detained or killed by the Imperial Forces.
+
 __________________________________________________________________________________________________
 
 
