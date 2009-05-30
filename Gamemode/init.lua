@@ -5,7 +5,149 @@ AddCSLuaFile("cl_weather.lua")
 include('shared.lua')
 include('missions.lua')
 
-DataTable= SWReadPlayerData(ply)		//callinganilvaluefinishloginerrorsshoulddisappearbythen					//definestheplayerdatatable,lotsoffunctionsneedtoaccessthis!
+
+/*
+DataTable = {
+	Name = SWGetData( Name ),
+	Money = SWGetData( Money ),
+	Team = SWGetData( Team ),
+	Class = SWGetData( Class ),
+	CombatLvl = SWGetData( CombatLvl ),
+	CombatXP = SWGetData( ComabtXP ),
+	TotalCombatXP = SWGetData( TCombatXP ),
+	RifleLvl = SWGetData( RifleLvl ),
+	RifleXP = SWGetData( RifleXP ),
+	TotalRifleXP = SWGetData( TRifleXP ),
+	SaberLvl = SWGetData( SaberLvl ),
+	SaberXP = SWGetData( SaberXP ),
+	TotalSaberXP = SWGetData( TSaberXP )
+	}
+*/
+function SWDataStore( ToDo, table, FileName, ply )
+	if(ToDO == "WirteTable") then
+		local SaveTable = util.TableToKeyValues( table )
+		file.Write( "FilePath/Savedtab.txt", SaveTable ) 
+	end
+
+	if(ToDo == "ReadTable") then
+		if(file.Exists("UserData/"..ply:UniqueID().."/"..FileName..".txt")) then
+			local ReadTable = file.Read("UserData/"..ply:UniqueID().."/"..FileName..".txt")
+			table = util.KeyValuesToTable( ReadTable )
+		else
+			return "Undefined"
+		end
+	return LoadTab
+	end
+end
+function SWData( Type )
+	if(Type != ("Set") then
+	return Type
+	end
+end
+function SWAddTableData( TableName, TableData )
+	DataTable.TableName = TableData
+	SWDataStore( "WriteTable", DataTable, DataTable.Name, LocalPlayer() )
+end
+function GM:PlayerLoadout( ply )
+	for k,v in pairs(DataTable.Inv.Weapons) do
+		ply:Give(v)
+	end 
+end
+function GM:PlayerInitialSpawn( ply )
+	if(ply:Team()<1)thenply:SetTeam(1)
+	
+	MainDataTable = SWDataStore("ReadTable", null, "Main", ply )
+	if(MainDataTable == "Undefined") then					//Is the player new to the server? (works be checking if they have a file under their UniqueID)
+		NewDataTable = {									//There will be a function that lets you create an account here
+			Race = "Felucian",
+			Name = "MGinshe",
+			Class = "Jedi",
+			Faction = "Mercenary"
+		}
+		DataTable = {										//If so, set the base data for them
+			Nick = ply:Nick(),
+			Faction = NewPlayerData.Faction,
+			Race = NewDataTable.Race,
+			Name = NewDataTable.Name,
+			Money = 10000,
+			Team = ply:Team(),
+			Class = NewDataTable.Class,
+			CombatLvl = 1,
+			CombatXP = 0,
+			TCombatXP = 0,
+			RifleLvl = 1,
+			RifleXP = 0,
+			TRifleXP = 0,
+			SaberLvl = 1,
+			SaberXP = 0,
+			TSaberXP = 0
+		}
+		SWDataStore( "WriteTable", DataTable, DataTable.Name, ply )
+		MainDataTable = {
+			Nick = ply:Nick(),
+			Names = {1 = NewDataTable.Name},
+			Class = {1 = DataTable.Class},
+			Races = {1 = NewTableData.Race},
+			Faction = NewTableData.Faction,
+			Payer = false,
+			AtMaxChars = 0
+		}
+		SWDataStore( "WriteTable", MainDataTable, "Main", ply )	
+	end
+	if(file.Exists("UserData/"..ply:UniqueID().."/"..Name and Payer == false) then 
+		MainDataTable.AtMaxChars = 1
+		return 
+	end
+			
+	ply:PrintMessage(HUD_PRINTTALK, "Hi "..ply:Nick().."!")
+	ply:PrintMessage(HUD_PRINTTALK, "Welcome to SWO's official Server.")
+	ply:PrintMessage(HUD_PRINTTALK, "Type \"!info\" for Your player info.")
+
+end
+function GM:PlayerSpawn( ply )
+	SWSendDataTable( DataTable )
+	SWSendMainDataTable( MainDataTable )
+	if(JoinedGuild) then
+		ply:PrintMessage(HUD_PRINTTALK, "Well done "..ply:Nick.."! You joined the Guild \""..DataTable.Guild.Name.."\"!")
+	end
+end
+function SWSendDataTable( table )
+	datastream.StreamToServer( "ServerToClient_Table", table )
+end
+function SWSendMainDataTable( table )
+	datastream.StreamToServer( "ServerToClient_MTable", table )
+end
+function SWGetDataTable( ply, handler, id, encoded, decoded )
+	DataTable = decoded
+end
+function SWGetMainDataTable( ply, handler, id, encoded, decoded )
+	MainDataTable = decoded
+end
+function SWPlayerDies( victim, weapon, killer )	
+	SWAddTableData
+	if(Real) then
+		DataTable.Money = DataTable.Money - 5
+	
+		ply:PrintMessage(HUD_PRINTTALK, "Oh no "..ply:Nick.."! You died (killed by "..DataTable.LastKilled.."), and lost 500 Credits")
+		ply:PrintMessage(HUD_PRINTTALK, "You now have "..DataTable.Money.." Credits. Type \"!DeathInfo\" To see mroe info about your death.")
+	else
+		ply:PrintMessage(HUD_PRINTTALK, "Oh no "..ply:Nick.."! You died, luckily it was on purpose, you dont lose anything!"
+		ply:PrintMessage(HUD_PRINTTALK, "You now have "..DataTable.Money.." Credits. Type \"!DeathInfo\" To see mroe info about your death.")
+	end
+end
+function SWGuilds( ply, GuildName )
+	DataTable.Guild.Name = GuildName
+	DataTable.Guild.Lvl = 
+end
+function SWLvling( ply, Type, Amount )
+	DataTable.TypeXP = DataTable.TypeXP + Amount
+	if(DataTable.TypeXP > (DataTable.TypeLvl * DataTable.TypeLvl)) then
+		DataTable.TypeLvl = DataTable.TypeLvl + 1
+	end
+end
+hook.Add( "PlayerDeath", "playerDeathTest", SWPlayerDies )
+datastream.Hook( "ClientToServer_Table", SWGetDataTable )
+datastream.Hook( "ClientToServer_MTable", SWGetMainDataTable )
 
 
 MAX_BANDAGES			=5		--Howmanybandagestheplayerhasandissettothisnumberon(re)spawn
@@ -22,14 +164,6 @@ DEFAULT_PISLVL			=0		--startingpistollevel
 EXPERIENCE_PISSSCALE	=500	--HowmucheachlevelcostsinXP,timeslevel
 REWARD_PXP				=50		--HowmuchXPisrewardedforakill
 
-function GM:PlayerInitialSpawn(ply)	//iftheyhavenoteam(firsttimeonserver)setthemtociv
-	if(ply:Team()<1)thenply:SetTeam(1)
-	
-	SWPlayerData(ply,ReadTable,table,Main)
-	end	
-end
-
-
 localFName="Test"
 functionSWPlayerData(ToDo,table,FileName)
 	if(ToDO=="WirteTable")then
@@ -44,37 +178,7 @@ functionSWPlayerData(ToDo,table,FileName)
 	returnLoadTab
 	end
 end
-functionSWGetData(Type)
-	if(Type=="Name")then
-	return"MGinshe"
-	elseif(Type=="Money")then
-	return10000
-	elseif(Type=="Team")then
-	return"Merc's"
-	elseif(Type=="Class")then
-	return"Jedi"
-	elseif(Type=="CombatLvl")then
-	return74
-	elseif(Type=="CombatXP")then
-	returnSWGetData("CombatLvl")/2/2/2*(SWGetData("CombatLvl")*100)
-	elseif(Type=="TCombatXP")then
-	return-1
-	elseif(Type=="RifleLvl")then
-	return76
-	elseif(Type=="RifleXP")then
-	returnSWGetData("RifleLvl")/2/2/2*(SWGetData("RifleLvl")*100)
-	elseif(Type=="TRifleXP")then
-	return-1
-	elseif(Type=="SaberLvl")then
-	return75
-	elseif(Type=="SaberXP")then
-	returnSWGetData("SaberLvl")/2/2/2*(SWGetData("SaberLvl")*100)
-	elseif(Type=="TSaberXP")then
-	return10000
-	else
-	return"Undefined"
-	end
-end
+
 DataTable={
 	Name=SWGetData("Name"),
 	Money=SWGetData("Money"),
@@ -94,12 +198,6 @@ fork,vinpairs(DataTable)do
 	print(k..":"..v)
 end
 
-
-
-
-
-
-functionGM:PlayerSpawn(ply)
 
 
 
