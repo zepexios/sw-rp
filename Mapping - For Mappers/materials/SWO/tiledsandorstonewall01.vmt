@@ -1,0 +1,9 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "SWO/tiledsandorstonewall01"
+	"$bumpmap" "SWO/tiledsandorstonewall01_normal"
+	"$envmap" "env_cubemap"
+	"$normalmap" "SWO/tiledsandorstonewall01_normal"
+	"$normalmapalphaenvmapmask" "1"
+	"$surfaceprop" "sand"
+}

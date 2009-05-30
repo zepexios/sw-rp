@@ -1,0 +1,9 @@
+"worldvertextransition"
+{
+"$basetexture" "SWO/tiledsandorstonewall01"
+"$basetexture2" "SWO/oldtanstonewall03"
+"$surfaceprop" "sand"
+"$surfaceprop2" "sand"
+“$bumpmap” “SWO/tiledsandorstonewall01_normal”
+“$bumpmap2” “SWO/oldtanstonewall03_normal”
+}
