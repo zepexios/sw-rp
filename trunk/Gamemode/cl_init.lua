@@ -12,6 +12,23 @@ include( 'cl_hud.lua' )
  *cya's on wednesday...:)
  * ..MGinshe..
  ***************************************************************/
+
+function SWSendDataTable( table )										//Sends a Table to the Server (DataTable)
+	datastream.StreamToServer( "ClientToServer_Table", table )
+end
+function SWSendMainDataTable( table )									//Sends a Table to the Server (MainDataTable)
+	datastream.StreamToServer( "ClientToServer_MTable", table )
+end
+function SWGetDataTable( ply, handler, id, encoded, decoded )			//Gets a Table from the Server (DataTable)
+	DataTable = decoded
+end
+function SWGetMainDataTable( ply, handler, id, encoded, decoded )		//Gets a Table from the server (MainDataTable)
+	MainDataTable = decoded
+end
+datastream.Hook( "ServerToClient_Table", SWGetDataTable )				//like a Hook
+datastream.Hook( "ServerToClient_MTable", SWGetMainDataTable )			//like a hook
+
+ 
  /*
 function sw_menu()
 local DermaPanel = vgui.Create( "DFrame" )
