@@ -22,7 +22,7 @@ MaxCharacters = 2
 --Teams set up----------------------------------------------------------
 --Polkm: Sorry MG you cant use that function to get the colors it doesn't work like that
 team.SetUp(1,"Civilian",Color(49,79,79,255))
-team.SetUp(2,"Marksman",Color(25,100,40,255))
+team.SetUp(2,"Marksman",Color(25,100,40,255))	//Marksman? Ummm...
 team.SetUp(3,"Rebel",Color(34,139,34,255))
 team.SetUp(4,"Imperial",Color(178,34,34,255))
 team.SetUp(5,"Mercenary",Color(25,25,112,255))
@@ -31,6 +31,7 @@ team.SetUp(5,"Mercenary",Color(25,25,112,255))
 --Polkm: You could add more but its not realy nessesary this is just so its organised
 Currencies = {}
 Currencies["money"] = {Name = "Money",Default = 500}
+Currencies["Peggets"] = {Name = "Peggets", Default = 500} 	//Currency used on Tattooine, Thanks to Coffin17 for that :)
 
 --Weapon Classes----------------------------------------------------------
 --Polkm: Feel free to add more this is all I can think of
