@@ -15,7 +15,13 @@ function Player:LoadChars()
 		datastream.StreamToClients(self,"chardata",{Chars = contents})
 	else
 		local CharTable = {}
-		CharTable["billy"] = {"name" = "B.illy","image" = "nah"}
+		CharTable["billy"] = {}
+		CharTable["billy"].name = "Trooper Billy"
+		CharTable["billy"].image = "VGUI/entities/npc_barney"
+		CharTable["lolcat"] = {}
+		CharTable["lolcat"].name = "Jedi Lolcat"
+		CharTable["lolcat"].image = "VGUI/entities/alyx"
+		
 		self.Chars = CharTable
 		file.Write(FilePath,util.TableToKeyValues(CharTable))
 		datastream.StreamToClients(self,"chardata",{Chars = CharTable})
