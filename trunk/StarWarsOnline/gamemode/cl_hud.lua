@@ -10,12 +10,12 @@ end
 function DrawHud()														//Draws our new HUD
 
 	Health = LocalPlayer():Health()										//Gets the playerd Health
-	draw.RoundedBox( 4, 3, 6, 100, 15, Color( 50, 205, 50, 100 ))		//I have absoulutly NO idea...
-	draw.RoundedBox( 4, 4, 7, Health, 12, Color( 255, 0, 0, 255 ))		//I have absoulutly NO idea...
+	draw.RoundedBox( 4, 3, 6, 100, 15, Color( 50, 205, 50, 100 ))		//position of box where the health goes
+	draw.RoundedBox( 4, 4, 7, Health, 12, Color( 255, 0, 0, 255 ))		//our health bar
     
 	Armor = LocalPlayer():Armor()										//Gets the players Armour
-	draw.RoundedBox( 4, 10, 20, 100, 15, Color( 50, 205, 50, 100))		//I have absoulutly NO idea...
-	draw.RoundedBox( 4, 11, 21, Armor, 12, Color( 65, 105, 225, 255))	//I have absoulutly NO idea...
+	draw.RoundedBox( 4, 10, 20, 100, 15, Color( 50, 205, 50, 100))		//position of where armor goes
+	draw.RoundedBox( 4, 11, 21, Armor, 12, Color( 65, 105, 225, 255))	//our armor bar
 
 end
 function DrawPlayerInfo( )												//Draws text above other players' heads ( Name, Faction, and Guild and Class if on your Faction)
@@ -24,9 +24,9 @@ function DrawPlayerInfo( )												//Draws text above other players' heads ( 
 		if(v != LocalPlayer()) then										//If the player insnt you (LocalPlayer())
 			if( v:Alive() ) then										//If they are alive
 				local alpha = 0											//Defauly Alpha = 0
-				local position = v:GetPos( )							//Where are they?
+				local position = v:GetPos( )							//Where are they
 				local position = Vector( position.x, position.y, position.z + 75 )
-				local screenpos = position:ToScreen( ) 					//I have NO idea...
+				local screenpos = position:ToScreen( ) 					//Puts the position of the hud element on the screen 
 				local dist = position:Distance( LocalPlayer( ):GetPos( ) )	//how far away from you?
 				local dist = dist / 2									//divide Distance by 2
 				local dist = math.floor( dist )							//Floor Distance
