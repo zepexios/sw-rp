@@ -16,11 +16,6 @@ function DrawHud()														//Draws our new HUD
 	Armor = LocalPlayer():Armor()										//Gets the players Armour
 	draw.RoundedBox( 4, 10, 20, 100, 15, Color( 50, 205, 50, 100))		//I have absoulutly NO idea...
 	draw.RoundedBox( 4, 11, 21, Armor, 12, Color( 65, 105, 225, 255))	//I have absoulutly NO idea...
-	
-	if(DataTable.Class == "Jedi") then									//Is the player Jedi? if so, give him a force bar
-		draw.RoundedBox(4, 17, 32, 100, 15, Color( 50, 205, 50, 100 )) 	//I have absoulutly NO idea...
-		draw.RoundedBox(4, 18, 34 DataTable.ForceLeft, 12, Color( 65, 0, 225, 255)	
-	end
 
 end
 function DrawPlayerInfo( )												//Draws text above other players' heads ( Name, Faction, and Guild and Class if on your Faction)
