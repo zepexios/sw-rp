@@ -39,6 +39,8 @@ WeaponsClasses = {}
 WeaponsClasses["saber"] = {Name = "Light Sabers",Default = 0}
 WeaponsClasses["pistol"] = {Name = "Laser Pistols",Default = 0}
 WeaponsClasses["rifle"] = {Name = "Blaster Rilfes",Default = 0}
+WeaponsClasses["hand"] = {Name = "unarmed",Default = 0}
+WeaponsClasses["melee"] = {Name = "brawler",Default = 0}
 
 ------------------------------------------------------------
 ------------------------------------------------------------
