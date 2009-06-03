@@ -22,13 +22,10 @@ include('player_extention.lua')
 function GM:PlayerInitialSpawn(ply)
 	ply:LoadChars()
 	ply:ConCommand("OpenCharSelection")
-
-
-	--[[
-	ply:PrintMessage(HUD_PRINTTALK, "Hi "..ply:Nick().."!")
+	
+	ply:PrintMessage(HUD_PRINTTALK, "Hey "..ply:Nick().."!")
 	ply:PrintMessage(HUD_PRINTTALK, "Welcome to SWO's official Server.")
-	ply:PrintMessage(HUD_PRINTTALK, "Type \"!info\" for Your player info.")
-	]]
+	-- ply:PrintMessage(HUD_PRINTTALK, "Type \"!info\" for Your player info.")
 end
 --Polkm: This is called everytime you spawn
 function GM:PlayerSpawn(ply)
@@ -38,7 +35,10 @@ end
 function GM:PlayerLoadout(ply)
 
 end
-
+--iRzilla: Allows clients to send server big tables.
+function GM:AcceptStream ( pl, handler, id )
+     return true
+end
 
 
 
