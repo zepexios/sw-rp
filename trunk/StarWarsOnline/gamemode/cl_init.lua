@@ -53,7 +53,7 @@ function AddCharsToList()
 		local Charbox = vgui.Create("DCharbox")
 		Charbox:SetSize(180,60)
 		Charbox:SetName(v["name"])
-		Charbox:SetImage("")
+		Charbox:SetImage(v["image"])
 		CharList:AddItem(Charbox)
 	end
 	local newcharbutton = vgui.Create("DButton")
@@ -75,21 +75,23 @@ function NewCharacter()
 	NewCharPanel:SetDraggable(false)
 	NewCharPanel:ShowCloseButton(false)
 	NewCharPanel:MakePopup()
-		local okbutton = vgui.Create("DButton")
+		local okbutton = vgui.Create("DButton", NewCharPanel)
 		okbutton:SetSize(50,15)
+		okbutton:SetPos(5, 275)
 		okbutton:SetText("Ok")
 		okbutton.DoClick = function(okbutton)
+			NewCharPanel:Close()
 		end
 		
-		--[[local FactionDrop = vgui.Create("DMultiChoice",NewCharPanel)
+		local FactionDrop = vgui.Create("DMultiChoice",NewCharPanel)
 		FactionDrop:SetText("Faction")
 		FactionDrop:SetSize(240,20)
 		FactionDrop:SetPos(5,25)
 		FactionDrop:SetEditable(false)
 		for k,v in pairs(team.GetAllTeams()) do
 			if k != 0 and k != 1002 and k != 1001 then
-				FactionDrop:AddChoice(ItemModelsList[v].NAME)
+				FactionDrop:AddChoice(v.Name)
 			end
-		end]]
+		end
 		
 end
