@@ -22,7 +22,7 @@ function PANEL:Init()
 	
 	--This is the name label
 	self.namelabel = vgui.Create("DLabel")
-	self.namelabel:SetText("Name: ")
+	self.namelabel:SetText("LOL STUPID NO NAME <.<")
 	self.namelabel:SizeToContents()
 	self.Infolist:AddItem(self.namelabel)
 	
@@ -42,7 +42,7 @@ function PANEL:HideUse()
 	self.usebutton:SetVisible(false)
 end
 function PANEL:SetName(strng)
-	self.namelabel:SetText("Name: "..strng)
+	self.namelabel:SetText(strng)
 	self.namelabel:SizeToContents()
 	print(strng)
 end
