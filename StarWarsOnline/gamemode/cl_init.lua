@@ -100,14 +100,14 @@ function NewCharacter()
 		CImage:SetPos(5,70)
 		CImage:SetEditable(true)
 		
-		FactionDrop = vgui.Create("DMultiChoice",NewCharPanel)
-		FactionDrop:SetText("Faction")
-		FactionDrop:SetSize(190,20)
-		FactionDrop:SetPos(5,25)
-		FactionDrop:SetEditable(false)
+		ProfessionDrop = vgui.Create("DMultiChoice",NewCharPanel)
+		ProfessionDrop:SetText("Profession")
+		ProfessionDrop:SetSize(190,20)
+		ProfessionDrop:SetPos(5,25)
+		ProfessionDrop:SetEditable(false)
 		for k,v in pairs(team.GetAllTeams()) do
 			if k != 0 and k != 1002 and k != 1001 then
-				FactionDrop:AddChoice(v.Name)
+				ProfessionDrop:AddChoice(v.Name)
 			end
 		end
 		
@@ -121,7 +121,7 @@ function NewCharacter()
 			MCharTable[CName:GetValue()] = {}
 			MCharTable[CName:GetValue()].name = CName:GetValue()
 			MCharTable[CName:GetValue()].image = CImage:GetValue()
-			MCharTable[CName:GetValue()].faction = FactionDrop:GetValue()
+			MCharTable[CName:GetValue()].profession = ProfessionDrop:GetValue()
 			
 			NewCharPanel:Close()
 			
