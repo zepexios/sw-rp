@@ -44,9 +44,10 @@ function Player:MakeChar(CharTable)
 
 		self.Chars = CharTable
 		file.Write(FilePath,util.TableToKeyValues(CharTable))
+		contents = CharTable
 	end
 	
-	datastream.StreamToClients(self,"chardata",{Chars = CharTable})
+	datastream.StreamToClients(self,"chardata",{Chars = self.Chars})
 end
 
 function IncomingHook( pl, handler, id, encoded, decoded )
