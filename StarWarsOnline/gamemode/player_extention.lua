@@ -20,7 +20,7 @@ function Player:LoadChars()
 		CharTable["billy"].image = "VGUI/entities/npc_barney"
 		CharTable["lolcat"] = {}
 		CharTable["lolcat"].name = "Jedi Lolcat"
-		CharTable["lolcat"].image = "VGUI/entities/alyx"
+		CharTable["lolcat"].image = "VGUI/entities/npc_alyx"
 		
 		self.Chars = CharTable
 		file.Write(FilePath,util.TableToKeyValues(CharTable))
