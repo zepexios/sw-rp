@@ -31,11 +31,15 @@ function PANEL:Init()
 	self.usebutton:SetText("Use")
 	local button = self.usebutton
 	button.DoClick = function(button)
+		self:GetParent():GetParent():Close()
 	end
 	self.Infolist:AddItem(self.usebutton)
 end
 function PANEL:Paint()
 	return true
+end
+function PANEL:HideUse()
+	self.usebutton:SetVisible(false)
 end
 function PANEL:SetName(strng)
 	self.namelabel:SetText("Name: "..strng)
