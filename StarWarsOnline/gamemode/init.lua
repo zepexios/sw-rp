@@ -41,7 +41,11 @@ function GM:AcceptStream ( pl, handler, id )
 end
 
 
+local songs = {"imperial.mp3", "duel.mp3", "heroes.mp3","luke.mp3","force.mp3","anakin.mp3"}
 
+timer.Create( "Every10mins", 600, 0, function()
+for k, v in pairs(player.GetAll) do v:ConCommand("play "..table.Random(songs)) end
+end )
 
 
 
