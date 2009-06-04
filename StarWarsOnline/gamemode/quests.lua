@@ -10,7 +10,7 @@ Quest.UnBe.Reward.Weapons		= 0
 Quest.UnBe.Reward.Items			= 0
 Quest.UnBe.Reward.Entities		= 0
 Quest.UnBe.Reward.Vehicles		= 0
-Quest.UnBe.Instrucions			= {1 = "Go and talk to Eshingem about a package he wants you to deliver..", 2 = "Take the package to YOUR MOM!"}
+Quest.UnBe.Instrucions			= {"Go and talk to Eshingem about a package he wants you to deliver..", "Take the package to YOUR MOM!"}
 
 --[[Quest.UnBe.Name 				= "Your first vehicle"
 Quest.UnBe.Info					= "Prove to the npc that you are ready to tackle the world of SWO much faster. HINT: Parts last seen near some tuskens"

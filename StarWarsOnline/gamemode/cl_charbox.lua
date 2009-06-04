@@ -1,52 +1,56 @@
 local PANEL = {}
+CharButtons = {}
+
 function PANEL:Init()
 	--This is the panel it all goes on
-	self.panel = vgui.Create("DPanel",self)
-	self.panel:SetPos(0,0)
-	self.panel:SetSize(180,60)
+	table.insert(CharButtons, self)
+	
+	self:SetSize(180,60)
 	
 	--This is the image
-	self.image = vgui.Create("DImage",self.panel)
+	self.image = vgui.Create("DImage", self)
 	self.image:SetImage("")
-	local tall = self.panel:GetTall()-10
+	local tall = self:GetTall()-10
 	self.image:SetSize(tall,tall)
 	self.image:SetPos(5,5)
-	
-	--This is the list of info  on the right
-	self.Infolist = vgui.Create("DPanelList",self.panel)
-	self.Infolist:SetPos(self.image:GetWide()+10,5)
-	self.Infolist:SetSize(self.panel:GetWide()-(self.image:GetWide()+15),self.panel:GetTall()-10)
-	self.Infolist:EnableHorizontal(true)
-	self.Infolist:SetPadding(2)
-	self.Infolist:SetSpacing(1)
-	
-	--This is the name label
-	self.namelabel = vgui.Create("DLabel")
-	self.namelabel:SetText("LOL STUPID NO NAME <.<")
-	self.namelabel:SizeToContents()
-	self.Infolist:AddItem(self.namelabel)
-	
-	self.usebutton = vgui.Create("DButton")
-	self.usebutton:SetSize(self.Infolist:GetWide()-10,15)
-	self.usebutton:SetText("Use")
-	local button = self.usebutton
-	button.DoClick = function(button)
-		self:GetParent():GetParent():Close()
-	end
-	self.Infolist:AddItem(self.usebutton)
 end
+
+function PANEL:DoClick()
+	for k, v in pairs(CharButtons) do
+		v.Selected = false
+	end
+
+	self.Selected = true
+end
+
 function PANEL:Paint()
+
+	if self.Selected then
+		surface.SetDrawColor(235, 235, 16, 230)
+		surface.DrawRect(0, 0, self:GetWide(), self:GetTall())
+		
+		surface.SetDrawColor(235, 235, 235, 235)
+		surface.DrawOutlinedRect(0, 0, self:GetWide(), self:GetTall())
+	elseif self.Hovered then
+		surface.SetDrawColor(64, 64, 64, 200)
+		surface.DrawRect(0, 0, self:GetWide(), self:GetTall())
+
+		surface.SetDrawColor(0, 0, 0, 180)
+		surface.DrawOutlinedRect(0, 0, self:GetWide(), self:GetTall())
+	end
+	
+	draw.SimpleText(self.Text, "small", self.image:GetWide() + 15, 5, Color(0, 0, 0, 255), 0,4)
+	
 	return true
 end
 function PANEL:HideUse()
 	self.usebutton:SetVisible(false)
 end
 function PANEL:SetName(strng)
-	self.namelabel:SetText(strng)
-	self.namelabel:SizeToContents()
+	self.Text = strng
 	print(strng)
 end
 function PANEL:SetImage(image)
 	self.image:SetImage(image)
 end
-vgui.Register("DCharbox",PANEL)
+vgui.Register("DCharbox",PANEL, "DButton")
