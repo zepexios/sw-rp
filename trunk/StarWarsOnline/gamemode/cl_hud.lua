@@ -10,7 +10,7 @@ end
 function DrawHud()														//Draws our new HUD
 
 	Health = LocalPlayer():Health()										//Gets the playerd Health
-	draw.RoundedBox( 4, 3, 6, 100, 15, Color( 50, 205, 50, 100 ))		//position of box where the health goes
+	draw.RoundedBox( 4, 3, 6, 100, 15, Color( 50, 205, 50, 100 ))		//position of box where the health goes  -- the hud is really basic I would like a custom chat and other features if possible.
 	draw.RoundedBox( 4, 4, 7, Health, 12, Color( 255, 0, 0, 255 ))		//our health bar
     
 	Armor = LocalPlayer():Armor()										//Gets the players Armour
