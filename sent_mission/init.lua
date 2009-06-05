@@ -16,7 +16,9 @@ function ENT:SpawnFunction( ply, tr )
 end
 
 function ENT:Initialize()
-self.Entity:SetModel( "
+self.Entity:SetModel( "models/props_combine/breenconsole.mdl" )
+self:SetHealth(10000000000000000000000000000000000000000000000000000)
+end
 
 function ENT:Use( activator, caller )
 
@@ -31,12 +33,8 @@ Quest:ShowClostButton( true )
 Quest:SetDraggable( false )
 Quest:MakePopup( true )
 print( "work" )
-
-
-
-function ENT:Initialize()
-self:SetModel( " models/props_combine/breenconsole.mdl" )
-self:SetHealth(10000000000000000000000000000000000000000000000000000)
+end
+end
 end
 
 
