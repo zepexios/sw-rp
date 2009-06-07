@@ -30,8 +30,9 @@ team.SetUp(5,"Medic",Color(25,25,112,255))
 --Currencies----------------------------------------------------------
 --Polkm: You could add more but its not realy nessesary this is just so its organised
 Currencies = {}
-Currencies["money"] = {Name = "Money",Default = 500}
-Currencies["Peggets"] = {Name = "Peggets", Default = 500} 	//Currency used on Tattooine, Thanks to Coffin17 for that :)
+Currencies["Credits"] = {Name = "Credits",Default = 500}
+-- you can use xp to buy new skills within your professions does that have to be a currency?
+
 
 --Weapon Classes----------------------------------------------------------
 --Polkm: Feel free to add more this is all I can think of
