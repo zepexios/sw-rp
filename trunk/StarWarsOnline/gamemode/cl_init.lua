@@ -219,6 +219,26 @@ function OpenCharSelection()
 		if self.bAnimated then self:RunAnimation() end
 		Entity:SetAngles( Angle( 0, RealTime()*40,  0) )
 	end]]--
+
+	local DermaPanel = vgui.Create( "StarFrame" )
+	DermaPanel:SetPos( 50,50 )
+	DermaPanel:SetSize( 200, 250 )
+	DermaPanel:SetTitle( "Menu" )
+	DermaPanel:SetVisible( true )
+	DermaPanel:SetDraggable( true )
+	DermaPanel:ShowCloseButton( true )
+	DermaPanel:MakePopup()
+ 
+	local MenuButton = vgui.Create("DButton", DermaPanel)
+	MenuButton:SetText( "Menu " )
+	MenuButton:SetPos(25, 50)
+	MenuButton:SetSize( 150, 175 )
+	MenuButton.DoClick = function ( btn )
+	    local MenuButtonOptions = DermaMenu() 
+	    MenuButtonOptions:AddOption("quit", function() 	RunConsoleCommand("disconnect") end ) 
+
+	    MenuButtonOptions:Open() 
+end
 end
 
 concommand.Add("OpenCharSelection",OpenCharSelection)
@@ -289,23 +309,4 @@ function NewCharacter()
 			
 			datastream.StreamToServer( "PlayerChar", MCharTable)
 		end
-end
-
-local DermaPanel = vgui.Create( "StarFrame" )
-DermaPanel:SetPos( 50,50 )
-DermaPanel:SetSize( 200, 250 )
-DermaPanel:SetTitle( "Menu" )
-DermaPanel:SetVisible( true )
-DermaPanel:SetDraggable( true )
-DermaPanel:ShowCloseButton( true )
-DermaPanel:MakePopup()
- 
-local MenuButton = vgui.Create("DButton", DermaPanel)
-MenuButton:SetText( "Menu " )
-MenuButton:SetPos(25, 50)
-MenuButton:SetSize( 150, 175 )
-MenuButton.DoClick = function ( btn )
-    local MenuButtonOptions = DermaMenu() 
-    MenuButtonOptions:AddOption("quit", function() RunConsoleCommand("disconnect") end ) 
-    MenuButtonOptions:Open() 
 end
