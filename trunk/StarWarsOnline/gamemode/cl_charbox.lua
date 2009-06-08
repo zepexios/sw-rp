@@ -1,5 +1,4 @@
 local PANEL = {}
-CharButtons = {}
 
 function PANEL:Init()
 	--This is the panel it all goes on
