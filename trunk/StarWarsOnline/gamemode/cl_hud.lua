@@ -16,6 +16,7 @@ function DrawHud()														//Draws our new HUD
 	Armor = LocalPlayer():Armor()										//Gets the players Armour
 	draw.RoundedBox( 4, 10, 20, 100, 15, Color( 50, 205, 50, 100))		//position of where armor goes
 	draw.RoundedBox( 4, 11, 21, Armor, 12, Color( 65, 105, 225, 255))	//our armor bar
+	DrawPlayerInfo( )													//Omg...if this was it...DAMN..Nvm ..MGinshe..
 
 end
 function DrawPlayerInfo( )												//Draws text above other players' heads ( Name, Faction, and Guild and Class if on your Faction)
@@ -31,7 +32,7 @@ function DrawPlayerInfo( )												//Draws text above other players' heads ( 
 				local dist = dist / 2									//divide Distance by 2
 				local dist = math.floor( dist )							//Floor Distance
 				
-				if( dist > 100 ) then									//If Distance is Greater than 100
+				if( dist > 150 ) then									//If Distance is Greater than 100
 					alpha = 255 - ( dist - 100 )						//Set our alpha to 255 - Dist - 100 (slowly fade them out after100 units)
 				else
 					alpha = 255											//Otherqise, set alpha to 255
@@ -44,7 +45,7 @@ function DrawPlayerInfo( )												//Draws text above other players' heads ( 
 																		//VV
 				draw.DrawText( v:Nick( ), "DefaultSmall", screenpos.x, screenpos.y, Color( 255, 255, 255, alpha ), 1 )
 				draw.DrawText( team.GetName( v:Team( ) ), "DefaultSmall", screenpos.x, screenpos.y + 10, Color( 255, 255, 255, alpha ), 1 )
-				draw.DrawText( v:GetNWString( "title" ), "DefaultSmall", screenpos.x, screenpos.y + 20, Color( 255, 255, 255, alpha ), 1 )
+				draw.DrawText( v:GetNWString( "title_"..v:SteamID() ), "DefaultSmall", screenpos.x, screenpos.y + 20, Color( 255, 255, 255, alpha ), 1 )
 				
 				if( v:GetNWInt( "chatopen" ) == 1 ) then
 					draw.DrawText( "Typing..", "ChatFont", screenpos.x, screenpos.y - 50, Color( 255, 255, 255, alpha ), 1 )
