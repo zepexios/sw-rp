@@ -28,8 +28,10 @@ include('cl_charbox.lua')
 ----------------------
 
 --    Variables    --
+SWO = {}
 local Chars = {}
 local CharPanelIsOpen = false
+CharButtons = {}
 ----------------------
 
 surface.CreateFont("Arial",13,400,true,false,"small")
@@ -174,7 +176,7 @@ function OpenCharSelection()
 	MOTDHTML:SetHTML(file.Read("ulx/motd.txt"))
 	
 	
-	local newcharbutton = vgui.Create("SOWButton", CharsList)
+	newcharbutton = vgui.Create("SOWButton", CharsList)
 	newcharbutton:SetSize(180,40)
 	newcharbutton:SetPos(CharsList:GetWide()/2-newcharbutton:GetWide()/2, CharsList:GetTall()-45)
 	newcharbutton:SetText("New Character")
@@ -189,7 +191,18 @@ function OpenCharSelection()
 	UseCharButton:SetPos(410, ScrH() - 50)
 	UseCharButton:SetText("Enter The Wars")
 	UseCharButton.DoClick = function(UseCharButton)
-		UseMyChar()
+		local CharText = ""
+		for k, v in pairs(CharButtons) do
+			if v.Selected then CharText = v.Text end
+		end
+		
+		if CharText == "" then return end
+		RunConsoleCommand("SWOLoadChar", CharText)
+		CharPanelIsOpen = false
+		CharsList:Close()
+		MOTDPanel:Close()
+		UseCharButton:SetVisible(false)
+		newcharbutton:SetVisible(false)
 	end
 	
 	--[[CharViewModel = vgui.Create( "DModelPanel" )
