@@ -7,19 +7,21 @@ function hidehud(name)													//Hides the normal HUD
 		if name == v then return false end
 	end
 end
-function DrawHud()														//Draws our new HUD
 
-	Health = LocalPlayer():Health()										//Gets the playerd Health
-	draw.RoundedBox( 4, 3, 6, 100, 15, Color( 50, 205, 50, 100 ))		//position of box where the health goes  -- the hud is really basic I would like a custom chat and other features if possible.
-	draw.RoundedBox( 4, 4, 7, Health, 12, Color( 255, 0, 0, 255 ))		//our health bar
+function DrawHud()								
+
+	local Health = LocalPlayer():Health()
+	draw.RoundedBox( 4, 3, 6, 100, 15, Color( 50, 205, 50, 100 ))
+	draw.RoundedBox( 4, 4, 7, Health, 12, Color( 255, 0, 0, 255 ))
     
-	Armor = LocalPlayer():Armor()										//Gets the players Armour
-	draw.RoundedBox( 4, 10, 20, 100, 15, Color( 50, 205, 50, 100))		//position of where armor goes
-	draw.RoundedBox( 4, 11, 21, Armor, 12, Color( 65, 105, 225, 255))	//our armor bar
+	local Armor = LocalPlayer():Armor()
+	draw.RoundedBox( 4, 10, 20, 100, 15, Color( 50, 205, 50, 100))
+	draw.RoundedBox( 4, 11, 21, Armor, 12, Color( 65, 105, 225, 255))
 	DrawPlayerInfo( )													//Omg...if this was it...DAMN..Nvm ..MGinshe..
 
 end
-function DrawPlayerInfo( )												//Draws text above other players' heads ( Name, Faction, and Guild and Class if on your Faction)
+
+function GM:HUDDrawTargetID()
 
 	for k, v in pairs(player.GetAll()) do								//Gets ALL the players on the server
 		if(v != LocalPlayer()) then										//If the player insnt you (LocalPlayer())
@@ -54,5 +56,6 @@ function DrawPlayerInfo( )												//Draws text above other players' heads ( 
 		end
 	end
 end
+
 hook.Add("HUDShouldDraw", "hidehud", hidehud)
 hook.Add("HUDPaint", "DrawHud", DrawHud)
