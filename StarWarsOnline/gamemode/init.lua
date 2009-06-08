@@ -9,6 +9,8 @@ require("datastream")
 --AddCSLuaFile is for files that the client needs to download
 --ie: any thing client side or shared
 AddCSLuaFile('cl_init.lua')
+AddCSLuaFile('cl_charbox.lua')
+AddCSLuaFile('cl_vgui.lua')
 AddCSLuaFile('cl_hud.lua')
 AddCSLuaFile('shared.lua')
 
