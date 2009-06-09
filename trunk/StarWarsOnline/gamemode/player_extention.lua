@@ -30,6 +30,22 @@ function Player:LoadChars()
 	end
 end
 
+function Player:SaveChars()
+	local FilePath = "starwarsonline/"..self:UniqueID().."/chars.txt"
+	if file.Exists(FilePath) then
+		print("realy?")
+
+		file.Write(FilePath,util.TableToKeyValues(self.Chars))
+	else
+		local CharsTable = {}
+		table.Merge(CharsTable, CharTable)
+
+		self.Chars = CharTable
+		file.Write(FilePath,util.TableToKeyValues(CharTable))
+		contents = CharTable
+	end
+end
+
 function Player:MakeChar(CharTable)
 	local FilePath = "starwarsonline/"..self:UniqueID().."/chars.txt"
 	if file.Exists(FilePath) then
@@ -67,4 +83,9 @@ function Player:Load(charkey)
 	self:Kill()
 end
 
-concommand.Add("SWOLoadChar", "SWOLoadChar", function(ply, cmd, arg) ply:Load(arg[1]) end)
+function LoadPlyCon(ply, cmd, arg)
+	ply:Load(arg[1])
+	ply:Kill()
+end
+
+concommand.Add("SWOLoadChar", "SWOLoadChar", LoadPlyCon)
