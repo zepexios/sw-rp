@@ -17,7 +17,6 @@ function DrawHud()
 	local Armor = LocalPlayer():Armor()
 	draw.RoundedBox( 4, 10, 20, 100, 15, Color( 50, 205, 50, 100))
 	draw.RoundedBox( 4, 11, 21, Armor, 12, Color( 65, 105, 225, 255))
-	DrawPlayerInfo( )													//Omg...if this was it...DAMN..Nvm ..MGinshe..
 
 end
 
