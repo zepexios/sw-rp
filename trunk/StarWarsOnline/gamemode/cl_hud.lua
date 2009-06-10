@@ -9,6 +9,7 @@ function hidehud(name)													//Hides the normal HUD
 end
 
 function DrawHud()								
+	self:HUDDrawTargetID()
 
 	local Health = LocalPlayer():Health()
 	draw.RoundedBox( 4, 3, 6, 100, 15, Color( 50, 205, 50, 100 ))
