@@ -33,7 +33,7 @@ abp1192 - Mapper / Texturer - SteamID: shadowdemon92
 
 Jarlan - Mapper - SteamID: Jarlan
 
-polkm - Lead Coder - SteamID: Polkm
+iRzilla - LeadCoder - SteamID: iRzilla2008
 
 Sharq - Mapper - SteamID: Judge Sharq
 
