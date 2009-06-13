@@ -232,10 +232,11 @@ function OpenCharSelection()
 	local MenuButton = vgui.Create("DButton", DermaPanel)
 	MenuButton:SetText( "Menu " )
 	MenuButton:SetPos(25, 50)
-	MenuButton:SetSize( 150, 175 )
+	MenuButton:SetSize( 150, 25 )
 	MenuButton.DoClick = function ( btn )
 	    local MenuButtonOptions = DermaMenu() 
-	    MenuButtonOptions:AddOption("quit", function() 	RunConsoleCommand("disconnect") end ) 
+	    MenuButtonOptions:AddOption("Disconnect", function() 	RunConsoleCommand("disconnect") end ) 
+	    MenuButtonOptions:AddOption("Option 2", function() 	RunConsoleCommand("") end ) 
 
 	    MenuButtonOptions:Open() 
 end
