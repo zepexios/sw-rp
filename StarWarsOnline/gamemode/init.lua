@@ -17,6 +17,7 @@ AddCSLuaFile('shared.lua')
 ------------------------------------------------------------
 include('shared.lua')
 include('quests.lua')
+include('level.lua')
 include('player_extention.lua')
 
 --Player Spawning----------------------------------------------------------
