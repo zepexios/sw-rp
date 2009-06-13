@@ -43,6 +43,15 @@ function GM:AcceptStream ( pl, handler, id )
      return true
 end
 
+--Autopsy Added This Below
+--It Add's The F1 Bind
+
+
+ function GM:ShowHelp( ply )
+   ply:ConCommand( "OpenCharSelection" )
+  end 
+
+
 
 local songs = {"imperial.mp3", "duel.mp3", "heroes.mp3","luke.mp3","force.mp3","anakin.mp3"}
 
