@@ -37,7 +37,7 @@ iRzilla - LeadCoder - SteamID: iRzilla2008
 
 Sharq - Mapper - SteamID: Judge Sharq
 
-
+Autopsy - LUA Coder - Derma Coder - Special Person :) SteamID: matthew160
 
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------	
@@ -490,12 +490,21 @@ Note: Nek is now done with you. all quests beond this point you will have to fin
 
 ___________________________________________________________________________________________________
 
+------------------
+--JUNE 13th 2009--
+------------------
+
+-Autopsy Edited The Following:
+--"Star Wars Menu - Menu" Was Edited:
+-----Button Was Made Smaller And Added More Options
+
+--Added The F1 Bind That Run's Console Command "OpenCharSelection"
+-----After You Close The Menu There Was No way to re-open it, so i added the F1 bind.
 
 
-
-
-
-
+------------------
+------------------
+------------------
 
 
 
