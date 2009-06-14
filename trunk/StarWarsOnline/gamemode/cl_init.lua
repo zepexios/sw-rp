@@ -253,8 +253,7 @@ function OpenCharSelection()
 	MOTDHTML = vgui.Create("HTML", MOTDPanel)
 	MOTDHTML:SetPos(5, 25)
 	MOTDHTML:SetSize(MOTDPanel:GetWide()-10, MOTDPanel:GetTall()-30)
-	MOTDHTML:SetHTML("<b><center>MOTD Will Be Here</center></b>")
-	
+	MOTDHTML:SetHTML("<head><style type='text/css'>body {background-color: black} p {margin-left: 20px}</style></head><body><center><img src='http://i213.photobucket.com/albums/cc170/crazyboy342/Starwars.jpg'</center></body>")
 	
 	newcharbutton = vgui.Create("SOWButton", CharsList)
 	newcharbutton:SetSize(180,40)
