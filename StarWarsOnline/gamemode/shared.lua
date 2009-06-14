@@ -21,42 +21,12 @@ MaxCharacters = 2
 
 --Teams set up----------------------------------------------------------
 --Polkm: Sorry MG you cant use that function to get the colors it doesn't work like that
-team.SetUp(1,"Civilian",Color(49,79,79,255))
-team.SetUp(2,"Marksman",Color(25,100,40,255))	//Marksman? Ummm...
-team.SetUp(3,"Scout",Color(34,139,34,255))
-team.SetUp(4,"Brawler",Color(178,34,34,255))
-team.SetUp(5,"Medic",Color(25,25,112,255))
+team.SetUp(1,"Marksman",Color(25,100,40,255))	
+team.SetUp(2,"Scout",Color(34,139,34,255))
+team.SetUp(3,"Brawler",Color(178,34,34,255))
+team.SetUp(4,"Medic",Color(25,25,112,255))
 
 --Currencies----------------------------------------------------------
 --Polkm: You could add more but its not realy nessesary this is just so its organised
 Currencies = {}
 Currencies["Credits"] = {Name = "Credits",Default = 500}
--- you can use xp to buy new skills within your professions does that have to be a currency?
-
-
---Weapon Classes----------------------------------------------------------
---Polkm: Feel free to add more this is all I can think of
-WeaponsClasses = {}
-WeaponsClasses["saber"] = {Name = "Light Sabers",Default = 0}
-WeaponsClasses["pistol"] = {Name = "Laser Pistols",Default = 0}
-WeaponsClasses["rifle"] = {Name = "Blaster Rilfes",Default = 0}
-WeaponsClasses["hand"] = {Name = "unarmed",Default = 0}
-WeaponsClasses["melee"] = {Name = "brawler",Default = 0}
-
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
-------------------------------------------------------------
