@@ -32,6 +32,7 @@ SWO = {}
 local Chars = {}
 local CharPanelIsOpen = false
 CharButtons = {}
+CharClassImages = {}
 ----------------------
 
 surface.CreateFont("Arial",13,400,true,false,"small")
@@ -50,6 +51,85 @@ end
 datastream.Hook("chardata",ReseveChars)
 
 -- VGUI --
+
+local PANEL = {} 
+   
+ /*--------------------------------------------------------- 
+    Name: Init 
+ ---------------------------------------------------------*/ 
+ function PANEL:Init() 
+ 	 
+ 	self:SetSize( 83, 83 ) 
+ 	 
+ 	self.Label = vgui.Create ( "DLabel", self ) 
+ 	 
+ 	self:SetKeepAspect( true ) 
+ 	self:SetDrawBorder( true ) 
+ 	 
+ 	self.m_Image:SetPaintedManually( true ) 
+ 	 
+ end 
+   
+ /*--------------------------------------------------------- 
+    Name: SetNPC 
+ ---------------------------------------------------------*/ 
+ function PANEL:PerformLayout() 
+ 	 
+ 	self.Label:SizeToContents() 
+ 	 
+ 	self.Label:SetFont( "DefaultSmallDropShadow" ) 
+ 	self.Label:SetTextColor( color_white ) 
+ 	self.Label:SetContentAlignment( 5 ) 
+ 	self.Label:SetWide( self:GetWide() ) 
+ 	self.Label:AlignBottom( 2 ) 
+ 	 
+ 	DImageButton.PerformLayout( self ) 
+ 	 
+ end 
+   
+   
+ /*--------------------------------------------------------- 
+    Name: PaintOver 
+ ---------------------------------------------------------*/ 
+ function PANEL:Paint() 
+ 	 
+ 	local w, h = self:GetSize() 
+ 	 
+ 	self.m_Image:Paint() 
+ 	
+	if self.Selected then
+		surface.SetDrawColor( 60, 60, 100, 200 ) 
+	else
+		surface.SetDrawColor( 30, 30, 30, 200 ) 
+	end
+ 	surface.DrawRect( 0, h - 16, w, 16 ) 
+ 	 
+ 	DImageButton.Paint( self ) 
+ 	 
+ 	 
+ end 
+   
+
+ function PANEL:SetIt( NiceName, SpawnName ) 
+ 	 
+ 	self.Label:SetText( NiceName ) 
+ 	
+	self.Image = "VGUI/entities/"..SpawnName
+ 	self:SetMaterial( "VGUI/entities/"..SpawnName ) 
+ 	 
+ 	self:InvalidateLayout() 
+ 	 
+ end 
+ 
+ function PANEL:DoClick()
+	for k, v in pairs(CharClassImages) do
+		v.Selected = false
+	end
+
+	self.Selected = true
+ end
+   
+vgui.Register("ClassImageButton", PANEL, "DImageButton")
 
 local PANEL = {}
 
@@ -173,7 +253,7 @@ function OpenCharSelection()
 	MOTDHTML = vgui.Create("HTML", MOTDPanel)
 	MOTDHTML:SetPos(5, 25)
 	MOTDHTML:SetSize(MOTDPanel:GetWide()-10, MOTDPanel:GetTall()-30)
-	MOTDHTML:SetHTML(file.Read("ulx/motd.txt"))
+	MOTDHTML:SetHTML("<b><center>MOTD Will Be Here</center></b>")
 	
 	
 	newcharbutton = vgui.Create("SOWButton", CharsList)
@@ -277,11 +357,17 @@ function NewCharacter()
 		CName:SetPos(5,45)
 		CName:SetEditable(true)
 		
-		CImage = vgui.Create("DTextEntry",NewCharPanel)
-		CImage:SetText("VGUI/entities/npc_")
-		CImage:SetSize(190,20)
-		CImage:SetPos(5,70)
-		CImage:SetEditable(true)
+		local ClassPictures = {}
+		ClassPictures[0] = {Name = "Alyx", Image = "alyx"}
+		ClassPictures[1] = {Name = "GMAN", Image = "gman"}
+		ClassPictures[2] = {Name = "Barney", Image = "barney"}
+		ClassPictures[3] = {Name = "Kleiner", Image = "kleiner"}
+		
+		for k, v in pairs(ClassPictures) do
+			CharClassImages[k] = vgui.Create("ClassImageButton", NewCharPanel)
+			CharClassImages[k]:SetPos(k*40+10, 75)
+			CharClassImages[k]:SetIt(v.Name, v.Image)
+		end
 		
 		FactionDrop = vgui.Create("DMultiChoice",NewCharPanel)
 		FactionDrop:SetText("Proffesions")
@@ -300,14 +386,24 @@ function NewCharacter()
 		okbutton:SetPos(5, 275)
 		okbutton:SetText("Ok")
 		okbutton.DoClick = function(okbutton)
-			MCharTable = {}
-			MCharTable[CName:GetValue()] = {}
-			MCharTable[CName:GetValue()].name = CName:GetValue()
-			MCharTable[CName:GetValue()].image = CImage:GetValue()
-			MCharTable[CName:GetValue()].proffesion = FactionDrop:GetValue()
+			local TheSelected = false
+			for k, v in pairs(CharClassImages) do
+				if v.Selected then
+					TheSelected = v.Image
+				end
+			end
+			if TheSelected != false then
+				MCharTable = {}
+				MCharTable[CName:GetValue()] = {}
+				MCharTable[CName:GetValue()].name = CName:GetValue()
+				MCharTable[CName:GetValue()].image = TheSelected
+				MCharTable[CName:GetValue()].proffesion = FactionDrop:GetValue()
 			
-			NewCharPanel:Close()
+				NewCharPanel:Close()
 			
-			datastream.StreamToServer( "PlayerChar", MCharTable)
+				datastream.StreamToServer( "PlayerChar", MCharTable)
+			else
+				LocalPlayer():ChatPrint("Must Select A Image")
+			end
 		end
 end
