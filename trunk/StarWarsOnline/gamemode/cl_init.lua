@@ -253,7 +253,7 @@ function OpenCharSelection()
 	MOTDHTML = vgui.Create("HTML", MOTDPanel)
 	MOTDHTML:SetPos(5, 25)
 	MOTDHTML:SetSize(MOTDPanel:GetWide()-10, MOTDPanel:GetTall()-30)
-	MOTDHTML:SetHTML("<head><style type='text/css'>body {background-color: black} p {margin-left: 20px}</style></head><body><center><img src='http://i213.photobucket.com/albums/cc170/crazyboy342/Starwars.jpg'</center></body>")
+	MOTDHTML:SetHTML("ulx/ulxmotd")
 	
 	newcharbutton = vgui.Create("SOWButton", CharsList)
 	newcharbutton:SetSize(180,40)
@@ -311,10 +311,10 @@ function OpenCharSelection()
 	local MenuButton = vgui.Create("DButton", DermaPanel)
 	MenuButton:SetText( "Menu " )
 	MenuButton:SetPos(25, 50)
-	MenuButton:SetSize( 150, 175 )
+	MenuButton:SetSize( 150, 25 )
 	MenuButton.DoClick = function ( btn )
 	    local MenuButtonOptions = DermaMenu() 
-	    MenuButtonOptions:AddOption("quit", function() 	RunConsoleCommand("disconnect") end ) 
+	    MenuButtonOptions:AddOption("Disconnect", function() 	RunConsoleCommand("disconnect") end ) 
 
 	    MenuButtonOptions:Open() 
 end
@@ -346,7 +346,7 @@ function NewCharacter()
 	NewCharPanel:Center()
 	NewCharPanel:SetTitle("New Character")
 	NewCharPanel:SetDraggable(false)
-	NewCharPanel:ShowCloseButton(false)
+	NewCharPanel:ShowCloseButton(true)
 	NewCharPanel:MakePopup()
 		
 		CName = vgui.Create("DTextEntry",NewCharPanel)
@@ -356,10 +356,10 @@ function NewCharacter()
 		CName:SetEditable(true)
 		
 		local ClassPictures = {}
-		ClassPictures[0] = {Name = "Alyx", Image = "npc_alyx"}
-		ClassPictures[1] = {Name = "GMAN", Image = "npc_gman"}
-		ClassPictures[2] = {Name = "Barney", Image = "npc_barney"}
-		ClassPictures[3] = {Name = "Kleiner", Image = "npc_kleiner"}
+		ClassPictures[0] = {Name = "Wookie", Image = "swo/wookie"}
+		ClassPictures[1] = {Name = "Jawa", Image = "swo/jawa"}
+		ClassPictures[2] = {Name = "Human", Image = "npc_citizen"}
+		ClassPictures[3] = {Name = "Rodian", Image = "swo/rodian"}
 		
 		for k, v in pairs(ClassPictures) do
 			CharClassImages[k] = vgui.Create("ClassImageButton", NewCharPanel)
