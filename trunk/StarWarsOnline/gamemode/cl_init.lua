@@ -312,11 +312,10 @@ function OpenCharSelection()
 	local MenuButton = vgui.Create("DButton", DermaPanel)
 	MenuButton:SetText( "Menu " )
 	MenuButton:SetPos(25, 50)
-	MenuButton:SetSize( 150, 25 )
+	MenuButton:SetSize( 150, 175 )
 	MenuButton.DoClick = function ( btn )
 	    local MenuButtonOptions = DermaMenu() 
-	    MenuButtonOptions:AddOption("Disconnect", function() 	RunConsoleCommand("disconnect") end ) 
-	    MenuButtonOptions:AddOption("Option 2", function() 	RunConsoleCommand("") end ) 
+	    MenuButtonOptions:AddOption("quit", function() 	RunConsoleCommand("disconnect") end ) 
 
 	    MenuButtonOptions:Open() 
 end
@@ -344,7 +343,7 @@ end
 function NewCharacter()
 	local Client = LocalPlayer()
 	local NewCharPanel = vgui.Create("StarFrame")
-	NewCharPanel:SetSize(200,300)
+	NewCharPanel:SetSize(360,300)
 	NewCharPanel:Center()
 	NewCharPanel:SetTitle("New Character")
 	NewCharPanel:SetDraggable(false)
@@ -358,14 +357,14 @@ function NewCharacter()
 		CName:SetEditable(true)
 		
 		local ClassPictures = {}
-		ClassPictures[0] = {Name = "Alyx", Image = "alyx"}
-		ClassPictures[1] = {Name = "GMAN", Image = "gman"}
-		ClassPictures[2] = {Name = "Barney", Image = "barney"}
-		ClassPictures[3] = {Name = "Kleiner", Image = "kleiner"}
+		ClassPictures[0] = {Name = "Alyx", Image = "npc_alyx"}
+		ClassPictures[1] = {Name = "GMAN", Image = "npc_gman"}
+		ClassPictures[2] = {Name = "Barney", Image = "npc_barney"}
+		ClassPictures[3] = {Name = "Kleiner", Image = "npc_kleiner"}
 		
 		for k, v in pairs(ClassPictures) do
 			CharClassImages[k] = vgui.Create("ClassImageButton", NewCharPanel)
-			CharClassImages[k]:SetPos(k*40+10, 75)
+			CharClassImages[k]:SetPos(k*85+10, 75)
 			CharClassImages[k]:SetIt(v.Name, v.Image)
 		end
 		
