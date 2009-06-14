@@ -1,0 +1,9 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"VGUI/entities/swo/wookie"
+	"$ignorez"		1
+	"$vertexcolor" 		1
+	"$vertexalpha" 		1
+	"$nolod" 			1
+	"$nomip" 			1
+}
