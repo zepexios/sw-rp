@@ -83,9 +83,12 @@ function Player:Load(charkey)
 	self:Kill()
 end
 
-function LoadPlyCon(ply, cmd, arg)
-	ply:Load(arg[1])
-	ply:Kill()
+function LoadPlyCon(ply, cmd, args)
+	local lol = string.Implode(" ", args)
+	local lol = string.lower(lol)
+	PrintTable(args)
+	print(lol)
+	ply.CurrentChar = ply.Chars[lol]
 end
 
-concommand.Add("SWOLoadChar", "SWOLoadChar", LoadPlyCon)
+concommand.Add("SWOLoadChar", LoadPlyCon)

@@ -8,6 +8,7 @@ require("datastream")
 ------------------------------------------------------------
 --AddCSLuaFile is for files that the client needs to download
 --ie: any thing client side or shared
+
 AddCSLuaFile('cl_init.lua')
 AddCSLuaFile('cl_charbox.lua')
 AddCSLuaFile('cl_vgui.lua')
@@ -19,6 +20,7 @@ include('shared.lua')
 include('quests.lua')
 include('level.lua')
 include('player_extention.lua')
+include('level.lua')
 
 --Player Spawning----------------------------------------------------------
 --This function is called once on the first time you spawn
