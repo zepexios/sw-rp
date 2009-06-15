@@ -40,6 +40,10 @@ function PrintLevel( pl )
 	pl:ChatPrint( "Your level is now: " .. pl.CurrentChar.level or DEFAULT_LEVEL )
 end
 
+function LevelSound( pl )
+pl:EmitSound( "luke.mp3" )
+end
+
 --NEVER CALL THIS FUNCTION FROM THE TOP WITH A VALID ARGUMENT
 --Doing so will not allow it to save the player's data
 function _R.Player:Levelup( recur )
@@ -47,6 +51,7 @@ function _R.Player:Levelup( recur )
 		self.CurrentChar.xp = self.CurrentChar.xp - self:GetNeededXP( )
 		self.CurrentChar.level = self.CurrentChar.level + 1
 		PrintLevel(self)
+		LevelSound(self)
 		self:Levelup( true )
 
 		if not recur then
