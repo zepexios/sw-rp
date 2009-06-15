@@ -9,7 +9,7 @@ function hidehud(name)													//Hides the normal HUD
 end
 
 function DrawHud()								
-	self:HUDDrawTargetID()
+	GAMEMODE:HUDDrawTargetID()
 
 	local Health = LocalPlayer():Health()
 	draw.RoundedBox( 4, 3, 6, 100, 15, Color( 50, 205, 50, 100 ))
@@ -47,7 +47,6 @@ function GM:HUDDrawTargetID()
 																		//VV
 				draw.DrawText( v:Nick( ), "DefaultSmall", screenpos.x, screenpos.y, Color( 255, 255, 255, alpha ), 1 )
 				draw.DrawText( team.GetName( v:Team( ) ), "DefaultSmall", screenpos.x, screenpos.y + 10, Color( 255, 255, 255, alpha ), 1 )
-				draw.DrawText( v:GetNWString( "title_"..v:SteamID() ), "DefaultSmall", screenpos.x, screenpos.y + 20, Color( 255, 255, 255, alpha ), 1 )
 				
 				if( v:GetNWInt( "chatopen" ) == 1 ) then
 					draw.DrawText( "Typing..", "ChatFont", screenpos.x, screenpos.y - 50, Color( 255, 255, 255, alpha ), 1 )

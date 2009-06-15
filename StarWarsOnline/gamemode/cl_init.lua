@@ -278,6 +278,7 @@ function OpenCharSelection()
 		
 		if CharText == "" then return end
 		RunConsoleCommand("SWOLoadChar", CharText)
+		print(CharText)
 		CharPanelIsOpen = false
 		CharsList:Close()
 		MOTDPanel:Close()
@@ -392,11 +393,12 @@ function NewCharacter()
 				end
 			end
 			if TheSelected != false then
+				local lol = CName:GetValue()
 				MCharTable = {}
-				MCharTable[CName:GetValue()] = {}
-				MCharTable[CName:GetValue()].name = CName:GetValue()
-				MCharTable[CName:GetValue()].image = TheSelected
-				MCharTable[CName:GetValue()].proffesion = FactionDrop:GetValue()
+				MCharTable[lol] = {}
+				MCharTable[lol].name = CName:GetValue()
+				MCharTable[lol].image = TheSelected
+				MCharTable[lol].proffesion = FactionDrop:GetValue()
 			
 				NewCharPanel:Close()
 			
