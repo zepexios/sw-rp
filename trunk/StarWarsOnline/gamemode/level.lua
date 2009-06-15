@@ -17,34 +17,36 @@ function EasyLog( s, ... )
 end
 
 function _R.Player:Save( )
+	self:ChatPrint("Account Saved")
 	EasyLog( "%q (%s) had their xp saved.", self:Nick( ), self:UniqueID( ) )
 	self:SaveChars()
 end
 
 function _R.Player:GetXP( )
-	return self.XP
+	return self.xp
 end
 
 function _R.Player:AddXP( n )
-	if !self.CurrentChar.XP then self.CurrentChar.XP = DEFAULT_XP end
-	if !self.CurrentChar.Level then self.CurrentChar.Level = DEFAULT_LEVEL end
-	self.CurrentChar.XP = self.CurrentChar.XP + n
+	if !self.CurrentChar.xp then self.CurrentChar.xp = DEFAULT_XP end
+	if !self.CurrentChar.level then self.CurrentChar.level = DEFAULT_LEVEL end
+	self.CurrentChar.xp = self.CurrentChar.xp + n
 end
 
 function _R.Player:GetNeededXP( )
-	return self.CurrentChar.Level * EXPERIENCE_SCALE
+	return self.CurrentChar.level * EXPERIENCE_SCALE
 end
 
 function PrintLevel( pl )
-	pl:ChatPrint( "Your level is now: " .. pl.Level or DEFAULT_LEVEL )
+	pl:ChatPrint( "Your level is now: " .. pl.CurrentChar.level or DEFAULT_LEVEL )
 end
 
 --NEVER CALL THIS FUNCTION FROM THE TOP WITH A VALID ARGUMENT
 --Doing so will not allow it to save the player's data
 function _R.Player:Levelup( recur )
-	if self.CurrentChar.XP >= self:GetNeededXP( ) then
-		self.CurrentChar.XP = self.CurrentChar.XP - self:GetNeededXP( )
-		self.CurrentChar.Level = self.CurrentChar.Level + 1
+	if self.CurrentChar.xp >= self:GetNeededXP( ) then
+		self.CurrentChar.xp = self.CurrentChar.xp - self:GetNeededXP( )
+		self.CurrentChar.level = self.CurrentChar.level + 1
+		PrintLevel(self)
 		self:Levelup( true )
 
 		if not recur then
@@ -79,7 +81,7 @@ end
 hook.Add( "PlayerDisconnected"	, "Level.PlDiscnct", _R.Player.Save 	)
 hook.Add( "OnNPCKilled"		, "Level.NPCKilled", OnNPCKilled 	)
 hook.Add( "PlayerDeath", "Level.PlayerDeath", playerDies )
-timer.Create( "SaveXP", 600, 0, AutoSave )
+timer.Create( "SaveXP", 120, 0, AutoSave )
 
 function playerRespawn( ply )
 	if !ply.CurrentChar then return end
