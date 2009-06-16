@@ -393,7 +393,7 @@ function NewCharacter()
 				end
 			end
 			if TheSelected != false then
-				local lol = CName:GetValue()
+				local lol = string.lower(CName:GetValue())
 				MCharTable = {}
 				MCharTable[lol] = {}
 				MCharTable[lol].name = CName:GetValue()
