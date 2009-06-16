@@ -1,0 +1,86 @@
+Marksman (uses snipers)
+Level 10 = Rookie Marksman
+Level 20 = Advanced Marksman
+Level 30 = Expert Marksman
+Level 40 = Master Marksman
+Level 50 = Elder Marksman
+
+Brawler ( Uses Swords and any other melee weap but knucks and fists)
+Level 10 = Fighter
+Level 20 = Brawler
+Level 30 = Expert Brawler
+Level 40 = Master Brawler
+Level 50 = Elder Brawler
+
+Scout Class has been dropped due to coding restrictions
+
+Medic(specialises in healing others can give buffs)
+Level 10 = Medic
+Level 20 = Field Stabilizer
+Level 30 = Expert LifeSaver
+Level 40 = Master Doctor
+Level 50 = Elder Doctor
+
+Creature Handler( commands beasts at their will )
+Level 10 = Tamer
+Level 20 = Rounder
+Level 30 = Expert Creature Handler
+Level 40 = Master Creature Handler
+Level 50 = Elder Creature Handler
+
+Bounty Hunter( Hunts Anyone who has a bounty on them)
+Level 10 = Fugitive Tracker
+Level 20 = Stalker
+Level 30 = Bounty hunter
+Level 40 = Master Bounty Hunter
+Level 50 = Elder Bounty Hunter
+
+Jedi (WILL NOT BE ACCESSABLE BY JUST CREATING A CHARACTER TO UNLOCK THE JEDI PROF YOU MUST!
+Have 20 Badges (gain badges for doing quests killing people in pvp basicially achievements)
+Become and elder in one profession
+Then you can create one
+
+Commando( Specializes in explosives)
+Level 10 = Demoman
+Level 20 = Detonator
+Level 30 = Commando
+Level 40 = Master Commando
+Level 50 = Elder Commando
+
+Pistoleer( Specializes in pistols)
+Level 10 = QuickShot
+Level 20 = TriggerFinger
+Level 30 = Pistoleer
+Level 40 = Master Pistoleer
+Level 50 = Elder Pistoleer
+
+Smuggler(smuggles spices and makes a living selling contraband)
+Level 10 = Fence
+Level 20 = Fugitive
+Level 30 = Smuggler
+Level 40 = Master Smuggler
+Level 50 = Elder Smuggler
+
+Squad Leader( can give group buffs players become inspired around them, speicalizes in Rifles)
+Level 10 = Commander
+Level 20 = Tactician
+Level 30 = Squad Leader
+Level 40 = Master Squad Leader
+Level 50 = Elder Squad Leader
+
+Swordsman Dropped due to coding restrictions
+
+Tera Kasi Artist (Specializes in Hand To Hand comabt and Can use Knucklers)
+Level 10 = Tera Kasi Student
+Level 20 = Tera Kasi Novice
+Level 30 = Tera Kasi Artist
+Level 40 = Tera Kasi Mystic
+Level 50 = Tera Kasi Elder
+
+Try to code the profs as mentioned in specialization
+if you can code some skills for them and possibly maybe a small hotbar that would be good for heals etc.
+Keep in mind the game will be in first person though.
+How ever you think their skills should be done ask Mandalore before coding the skills though.
+If they specialize in something when using that weapon they do more damage each level and they do the most at level 50 obviously
+They cannot use weapons that they do not specialize in.
+Mandalore will code profs once iRzilla  finishes one prof so He can use it as an example. 
