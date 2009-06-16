@@ -2,24 +2,27 @@
 	Polkm: This file is for functions that add huf elements to the screen
 --------------------------NOTE----------------------------------]]
 
-function hidehud(name)													//Hides the normal HUD
-	for k, v in pairs{"CHudHealth", "CHudBattery", "CHudAmmo", "CHudSecondaryAmmo"} do
+
+
+function GM:HUDShouldDraw( name )											
+	for k, v in pairs{ "CHudHealth" } do 
 		if name == v then return false end
 	end
 end
 
-function DrawHud()								
-	GAMEMODE:HUDDrawTargetID()
-
-	local Health = LocalPlayer():Health()
-	draw.RoundedBox( 4, 3, 6, 100, 15, Color( 50, 205, 50, 100 ))
-	draw.RoundedBox( 4, 4, 7, Health, 12, Color( 255, 0, 0, 255 ))
-    
-	local Armor = LocalPlayer():Armor()
-	draw.RoundedBox( 4, 10, 20, 100, 15, Color( 50, 205, 50, 100))
-	draw.RoundedBox( 4, 11, 21, Armor, 12, Color( 65, 105, 225, 255))
-
+function GM:HUDPaint()
+GAMEMODE:HUDDrawTargetID() 
+	//draw.RoundedBox( Number Bordersize, Number X, Number Y, Number Width, Number Height, Table Color )
+	local Health = client:Health() //If you don't get it every frame, it will only show the value that was active when the script started running.
+	local Armor = client:Armor() //Same for this.
+	draw.RoundedBox( 4, 5, 5, 200, 130, Color(105, 105, 105, 255)) //Keep the rounding at a multiple of 2 (not an odd number) otherwise it shows up weird.
+	draw.RoundedBox( 4, 10, 5, math.Clamp(Health, 0, 1000), 50, Color( 178, 34, 34, 255))
+	draw.RoundedBox( 4, 10, 60, math.Clamp(Armor, 0, 1000), 50, Color( 0, 0, 205, 255))
+	//draw.SimpleText( String Text, String Font, Number X, Number Y, Table Colour, Number Xalign, Number Yalign )
+	draw.SimpleText( team.GetName( client:Team() ), "Arial", 10, 110, Color(100, 149, 237, 255), 0, 1 )
 end
+
+
 
 function GM:HUDDrawTargetID()
 
