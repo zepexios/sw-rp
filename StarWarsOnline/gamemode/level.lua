@@ -42,6 +42,7 @@ end
 
 function LevelSound( pl )
 pl:EmitSound( "luke.mp3" )
+LevelUpEffect(pl:GetPos())
 end
 
 --NEVER CALL THIS FUNCTION FROM THE TOP WITH A VALID ARGUMENT
