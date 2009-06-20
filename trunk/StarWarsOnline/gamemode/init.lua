@@ -22,6 +22,7 @@ include('level.lua')
 include('player_extention.lua')
 include('level.lua')
 include('resource.lua')
+include('sv_effects.lua')
 
 --Player Spawning----------------------------------------------------------
 --This function is called once on the first time you spawn
