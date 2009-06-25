@@ -1,0 +1,1 @@
+// Few rules:// All files MUST start with "Prof_"// You have a few functions to play with://	Prof:Init() - Called when the file is first loaded//	Erm... thinking of moar ( purposefull spelling error.. )function Prof:Init()				return "Loaded", 0 ,1 // return <"Failed"/ "Loaded">, <int Failed>, <int Worked>end

@@ -14,6 +14,7 @@ AddCSLuaFile('cl_charbox.lua')
 AddCSLuaFile('cl_vgui.lua')
 AddCSLuaFile('cl_hud.lua')
 AddCSLuaFile('shared.lua')
+AddCSLuaFile('cl_professions.lua')
 
 ------------------------------------------------------------
 include('shared.lua')

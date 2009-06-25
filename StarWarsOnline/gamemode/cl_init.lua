@@ -26,6 +26,7 @@ include('shared.lua')
 include('cl_vgui.lua')
 include('cl_hud.lua')
 include('cl_charbox.lua')
+include('cl_professions.lua')
 ----------------------
 
 --    Variables    --
