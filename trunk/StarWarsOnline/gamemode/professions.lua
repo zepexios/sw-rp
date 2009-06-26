@@ -6,24 +6,22 @@
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- This is the plugin system ------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-// Set up the global table FIRST!
 Prof = Prof or {}
 
-function Profs:LoadProfs( ply )
-	Prof:Init()
+function Prof:LoadProfs( ply ) 
 	Fails = 0
 	Works = 0	
 	print( "*************************************" )
 	print( "********Loading Professions**********" )
-	for _,v in pairs(file.FindInLua("Professions/Prof_*.lua")) do
-			Fails = Fails + Failed
-			Works = Works + Worked
-			include("Professions/"..v)
-			local Status, Failed, Worked = Prof:Init()
-			local Name = string.sub( v, 1, 5 )
-			local ProfName = string.sub( Name, -4 )
-			print( "Profession: \""ProfName"\" "..Status )
+	for _, v in pairs( file.FindInLua( "Professions/*.lua" ) do
+		include('Professions/'..v)
+		Status, ProfName = Init()
+		print( "Profession: \""..ProfName.."\" "..Status )
+		if( Status = "Loaded" || "loaded" ) then
+			Works = Works + 1
+		else
+			Fails = Fails + 1
+		end
 	end
 	print( "Modules Loaded: "..Works )
 	print( "Modules Failed: "..Works )
@@ -32,6 +30,6 @@ function Profs:LoadProfs( ply )
 end
 
 
-
-
-
+// Name = string.sub( v, 1, 5 )
+// = string.sub( Name, -4 )
+// 122.58.67.128:27015
