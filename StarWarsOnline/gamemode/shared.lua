@@ -30,3 +30,5 @@ team.SetUp(4,"Medic",Color(25,25,112,255))
 --Polkm: You could add more but its not realy nessesary this is just so its organised
 Currencies = {}
 Currencies["Credits"] = {Name = "Credits",Default = 500}
+
+Proffesions = {}

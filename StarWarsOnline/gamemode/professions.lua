@@ -1,35 +1,46 @@
-// Professions.lua by MGinshe
-// This is gona be big, so i have implemented a "plugin" system.
-// Add a file to the "Professions" Folder to add a profession
-// P.S Take a look at "Prof_Tamplate.lua" For an example of how to make Professions :)
+Proffesions = {}
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- This is the plugin system ------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Prof = Prof or {}
+function SWO_RegisterPROF( PROF )
 
-function Prof:LoadProfs( ply ) 
-	Fails = 0
-	Works = 0	
-	print( "*************************************" )
-	print( "********Loading Professions**********" )
-	for _, v in pairs( file.FindInLua( "Professions/*.lua" ) do
-		include('Professions/'..v)
-		Status, ProfName = Init()
-		print( "Profession: \""..ProfName.."\" "..Status )
-		if( Status = "Loaded" || "loaded" ) then
-			Works = Works + 1
-		else
-			Fails = Fails + 1
-		end
+	if (PROF.ClientSide) then
+		
+		AddCSLuaFile(PROF.Filename)
+		
 	end
-	print( "Modules Loaded: "..Works )
-	print( "Modules Failed: "..Works )
-	print( "*********Loading Finished!***********" )
-	print( "*************************************" )
+
+	if ((PROF.ClientSide && CLIENT) || (PROF.ServerSide && SERVER)) then
+
+		Msg("PROF -> " .. PROF.Filename .. "\n")
+		
+		if (PROF.Registered) then
+			PCallError( PROF.Registered )
+		end
+
+		table.insert( Proffesions, PROF )
+		
+	end
 end
 
+function SWO_LoadPROFs()
 
-// Name = string.sub( v, 1, 5 )
-// = string.sub( Name, -4 )
-// 122.58.67.128:27015
+	DIR = "Proffesions"
+
+	local luaFiles = file.FindInLua(DIR .. "/*.lua")
+
+	for k,v in pairs(luaFiles) do
+	
+		PROF_FILENAME = DIR .. "/" .. v
+		
+		if (file.IsDir("lua/" .. PROF_FILENAME)) then
+		
+			SWO_LoadPROFs( PROF_FILENAME )
+		
+		else
+		
+			include( PROF_FILENAME )
+			
+		end
+		
+	end
+
+end

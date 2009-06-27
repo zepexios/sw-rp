@@ -14,7 +14,7 @@ AddCSLuaFile('cl_charbox.lua')
 AddCSLuaFile('cl_vgui.lua')
 AddCSLuaFile('cl_hud.lua')
 AddCSLuaFile('shared.lua')
-AddCSLuaFile('cl_professions.lua')
+AddCSLuaFile('professions.lua')
 
 ------------------------------------------------------------
 include('shared.lua')
@@ -38,7 +38,6 @@ function GM:PlayerInitialSpawn(ply)
 end
 --Polkm: This is called everytime you spawn
 function GM:PlayerSpawn(ply)
-	LoadProfs()
 	ply:SetRunSpeed( 1000 )
 	ply:SetModel( "models/alyx.mdl" )
 	ply:Give( "weapon_smg1" )
@@ -64,7 +63,7 @@ end
 // Timers
 local songs = {"imperial.mp3", "duel.mp3", "heroes.mp3","luke.mp3","force.mp3","anakin.mp3"}
 
-timer.Create( "10MinSongPlayer", 5, 0, function()	// My attempt at the song player ..MGinshe..
+timer.Create("10MinSongPlayer", 5, 0, function()
 	for k, v in pairs( player.GetAll ) do
 		if( v:GetNWBool( "10MinSongPlayer" ) ) then
 			v:SetNWInt( "SongPlayerVolume", 50 )
@@ -72,24 +71,12 @@ timer.Create( "10MinSongPlayer", 5, 0, function()	// My attempt at the song play
 			local Volume = v:GetNWInt( "SongPlayerVolume" )
 			local Pitch = v:GetNWInt( "SongPlayerPitch" )
 			Song = math.random( 1, 6 )
-			v:EmitSound( songs.Song, Volume, Pitch )
+			v:EmitSound( songs[Song], Volume, Pitch )
 		end
 	end
-end
+end)
 
-timer.Create( "Every10mins", 600, 0, function()
-for k, v in pairs(player.GetAll) do v:ConCommand("play "..table.Random(songs)) end
-end )
-
-
-timer.Create( "LoadProfessions",  600, 0, function() LoadProfs() end )
-
-
-
-
-
-
-
+SWO_LoadPROFs()
 
 
 
