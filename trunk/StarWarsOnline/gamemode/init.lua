@@ -63,18 +63,15 @@ end
 // Timers
 local songs = {"imperial.mp3", "duel.mp3", "heroes.mp3","luke.mp3","force.mp3","anakin.mp3"}
 
-timer.Create("10MinSongPlayer", 5, 0, function()
-	for k, v in pairs( player.GetAll ) do
-		if( v:GetNWBool( "10MinSongPlayer" ) ) then
-			v:SetNWInt( "SongPlayerVolume", 50 )
-			v:SetNWInt( "SongPlayerPitch", 50 )
-			local Volume = v:GetNWInt( "SongPlayerVolume" )
-			local Pitch = v:GetNWInt( "SongPlayerPitch" )
-			Song = math.random( 1, 6 )
-			v:EmitSound( songs[Song], Volume, Pitch )
-		end
+function PlayTehSongs()
+	timer.Simple(300,function() PlayTehSongs() end)
+	song = table.Random(songs)
+	print("Playing Song: "..song)
+	for k, v in pairs( player.GetAll() ) do
+		v:EmitSound( song )
 	end
-end)
+end
+timer.Simple(1,function() PlayTehSongs() end)
 
 SWO_LoadPROFs()
 
