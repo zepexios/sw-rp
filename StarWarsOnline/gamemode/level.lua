@@ -23,13 +23,14 @@ function _R.Player:Save( )
 end
 
 function _R.Player:GetXP( )
-	return self.xp
+	return self.CurrentChar.xp
 end
 
 function _R.Player:AddXP( n )
 	if !self.CurrentChar.xp then self.CurrentChar.xp = DEFAULT_XP end
 	if !self.CurrentChar.level then self.CurrentChar.level = DEFAULT_LEVEL end
 	self.CurrentChar.xp = self.CurrentChar.xp + n
+	self:SetNWString("xp", self.CurrentChar.xp)
 end
 
 function _R.Player:GetNeededXP( )
@@ -53,6 +54,7 @@ function _R.Player:Levelup( recur )
 		self.CurrentChar.level = self.CurrentChar.level + 1
 		PrintLevel(self)
 		LevelSound(self)
+		self:SetNWString("level", self.CurrentChar.level)
 		self:Levelup( true )
 
 		if not recur then

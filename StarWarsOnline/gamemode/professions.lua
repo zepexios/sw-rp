@@ -44,3 +44,11 @@ function SWO_LoadPROFs()
 	end
 
 end
+
+function _R.Player:SetProffesion(name)
+	self.CurrentChar.proffesion = name
+end
+
+function _R.Player:GetProffesion()
+	return self.CurrentChar.proffesion
+end
