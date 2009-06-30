@@ -1,7 +1,7 @@
 local PROF = {}
 
-PROF.Name = "Scout"
-PROF.Author = "iRzilla"
+PROF.Name = "Brawler"
+PROF.Author = "Mandalore"
 PROF.Filename = PROF_FILENAME
 PROF.ClientSide = true
 PROF.ServerSide = true
