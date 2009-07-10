@@ -1,34 +1,58 @@
---[[------------------------NOTE----------------------------------
-	Polkm: USE THIS FILE ONLY FOR  GLOBAL VARS
-		ie: Something shared omongst all players
-	Polkm: Use those comment bars to organise
-	Polkm: Also the shared file should never have any includes in it
-	Polkm: I will try to make this file as easy to understand as posible
-	Polkm: Comment bars should be this long
-	------------------------------------------------------------
---------------------------NOTE----------------------------------]]
+--[[
+_________ _______  _______ _________ _        _        _______ 
+\__   __/(  ____ )/ ___   )\__   __/( \      ( \      (  ___  )
+   ) (   | (    )|\/   )  |   ) (   | (      | (      | (   ) |
+   | |   | (____)|    /   )   | |   | |      | |      | (___) |
+   | |   |     __)   /   /    | |   | |      | |      |  ___  |
+   | |   | (\ (     /   /     | |   | |      | |      | (   ) |
+___) (___| ) \ \__ /   (_/\___) (___| (____/\| (____/\| )   ( |
+\_______/|/   \__/(_______/\_______/(_______/(_______/|/     \|
 
---Regular Gamemode Info----------------------------------------------------------
---Polkm: You can add more stuff here but it is going to be global jsut like the gamemode name
-GM.Name 	= "StarWars RP"
-GM.Author 	= "The Starwars RP Team"
-GM.Email 	= "n/a"
-GM.Website 	= "http://swrp.forumotion.net/index.htm?sid=19a5880a48d75552977020a9189c2628"
+]]-- Copy and paste this into notepad.. it looks epic ..MGinshe..
+		--------------------------------------
+		--            shared.lua            --
+		-- Made for SWO by iRzilla & Polkm  --
+		--------------------------------------
 
---Some Gamevars----------------------------------------------------------
---Polkm: These are here to make it so code nubs dont have to mess with the big boy code =)
-MaxCharacters = 2
 
---Teams set up----------------------------------------------------------
---Polkm: Sorry MG you cant use that function to get the colors it doesn't work like that
-team.SetUp(1,"Marksman",Color(25,100,40,255))	
-team.SetUp(2,"Scout",Color(34,139,34,255))
-team.SetUp(3,"Brawler",Color(178,34,34,255))
-team.SetUp(4,"Medic",Color(25,25,112,255))
+SWO = {}
 
---Currencies----------------------------------------------------------
---Polkm: You could add more but its not realy nessesary this is just so its organised
-Currencies = {}
-Currencies["Credits"] = {Name = "Credits",Default = 500}
+SWO.Settings = {}
+SWO.Settings.Name = "StarWarsOnline"
+SWO.Settings.Author = "iRzilla & MGinshe"
+SWO.Settings.Website = "StarWarsOnline.net"
+SWO.Settings.Email = "lol@lol.com"
 
-Proffesions = {}
+SWO.Version = 0.1
+
+function SWO.Msg(Text)
+	Msg("SWO - ", Text.."\n")
+end
+
+function SWO.LoadDirectory(Directory)
+	SWO.Msg("Loading Directory: "..Directory.."'s Files...")
+	if(SERVER) then
+		for k, File in pairs(file.FindInLua("../gamemodes/StarWarsOnline/gamemode".."/"..Directory.."/*.lua")) do
+			SWO.Msg("Loading "..File..":")
+			pcall(include, Directory.."/"..File)
+		end
+	else
+		for k, File in pairs(file.FindInLua("../gamemodes/StarWarsOnline/gamemode".."/"..Directory.."/*.lua")) do
+			SWO.Msg("Loading "..File..":")
+			pcall(include, Directory.."/"..File)
+		end
+	end
+	SWO.Msg("Directory: "..Directory.." Loaded Successfully\n")
+end
+
+function SWO.AddCSLuaDirectory(Directory)
+	SWO.Msg("AddCSLuaDirectory: "..Directory.."...")
+	for k, File in pairs(file.FindInLua("../gamemodes/StarWarsOnline/gamemode".."/"..Directory.."/*.lua")) do
+		SWO.Msg("AddCSLuaFile "..File..":")
+		local Full = Directory.."/"..File
+		pcall(AddCSLuaFile, Full)
+	end
+	SWO.Msg("AddCSLuaDirectory: "..Directory.." - Successful\n")
+end
+
+SWO.LoadDirectory("Shared")
