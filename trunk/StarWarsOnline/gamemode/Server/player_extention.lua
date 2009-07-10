@@ -8,7 +8,7 @@ _________ _______  _______ _________ _        _        _______
 ___) (___| ) \ \__ /   (_/\___) (___| (____/\| (____/\| )   ( |
 \_______/|/   \__/(_______/\_______/(_______/(_______/|/     \|
 
-]]-- Copy and past this into notepad.. it looks epic ..MGinshe..
+]]-- Copy and paste this into notepad.. it looks epic ..MGinshe..
 		--------------------------------------
 		--       player_extention.lua       --
 		-- Made for SWO by iRzilla & Polkm  --
