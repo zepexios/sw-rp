@@ -56,3 +56,4 @@ function SWO.AddCSLuaDirectory(Directory)
 end
 
 SWO.LoadDirectory("Shared")
+SWO_LoadPROFs()

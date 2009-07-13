@@ -2,23 +2,12 @@ Proffesions = {}
 
 function SWO_RegisterPROF( PROF )
 
-	if (PROF.ClientSide) then
-		
-		AddCSLuaFile(PROF.Filename)
-		
-	end
+	AddCSLuaFile("Proffesions/"..PROF.Filename)
 
-	if ((PROF.ClientSide && CLIENT) || (PROF.ServerSide && SERVER)) then
+	Msg("PROF -> " .. PROF.Name .. "\n")
 
-		Msg("PROF -> " .. PROF.Filename .. "\n")
-		
-		if (PROF.Registered) then
-			PCallError( PROF.Registered )
-		end
+	table.insert( SWO.Proffesions, PROF )
 
-		table.insert( Proffesions, PROF )
-		
-	end
 end
 
 function SWO_LoadPROFs()
@@ -31,22 +20,19 @@ function SWO_LoadPROFs()
 	
 		PROF_FILENAME = DIR .. "/" .. v
 		
-		if (file.IsDir("lua/" .. PROF_FILENAME)) then
-		
-			SWO_LoadPROFs( PROF_FILENAME )
-		
-		else
-		
-			include( PROF_FILENAME )
-			
-		end
+		include( PROF_FILENAME )
 		
 	end
 
 end
 
-function _R.Player:SetProffesion(name)
-	self.CurrentChar.proffesion = name
+function _R.Player:SetProffesion( PROF )
+	print("Player Switched Proffesion To: "..PROF.Name)
+
+	if !table.HasValue(SWO.Proffesions, PROF) then return end
+
+	self.CurrentChar.proffesion = PROF
+	PROF:Init(self)
 end
 
 function _R.Player:GetProffesion()
