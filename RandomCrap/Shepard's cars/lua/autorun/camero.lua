@@ -14,7 +14,7 @@ local V = {
 				Model = "models/peterboi/camaro/camaro.mdl",
 				
 				KeyValues = {
-								vehiclescript	=	"scripts/vehicles/corvette.txt"
+								vehiclescript	=	"scripts/vehicles/camero.txt"
 							}
 			}
 
