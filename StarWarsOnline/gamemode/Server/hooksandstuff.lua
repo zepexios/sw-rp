@@ -30,9 +30,9 @@ end
 --It Add's The F1 Bind
 
 
- function GM:ShowHelp( ply )
-   ply:ConCommand( "OpenCharSelection" )
-  end 
+function GM:ShowHelp( ply )
+	ply:ConCommand( "OpenCharSelection" )
+end 
 
 // Timers
 local songs = {"imperial.mp3", "duel.mp3", "heroes.mp3","luke.mp3","force.mp3","anakin.mp3"}
