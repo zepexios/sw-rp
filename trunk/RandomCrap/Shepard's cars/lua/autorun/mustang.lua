@@ -14,7 +14,7 @@ local V = {
 				Model = "models/Splayn/ford_mustang_fastback_gt.mdl",
 				
 				KeyValues = {
-								vehiclescript	=	"scripts/vehicles/corvette.txt"
+								vehiclescript	=	"scripts/vehicles/mustang.txt"
 							}
 			}
 
