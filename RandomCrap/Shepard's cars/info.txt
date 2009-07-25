@@ -1,0 +1,10 @@
+"AddonInfo"
+{
+	"name"			"1968 Ford Mustang Fastback GT"
+	"version"		"1.0"
+	"up_date"		"31th August 2008"
+	"author_name"		"SPLAYN"
+	"author_email"		"Black_Shark_123@yahoo.de"
+	"author_url"		"www.splayn.wordpress.com"
+	"info"			"Ported Model"
+}
