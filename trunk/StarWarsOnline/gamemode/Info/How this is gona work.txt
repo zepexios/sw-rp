@@ -1,0 +1,15 @@
+Ok guys. 
+There have been a few major changes in the last little while ( Appart from mandy handing leadershp over to Shep, and let me assure you, mandy is still verry much apart of SWO )
+One of those changes has been the "management" system ( Thanks to iRzilla! =D )
+
+This system involvs:
+	Each different type of lua file ( Server, Client, and shared files ) has its own folder. Place all respective scripts in 	those folders ( They will automatically be included, and in the case of shared and client files, Downloaded )
+
+	More organisation: No longer is the main folder spammed with 40+ files
+
+	Overall betterness!
+
+All i can think of at the moment, sorry
+More updates soon
+
+..MGinshe..
