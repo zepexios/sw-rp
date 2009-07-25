@@ -54,6 +54,10 @@ function GM:HUDDrawTargetID()
 				if( v:GetNWInt( "chatopen" ) == 1 ) then
 					draw.DrawText( "Typing..", "ChatFont", screenpos.x, screenpos.y - 50, Color( 255, 255, 255, alpha ), 1 )
 				end
+				if( LocalPlayer():GetEyeTrace().Entity = v ) then
+					// Draw stuff on the player you're looking at
+					
+				end
 			end
 		end
 	end
