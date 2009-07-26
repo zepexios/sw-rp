@@ -1,1 +1,0 @@
-SWO.PlayerModels = {"alyx.mdl"}

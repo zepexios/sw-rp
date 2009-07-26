@@ -1,18 +1,3 @@
---[[
-_________ _______  _______ _________ _        _        _______ 
-\__   __/(  ____ )/ ___   )\__   __/( \      ( \      (  ___  )
-   ) (   | (    )|\/   )  |   ) (   | (      | (      | (   ) |
-   | |   | (____)|    /   )   | |   | |      | |      | (___) |
-   | |   |     __)   /   /    | |   | |      | |      |  ___  |
-   | |   | (\ (     /   /     | |   | |      | |      | (   ) |
-___) (___| ) \ \__ /   (_/\___) (___| (____/\| (____/\| )   ( |
-\_______/|/   \__/(_______/\_______/(_______/(_______/|/     \|
-
-]]-- Copy and paste this into notepad.. it looks epic ..MGinshe..
-		--------------------------------------
-		--       player_extention.lua       --
-		-- Made for SWO by iRzilla & Polkm  --
-		--------------------------------------
 
 --This alows me to add functions to the player object
 local Player = FindMetaTable("Player")
@@ -90,5 +75,14 @@ function LoadPlyCon(ply, cmd, args)
 	print(lol)
 	ply.CurrentChar = ply.Chars[lol]
 end
-
 concommand.Add("SWOLoadChar", LoadPlyCon)
+
+function Player:GiveAllWeapons()
+	
+	
+end
+
+function Player:GiveAllAmmo(0
+	
+	
+end

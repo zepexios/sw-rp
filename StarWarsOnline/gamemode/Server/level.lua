@@ -1,7 +1,7 @@
-DEFAULT_XP 		= 0
+DEFAULT_XP 			= 0
 DEFAULT_LEVEL 		= 1
 EXPERIENCE_SCALE 	= 100	--How much each level costs in XP, times level
-REWARD_XP		= 10	--How much XP is rewarded for a kill
+REWARD_XP			= 10	--How much XP is rewarded for a kill
 
 function EasyLog( s, ... )
 	local ns

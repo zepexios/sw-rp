@@ -1,5 +1,5 @@
 --[[------------------------NOTE----------------------------------
-	Polkm: This file is for functions that add huf elements to the screen
+	Polkm: This file is for functions that add hud elements to the screen
 --------------------------NOTE----------------------------------]]
 
 
@@ -11,7 +11,7 @@ function GM:HUDShouldDraw( name )
 end
 
 function GM:HUDPaint()
-GAMEMODE:HUDDrawTargetID() 
+	GAMEMODE:HUDDrawTargetID() 
 	//draw.RoundedBox( Number Bordersize, Number X, Number Y, Number Width, Number Height, Table Color )
 	local Health = client:Health() //If you don't get it every frame, it will only show the value that was active when the script started running.
 	local Armor = client:Armor() //Same for this.

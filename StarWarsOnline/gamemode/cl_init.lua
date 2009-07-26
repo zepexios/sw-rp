@@ -1,22 +1,7 @@
---[[
-_________ _______  _______ _________ _        _        _______ 
-\__   __/(  ____ )/ ___   )\__   __/( \      ( \      (  ___  )
-   ) (   | (    )|\/   )  |   ) (   | (      | (      | (   ) |
-   | |   | (____)|    /   )   | |   | |      | |      | (___) |
-   | |   |     __)   /   /    | |   | |      | |      |  ___  |
-   | |   | (\ (     /   /     | |   | |      | |      | (   ) |
-___) (___| ) \ \__ /   (_/\___) (___| (____/\| (____/\| )   ( |
-\_______/|/   \__/(_______/\_______/(_______/(_______/|/     \|
+require( "datastream" ) // Datastream Module. DONT touch
 
-]]--
-		-----------------------------
-		--       cl_init.lua       --
-		-- Made for SWO by iRzilla --
-		-----------------------------
-		-----------Autopsy-----------
+include(  "shared.lua" )
+SWO.LoadDirectory( "Client" )
 
-require("datastream")
-
-
-include('shared.lua')
-SWO.LoadDirectory("Client")
+// Lack of code you say?
+// This file simply includes other files. Great for modules, not so sure about lag ^^
