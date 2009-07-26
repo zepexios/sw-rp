@@ -1,6 +1,6 @@
 Proffesions = {}
 
-function SWO_RegisterPROF( PROF )
+function SWO.RegisterPROF( PROF )
 
 	AddCSLuaFile("Proffesions/"..PROF.Filename)
 
@@ -10,7 +10,7 @@ function SWO_RegisterPROF( PROF )
 
 end
 
-function SWO_LoadPROFs()
+function SWO.LoadPROFs()
 
 	DIR = "Proffesions"
 
