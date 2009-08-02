@@ -1,4 +1,5 @@
 require( "datastream" ) // Datastream Module. DONT touch
+require( "mysql" )    	// MySql Database module DONT touche ( doing so will wreck player banning and chars )
 
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )

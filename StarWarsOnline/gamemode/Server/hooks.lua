@@ -1,4 +1,3 @@
-
 function GM:PlayerInitialSpawn( ply )
 	ply:LoadChars()
 	ply:ConCommand( "OpenCharSelection" )
@@ -9,6 +8,9 @@ function GM:PlayerInitialSpawn( ply )
 end
 
 function GM:PlayerSpawn( ply )
+
+	util.PrecacheModel( ply.Char.Model )
+	ply:SetModel( ply.Char.Model )
 	
 end
 
@@ -18,20 +20,11 @@ function GM:PlayerLoadout(ply)
 	ply:GiveAllAmmo()
 	
 end
-
-function GM:PlayerSetModel( ply )
-	
-	util.PrecacheModel( ply.Chars.Model )
-	ply:SetModel( ply.Chars.Model )
-	
-end
-
 function GM:AcceptStream ( pl, handler, id )
 
     return true
 	
 end
-
 function GM:ShowHelp( ply )
 
 	ply:ConCommand( "OpenCharSelection" ) // Thanks Autopsy
@@ -49,6 +42,6 @@ function PlayTehSongs()
 		v:EmitSound( song )
 	end
 end
-timer.Simple(1,function() PlayTehSongs() end)
+timer.Simple(1,function() if( PlayeSongs ) then PlayTehSongs() end end)
 
 SWO.LoadPROFs()
