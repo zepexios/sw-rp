@@ -36,3 +36,10 @@ end
 
 SWO.LoadDirectory( "Shared" )
 SWO.LoadPROFs()
+
+// Some globl constants
+
+CLASS_JEDI 			= 1
+CLASS_SMUGELER 		= 2
+CLASS_BLAH 			= 3
+// I think you get it...

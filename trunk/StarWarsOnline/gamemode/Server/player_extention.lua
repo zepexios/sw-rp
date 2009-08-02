@@ -73,16 +73,68 @@ function LoadPlyCon(ply, cmd, args)
 	local lol = string.lower(lol)
 	PrintTable(args)
 	print(lol)
-	ply.CurrentChar = ply.Chars[lol]
+	ply.Char = ply.Chars[lol]
 end
 concommand.Add("SWOLoadChar", LoadPlyCon)
 
 function Player:GiveAllWeapons()
-	
-	
+end
+function Player:GiveAllAmmo()
 end
 
-function Player:GiveAllAmmo(0
-	
-	
+function Player:GetClass()
+	return CLASS_JEDI
 end
+function Player:GetForce()
+	self.Char.Force = self.Char.Force or 100
+	return self.Char.Force
+end
+function Player:TakeForce( NumForce, DontRegen ) 
+	self.Char.Force = self.Char.Force - NumForce
+	if( self.Char.Force < 0 ) then
+		self.Char.Force = 0
+	end
+	if( DontRegen != true ) then
+		timer.Create( "ForceBackUpTimer", 0.1, 0, function()
+			self:AddForce( 1 )
+			self:SetNWInt( "PlayerForce", self:GetForce() )
+			if( self:GetForce() >= self:GetMaxForce() ) then
+				timer.Destroy( "ForceBackUpTimer" )
+			end
+		end )
+	end
+	self:SetNWInt( "PlayerForce", self:GetForce() )
+end
+function Player:AddForce( NumForce )
+	self.Char.Force = self.Char.Force + NumForce
+	if( self.Char.Force > self:GetMaxForce() ) then
+		self.Char.Force = self:GetMaxForce()
+	end
+	print( "Force: "..self.Char.Force )
+end
+function Player:GetMaxForce()
+	return self.Char.MaxForce or 100
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

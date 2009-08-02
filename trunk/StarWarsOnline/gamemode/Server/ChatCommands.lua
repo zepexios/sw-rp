@@ -1,4 +1,6 @@
+// File SPECIFICLY for chat commands 
 function GM:PlayerSay( ply, text, global )
+	ltext = string.lower( text )
 	if( string.find( text, "!Encode:" ) == 1 )then
 		Message = string.sub( text, 8 )
 		if( string.sub( Message, 1, 1 ) == "%s" ) then
@@ -18,4 +20,3 @@ function GM:PlayerSay( ply, text, global )
 		end
 	end
 end
-
