@@ -1,3 +1,4 @@
+/****************    Lolwhut?    ************************8
 function SWO.Settings:Setup()
 	GM.Name 	= SWO.Settings.Name
 	GM.Author 	= SWO.Settings.Author
@@ -20,3 +21,4 @@ function GM:Initialize()
 end
 
 ST.Settings:Setup()
+*/
