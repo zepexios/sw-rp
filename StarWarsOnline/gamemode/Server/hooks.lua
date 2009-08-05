@@ -9,6 +9,12 @@ end
 
 function GM:PlayerSpawn( ply )
 
+	
+	--check to see if player has joined before and have a Char table
+	if ply.Char == nil then ply.Char = {}; end
+	--@meeces2911, change this to refer to a default model setting somewhere
+	if ply.Char.Model == nil then ply.Char.Model = "models/player/alyx.mdl"; end
+
 	util.PrecacheModel( ply.Char.Model )
 	ply:SetModel( ply.Char.Model )
 	ply:SetNWInt( "PlayerForce", ply:GetForce() )

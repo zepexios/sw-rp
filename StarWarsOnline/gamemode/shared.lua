@@ -1,4 +1,5 @@
 // Never include from a shared file.
+--@Meeces2911 NEVER Hard Code directories into a script like this ... causes ALL sorts of problems ;D
 
 SWO = {}
 
@@ -11,12 +12,12 @@ end
 function SWO.LoadDirectory( Directory )
 	SWO.Msg( "Loading Directory: "..Directory.."'s Files..." )
 	if( SERVER ) then
-		for k, File in pairs( file.FindInLua( "../gamemodes/StarWarsOnline/gamemode".."/"..Directory.."/*.lua" ) ) do
+		for k, File in pairs( file.FindInLua( GM.FolderName.."/gamemode/"..Directory.."/*.lua" ) ) do
 			SWO.Msg( "Loading "..File..":" )
 			pcall( include, Directory.."/"..File )
 		end
 	else
-		for k, File in pairs( file.FindInLua( "../gamemodes/StarWarsOnline/gamemode".."/"..Directory.."/*.lua" ) ) do
+		for k, File in pairs( file.FindInLua( GM.FolderName.."/gamemode/"..Directory.."/*.lua" ) ) do
 			SWO.Msg( "Loading "..File..":" )
 			pcall( include, Directory.."/"..File )
 		end
@@ -26,7 +27,7 @@ end
 
 function SWO.AddCSLuaDirectory( Directory )
 	SWO.Msg( "AddCSLuaDirectory: "..Directory.."..." ) 
-	for k, File in pairs( file.FindInLua( "../gamemodes/StarWarsOnline/gamemode".."/"..Directory.."/*.lua" ) ) do
+	for k, File in pairs( file.FindInLua( GM.FolderName.."/gamemode".."/"..Directory.."/*.lua" ) ) do
 		SWO.Msg( "AddCSLuaFile "..File..":" )
 		local Full = Directory.."/"..File
 		pcall( AddCSLuaFile, Full )
