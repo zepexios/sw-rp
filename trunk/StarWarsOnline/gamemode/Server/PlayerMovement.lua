@@ -8,7 +8,7 @@ function GM:KeyPress( ply, KEY )
 				ply.NoFallDamage = true
 				ply:TakeForce( 25 )
 				ply:SetVelocity( ply:GetUp() * 350 )
-				ply:EmitSound( "../gamemodes/StarWarsOnline/content/sounds/force/jump.wav" )
+				ply:EmitSound( "force/jump.wav" )
 				timer.Create( "ForceJumpConstTimer", 0.01, 0, function()
 					if( ( ply:GetForce() < 5 ) or !ply.ConstJump ) then
 						ply:PrintMessage( HUD_PRINTCENTER, "No moar jump :C" )
@@ -39,7 +39,7 @@ function GM:KeyPress( ply, KEY )
 		if( ply:GetClass() == CLASS_JEDI ) then
 			if( ply:GetForce() >= 10 and !ply:IsOnGround() ) then
 			elseif( ply:GetForce() >= 10 and ply:IsOnGround() ) then
-				ply:EmitSound( "../gamemodes/StarWarsOnline/content/sounds/force/speed.wav" )
+				ply:EmitSound( "force/speed.wav" )
 				timer.Create( "ForceSprintConstTimer", 0.01, 0, function()
 					if( ( ply:GetForce() < 5 ) or !ply.ConstSprint or !ply:IsOnGround() ) then
 						ply:PrintMessage( HUD_PRINTCENTER, "No moar force :S" )
