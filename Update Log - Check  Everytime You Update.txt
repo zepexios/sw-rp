@@ -39,6 +39,8 @@ Sharq - Mapper - SteamID: Judge Sharq
 
 Autopsy - LUA Coder - Derma Coder - Special Person :) SteamID: matthew160
 
+Meeces2911 - LUA Coder - MG's support guru - Also another special person :P SteamID: meeces2911
+
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------	
 
@@ -49,7 +51,7 @@ The coders will have to fill most of this in, We're relying on you to keep us up
 
 __________________________________________________________________________________________________
 
-- QUest System
+- Quest System
 
 	- Players will go to a console which corresponds to their faction and be able to take on 		  missions. Maybe one day they'll be cross-server, eh MGinshe? =D
 	
