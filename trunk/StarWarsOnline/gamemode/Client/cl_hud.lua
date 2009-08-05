@@ -142,9 +142,9 @@ function GM:HUDPaint( )
  
 	by = by + Vars.BarHeight + Vars.BarSpacing			-- increment text position
  
-	local Text = string.format( "Force: %iFP", client:GetNWInt( "PlayerForce" ) )
+	local Text = string.format( "Force: %iFP", client:GetForce() )
 	GHud:PaintText( cx, cy + by, Text, Vars.Font, Colors.Text )	-- paint suit text and suit bar
-	GHud:PaintBar( cx, cy + by + th + Vars.TextSpacing, BarWidth, Vars.BarHeight, Colors.SuitBar, client:GetNWInt( "PlayerForce" ) / 100 )
+	GHud:PaintBar( cx, cy + by + th + Vars.TextSpacing, BarWidth, Vars.BarHeight, Colors.SuitBar, client:GetForce() / client:GetMaxForce() )
 	
 	GHud:PaintText( ScrW() / 10 * 9, ScrH() / 10 * 9, client:GetNWInt( "Money" ), Vars.Font, Colors.Text )
  

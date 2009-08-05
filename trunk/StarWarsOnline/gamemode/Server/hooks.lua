@@ -11,6 +11,9 @@ function GM:PlayerSpawn( ply )
 
 	util.PrecacheModel( ply.Char.Model )
 	ply:SetModel( ply.Char.Model )
+	ply:SetNWInt( "PlayerForce", ply:GetForce() )
+	ply:SetNWInt( "PlayerMaxForce", ply:GetMaxForce() )
+	ply:AddForce( ply:GetMaxForce() )
 	
 end
 
