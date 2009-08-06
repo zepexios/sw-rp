@@ -1,4 +1,0 @@
--- Protect --
-
-Make it so people cannot noclip through props, use the select command to select which props and type
-protect as a command to protect them

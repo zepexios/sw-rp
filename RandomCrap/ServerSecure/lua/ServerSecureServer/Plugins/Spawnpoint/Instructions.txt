@@ -1,8 +1,0 @@
-// Spawnpoint
-
-Set a spawnpoint for somebody or for yourself
-
-Commands:
-
-ss playerspawnpoint <Player> (Set player's spawnpoint to where you're looking)
-ss spawnpoint <Player> (Set your own spawnpoint to where you're looking)

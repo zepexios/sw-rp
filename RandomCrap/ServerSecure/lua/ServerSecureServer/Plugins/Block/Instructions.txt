@@ -1,3 +1,0 @@
-// Block
-
-Prevents players from colliding with each other

@@ -1,9 +1,0 @@
-"AddonInfo"
-{
-	"name"			"ServerSecure"
-	"version"		"4.1"
-	"author_name"	"USSR"
-	"author_email"	"Sammi_43_@hotmail.com"
-	"author_url"	"http://steamcommunity.com/groups/serversecure"
-	"info"			"ServerSecure"
-}
