@@ -1,7 +1,0 @@
-// Title
-
-Give a user a title
-
-Commands:
-
-ss title <Player> <Text> (Set somebodies title)

@@ -1,7 +1,0 @@
-// Stats
-
-Everything on the server will be recorded and can be viewed with a command
-
-Commands:
-
-ss stats (View stats)

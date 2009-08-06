@@ -1,3 +1,0 @@
-// Logging
-
-Log server actions and see the logs in Garrysmod/Data/ServerSecure/Logs/

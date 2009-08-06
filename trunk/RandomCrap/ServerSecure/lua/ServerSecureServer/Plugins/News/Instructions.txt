@@ -1,3 +1,0 @@
-// News
-
-When a player first spawns it will display the set news

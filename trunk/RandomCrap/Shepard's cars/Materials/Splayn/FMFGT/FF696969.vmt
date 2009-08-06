@@ -1,6 +1,0 @@
-"VertexlitGeneric"
-{
-	"$basetexture" "splayn/FMFGT/FF000000"
-	"$envmap" "env_cubemap"
-	"$nocull" 1
-}

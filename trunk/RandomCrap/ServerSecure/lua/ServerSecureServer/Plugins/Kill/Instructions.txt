@@ -1,7 +1,0 @@
-// Kill
-
-Automatically give people who kill a warning
-
-Commands:
-
-ss killing <1|0>

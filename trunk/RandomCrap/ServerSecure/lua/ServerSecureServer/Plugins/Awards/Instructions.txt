@@ -1,8 +1,0 @@
-// Award
-
-Award players with many different types of awards
-
-Commands:
-
-ss giveaward <Player> <Award>
-ss takeaward <Player> <Award>
