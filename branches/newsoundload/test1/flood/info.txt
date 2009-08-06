@@ -1,0 +1,12 @@
+"Gamemode"
+{
+	"name"		"Flood"
+	"version"	"1.0"
+
+	"author_name"	"iRzilla"
+	"author_email"	""
+	"author_url"	""
+	
+	"info"		"Build a boat, survive the flood!"
+	"hide"		"0"
+}
