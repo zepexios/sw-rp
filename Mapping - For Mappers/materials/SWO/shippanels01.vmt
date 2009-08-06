@@ -1,9 +1,0 @@
-"LightmappedGeneric"
-{
-	"$basetexture" "SWO/shippanels01"
-	"$bumpmap" "SWO/shippanels01_normal"
-	"$envmap" "env_cubemap"
-	"$normalmap" "SWO/shippanels01_normal"
-	"$normalmapalphaenvmapmask" "1"
-	"$surfaceprop" "metal"
-}

@@ -1,9 +1,0 @@
-"worldvertextransition"
-{
-"$basetexture" "SWO/rockwall01small"
-"$basetexture2" "SWO/rockground01small"
-"$surfaceprop" "rock"
-"$surfaceprop2" "rock"
-“$bumpmap” “SWO/rockwall01small_normal”
-“$bumpmap2” “SWO/rockground01small_normal”
-}
