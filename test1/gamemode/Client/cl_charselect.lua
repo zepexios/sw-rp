@@ -270,7 +270,7 @@ function OpenCharSelection()
 		Entity:SetAngles( Angle( 0, RealTime()*40,  0) )
 	end]]--
 
-	local DermaPanel = vgui.Create( "StarFrame" )
+	--[[local DermaPanel = vgui.Create( "StarFrame" )
 	DermaPanel:SetPos( 50,50 )
 	DermaPanel:SetSize( 200, 250 )
 	DermaPanel:SetTitle( "Menu" )
@@ -288,7 +288,7 @@ function OpenCharSelection()
 	    MenuButtonOptions:AddOption("Disconnect", function() 	RunConsoleCommand("disconnect") end ) 
 
 	    MenuButtonOptions:Open() 
-end
+	end]]--
 end
 
 concommand.Add("OpenCharSelection",OpenCharSelection)
