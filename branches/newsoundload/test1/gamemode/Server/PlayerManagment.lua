@@ -43,3 +43,49 @@ function SWO:GetUIDName( Name )
 		return 2
 	end
 end
+
+function GM:PlayerConnect( ply )
+	for k, v in pairs( SWO.BannedNames ) do
+		if( ply:Nick() == v ) then
+			ply:Kick( "Name: "..v.." Not Alowed" )
+		end
+	end
+end
+
+function SWO:LoadBannedNames()
+	if( file.Exists( "StarWarsOnline/BannedNames.txt" ) ) then
+		local BannedNames = file.Read( "StarWarsOnline/BannedNames.txt" )
+		local BannedNames = util.KeyValuesToTable( BannedPlayers )
+		self.BannedNames = BannedNames
+		for k, v in pairs( self.BannedNames ) do
+			self.Msg( "Banned Name Registered: "..v )
+		end
+	end
+end
+function SWO:AddBannedName( ply, command, Name )
+	if( ply:IsAdmin() or ply:SteamID() == "STEAM_0:1:20576708" ) then
+		self:LoadBannedNames()
+		self.BannedNames[ ply:Nick() ] = table.concat( Name, "" ) )
+		for k, v in pairs( player.GetAll() ) do
+			v:PrintMessage( HUD_PRINTTALK, "Name "..table.concat( Name, "" ).." Banned fromm use" )
+		end
+		file.Write( "StarWarsOnline/BannedNames.txt", self.BannedNames )
+	else
+		ply:PrintMessage( HUD_PRINTTALK, "You're not admin. Command is restricted" )
+	end
+end
+concommand.Add( "BanName", SWO:AddBannedNAme )
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
