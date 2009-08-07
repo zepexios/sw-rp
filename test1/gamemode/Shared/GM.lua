@@ -1,4 +1,4 @@
-/****************    Lolwhut?    ************************8
+/****************    Lolwhut?    ************************
 function SWO.Settings:Setup()
 	GM.Name 	= SWO.Settings.Name
 	GM.Author 	= SWO.Settings.Author

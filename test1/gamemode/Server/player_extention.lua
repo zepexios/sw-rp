@@ -125,34 +125,22 @@ function Player:TakeForce( NumForce, DontRegen )
 	end
 	self:SetNWInt( "PlayerForce", self:GetForce() )
 end
+
 function Player:AddForce( NumForce )
 	self.Char.Force = self.Char.Force + NumForce
 	if( self.Char.Force > self:GetMaxForce() ) then
 		self.Char.Force = self:GetMaxForce()
 	end
 end
+
 function Player:GetMaxForce()
-	return self.Char.MaxForce or 100
+	--@meeces2911 SHOULD be MaxForce, but seems to be added to table as 'force' and i cant find where
+	-- it has been added.
+	return self.Char.force or 100
 end
+
 function Player:GetTakeForce()
-	return self.Char.TakeForce or 1
+--@meeces2911
+--makes sure 0.3 is rounded to 0.3, not 0.299xxxxxxxxx lua/gmod numbers fails :(
+	return math.Round( self.Char.takeforce * (10 ^ 1) ) / (10 ^ 1) or 1;
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
