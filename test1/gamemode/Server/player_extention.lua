@@ -22,8 +22,12 @@ function Player:SaveChars()
 
 		file.Write(FilePath,util.TableToKeyValues(self.Chars))
 	else
-		local CharsTable = {}
-		table.Merge(CharsTable, CharTable)
+		--@meeces2911
+		-- Why is this here ? what is it doing ? creating a new local table EACH time, and then merging the current
+		--Character table, and then .... what ? what is this actually doing ?!!
+		
+		--local CharsTable = {}
+		--table.Merge(CharsTable, CharTable)
 
 		self.Chars = CharTable
 		file.Write(FilePath,util.TableToKeyValues(CharTable))
@@ -41,8 +45,8 @@ function Player:MakeChar(CharTable)
 		self.Chars = contents
 		file.Write(FilePath,util.TableToKeyValues(contents))
 	else
-		local CharsTable = {}
-		table.Merge(CharsTable, CharTable)
+		--local CharsTable = {}
+		--table.Merge(CharsTable, CharTable)
 
 		self.Chars = CharTable
 		file.Write(FilePath,util.TableToKeyValues(CharTable))

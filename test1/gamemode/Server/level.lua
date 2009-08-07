@@ -42,7 +42,7 @@ function PrintLevel( pl )
 end
 
 function LevelSound( pl )
-pl:EmitSound( "luke.mp3" )
+pl:EmitSound( "SWO\client\luke.mp3" ) --@meeces2911 Updated sound path
 LevelUpEffect(pl:GetPos())
 end
 

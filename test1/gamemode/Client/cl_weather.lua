@@ -146,4 +146,4 @@ function WeatherThink()
         end  
     end  
 end  
-hook.Add("Think","",WeatherThink)  
+hook.Add("Think","SWO.WeatherThink",WeatherThink)  
