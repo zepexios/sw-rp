@@ -88,7 +88,7 @@ end
 
 hook.Add( "PlayerDisconnected"	, "Level.PlDiscnct", _R.Player.Save 	)
 hook.Add( "OnNPCKilled"		, "Level.NPCKilled", OnNPCKilled 	)
-hook.Add( "PlayerDeath", "Level.PlayerDeath", playerDies )
+--hook.Add( "PlayerDeath", "Level.PlayerDeath", PlayerDeath ) --Fix XP functions first
 timer.Create( "SaveXP", 120, 0, AutoSave )
 
 function playerRespawn( ply )
