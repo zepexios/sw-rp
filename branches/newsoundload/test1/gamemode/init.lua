@@ -10,6 +10,7 @@ SWO.LoadDirectory( "Server" )
 SWO.LoadDirectory( "Shared" )
 SWO.AddCSLuaDirectory( "Shared" )
 SWO.AddCSLuaDirectory( "Client" )
+SWO.AddSounds()
 
 SWO:LoadClasses()
 

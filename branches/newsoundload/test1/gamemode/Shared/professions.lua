@@ -1,10 +1,10 @@
-Proffesions = {}
+SWO.Proffesions = {}
 
 function SWO.RegisterPROF( PROF )
 
-	AddCSLuaFile("Proffesions/"..PROF.Filename)
+	AddCSLuaFile(GM.FolderName .. "/gamemode/Shared/Proffesions/"..PROF.Filename)
 
-	Msg("PROF -> " .. PROF.Name .. "\n")
+	SWO.Msg("PROF -> " .. PROF.Name)
 
 	table.insert( SWO.Proffesions, PROF )
 
@@ -12,18 +12,17 @@ end
 
 function SWO.LoadPROFs()
 
-	DIR = "Proffesions"
-
-	local luaFiles = file.FindInLua(DIR .. "/*.lua")
-
-	for k,v in pairs(luaFiles) do
+	SWO.Msg("Loading Proffesions ...");
 	
-		PROF_FILENAME = DIR .. "/" .. v
-		
-		include( PROF_FILENAME )
+	for _,v in pairs(file.FindInLua(GM.FolderName .. "/gamemode/Shared/Proffesions/*.lua")) do
+	
+		include( GM.FolderName .. "/gamemode/Shared/Proffesions/" .. v );
+		SWO.Msg("included: " .. v);
 		
 	end
 
+	SWO.Msg("Finished loading Proffesions!");
+	
 end
 
 function _R.Player:SetProffesion( PROF )

@@ -1,0 +1,3 @@
+New Sound System
+Autoselect the top character (good for testing just stright enter :D)
+fixed proffesions loading, and sending to clients

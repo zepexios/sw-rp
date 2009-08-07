@@ -41,7 +41,10 @@ function GM:ShowHelp( ply )
 end 
 
 // Timers
-local songs = {"imperial.mp3", "duel.mp3", "heroes.mp3","luke.mp3","force.mp3","anakin.mp3"}
+--@meeces2911
+-- I dont like this, i think you sould have the server call a client command to play the songs, and to check if the sound files are valid first.
+-- But anyway i have update the sound paths to work with the new system.
+local songs = {"SWO/client/imperial.mp3", "SWO/client/duel.mp3", "SWO/client/heroes.mp3","SWO/client/luke.mp3","SWO/client/force.mp3","SWO/client/anakin.mp3"}
 
 function PlayTehSongs()
 	timer.Simple(300,function() PlayTehSongs() end)

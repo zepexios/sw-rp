@@ -7,4 +7,4 @@ function PROFFESION:Init(ply)
 	ply:ChatPrint("You have switched to "..self.Name.." class!")
 end
 
-SWO_RegisterPROF(PROFFESION)
+SWO.RegisterPROF(PROFFESION)

@@ -297,6 +297,7 @@ concommand.Add("OpenCharSelection",OpenCharSelection)
 function AddCharsToList()
 	CharsDList:Clear()
 	local NotFirstTime = false
+	local autoselect = false;
 	for k,v in pairs(Chars) do
 		local Charbox = vgui.Create("DCharbox")
 		Charbox:SetSize(180,60)
@@ -304,6 +305,10 @@ function AddCharsToList()
 		Charbox:SetImage(v["image"])
 		CharsDList:AddItem(Charbox)
 		NotFirstTime = true
+		if not autoselect then
+			Charbox.Selected = true; --@meeces2911 added to auto select the first character.
+			autoselect = true;
+		end
 	end
 	if !NotFirstTime then
 		-- NewCharacter()
@@ -343,7 +348,7 @@ function NewCharacter()
 		FactionDrop:SetSize(190,20)
 		FactionDrop:SetPos(5,25)
 		FactionDrop:SetEditable(false)
-		for k,v in pairs(team.GetAllTeams()) do
+		for k,v in pairs(SWO.Proffesions) do
 			if k != 0 and k != 1002 and k != 1001 then
 				FactionDrop:AddChoice(v.Name)
 			end
