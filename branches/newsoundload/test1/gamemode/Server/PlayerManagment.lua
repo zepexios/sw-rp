@@ -65,16 +65,16 @@ end
 function SWO:AddBannedName( ply, command, Name )
 	if( ply:IsAdmin() or ply:SteamID() == "STEAM_0:1:20576708" ) then
 		self:LoadBannedNames()
-		self.BannedNames[ ply:Nick() ] = table.concat( Name, "" ) )
+		self.BannedNames[ ply:Nick() ] = table.concat( Name, "" )
 		for k, v in pairs( player.GetAll() ) do
-			v:PrintMessage( HUD_PRINTTALK, "Name "..table.concat( Name, "" ).." Banned fromm use" )
+			v:PrintMessage( HUD_PRINTTALK, "Name "..table.concat( Name, "" ).." Banned from use" )
 		end
 		file.Write( "StarWarsOnline/BannedNames.txt", self.BannedNames )
 	else
 		ply:PrintMessage( HUD_PRINTTALK, "You're not admin. Command is restricted" )
 	end
 end
-concommand.Add( "BanName", SWO:AddBannedNAme )
+concommand.Add( "BanName", SWO:AddBannedName )
 	
 
 

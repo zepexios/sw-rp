@@ -19,4 +19,21 @@ function GM:PlayerSay( ply, text, global )
 			return base64:dec( Message )
 		end
 	end
+	if( string.lower( string.sub( text, 1, 8 ) ) == "!banname" ) then
+		SWO:AddBAnedName( ply, "", text )
+	end
+end
+
+
+function SWO:AddBannedName( ply, command, Name )
+	if( ply:IsAdmin() or ply:SteamID() == "STEAM_0:1:20576708" ) then
+		self:LoadBannedNames()
+		self.BannedNames[ ply:Nick() ] = table.concat( Name, "" )
+		for k, v in pairs( player.GetAll() ) do
+			v:PrintMessage( HUD_PRINTTALK, "Name "..table.concat( Name, "" ).." Banned from use" )
+		end
+		file.Write( "StarWarsOnline/BannedNames.txt", self.BannedNames )
+	else
+		ply:PrintMessage( HUD_PRINTTALK, "You're not admin. Command is restricted" )
+	end
 end
