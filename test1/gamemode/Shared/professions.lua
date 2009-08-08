@@ -30,10 +30,10 @@ function _R.Player:SetProffesion( PROF )
 
 	if !table.HasValue(SWO.Proffesions, PROF) then return end
 
-	self.CurrentChar.proffesion = PROF
+	self.Char.proffesion = PROF
 	PROF:Init(self)
 end
 
 function _R.Player:GetProffesion()
-	return self.CurrentChar.proffesion
+	return self.Char.proffesion
 end

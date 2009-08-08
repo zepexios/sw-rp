@@ -9,6 +9,12 @@ function SWO.Msg( Text )
 	Msg( "SWO - ", Text.."\n" )
 end
 
+function SWO.Round( val, d)
+	if (val == nil) then return nil end;
+	d = d or 0;
+	return math.Round( val * (10 ^ d) ) / (10 ^ d);
+end
+
 function SWO.LoadDirectory( Directory )
 	SWO.Msg( "Loading Directory: "..Directory.."'s Files..." )
 	if( SERVER ) then

@@ -45,6 +45,7 @@ function SWO:GetUIDName( Name )
 end
 
 function GM:PlayerConnect( ply )
+	if (SWO.BannedNames == nil) then return end
 	for k, v in pairs( SWO.BannedNames ) do
 		if( ply:Nick() == v ) then
 			ply:Kick( "Name: "..v.." Not Alowed" )
@@ -74,18 +75,4 @@ function SWO:AddBannedName( ply, command, Name )
 		ply:PrintMessage( HUD_PRINTTALK, "You're not admin. Command is restricted" )
 	end
 end
-concommand.Add( "BanName", SWO:AddBannedName )
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
+--concommand.Add( "BanName", SWO:AddBannedName )

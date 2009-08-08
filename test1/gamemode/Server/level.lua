@@ -23,38 +23,44 @@ function _R.Player:Save( )
 end
 
 function _R.Player:GetXP( )
-	return self.CurrentChar.xp
+	return self.Char.xp
 end
 
 function _R.Player:AddXP( n )
-	if !self.CurrentChar.xp then self.CurrentChar.xp = DEFAULT_XP end
-	if !self.CurrentChar.level then self.CurrentChar.level = DEFAULT_LEVEL end
-	self.CurrentChar.xp = self.CurrentChar.xp + n
-	self:SetNWString("xp", self.CurrentChar.xp)
+	if !self.Char.xp then self.Char.xp = DEFAULT_XP end
+	if !self.Char.level then self.Char.level = DEFAULT_LEVEL end
+	self.Char.xp = self.Char.xp + n
+	self:SetNWString("xp", self.Char.xp)
 end
 
 function _R.Player:GetNeededXP( )
-	return self.CurrentChar.level * EXPERIENCE_SCALE
+	return self.Char.level * EXPERIENCE_SCALE or 100
+end
+
+function _R.Player:GetLevel()
+	return self.Char.level
 end
 
 function PrintLevel( pl )
-	pl:ChatPrint( "Your level is now: " .. pl.CurrentChar.level or DEFAULT_LEVEL )
+	pl:ChatPrint( "Your level is now: " .. pl.Char.level or DEFAULT_LEVEL )
 end
 
 function LevelSound( pl )
-pl:EmitSound( "SWO\client\luke.mp3" ) --@meeces2911 Updated sound path
+pl:EmitSound( "SWO/client/luke.mp3" ) --@meeces2911 Updated sound path
 LevelUpEffect(pl:GetPos())
 end
 
 --NEVER CALL THIS FUNCTION FROM THE TOP WITH A VALID ARGUMENT
 --Doing so will not allow it to save the player's data
 function _R.Player:Levelup( recur )
-	if self.CurrentChar.xp >= self:GetNeededXP( ) then
-		self.CurrentChar.xp = self.CurrentChar.xp - self:GetNeededXP( )
-		self.CurrentChar.level = self.CurrentChar.level + 1
+	if self.Char.xp >= self:GetNeededXP( ) then
+		self.Char.xp = self.Char.xp - self:GetNeededXP( )
+		self.Char.level = self.Char.level + 1
 		PrintLevel(self)
 		LevelSound(self)
-		self:SetNWString("level", self.CurrentChar.level)
+		self:SetNWInt("level", self.Char.level)
+		self:SetNWInt("XP",self:GetXP())
+		self:SetNWInt("XPNextLevel",self:GetNeededXP())
 		self:Levelup( true )
 
 		if not recur then
@@ -80,7 +86,7 @@ local function OnNPCKilled( victim, killer )
 end
 
 local function PlayerDeath( victim, killer )
-      if ValidEntity( killer ) and killer:IsPlayer( ) then
+      if ValidEntity( killer ) and killer:IsPlayer( ) and killer != victim then
              killer:AddXP( REWARD_XP )
              killer:Levelup( )
 end
@@ -88,17 +94,20 @@ end
 
 hook.Add( "PlayerDisconnected"	, "Level.PlDiscnct", _R.Player.Save 	)
 hook.Add( "OnNPCKilled"		, "Level.NPCKilled", OnNPCKilled 	)
---hook.Add( "PlayerDeath", "Level.PlayerDeath", PlayerDeath ) --Fix XP functions first
+hook.Add( "PlayerDeath", "Level.PlayerDeath", PlayerDeath )
 timer.Create( "SaveXP", 120, 0, AutoSave )
 
 function playerRespawn( ply )
-	if !ply.CurrentChar then return end
-	local PlayerHP = 100 + ( ply.CurrentChar.Level * 15 )
+	if !ply.Char then return end
+	local PlayerHP = 100 + ( ply.Char.level * 15 )
 	ply:SetMaxHealth( PlayerHP )
 	ply:SetHealth( PlayerHP )
-	local PlayerSpeed = 200 + (ply.CurrentChar.Level * 5)
+	local PlayerSpeed = 200 + (ply.Char.level * 5)
 	ply:SetWalkSpeed( PlayerSpeed ) 
 	ply:SetRunSpeed( PlayerSpeed * 2 ) 
+	ply:SetNWInt("XP",ply:GetXP())
+	ply:SetNWInt("XPNextLevel",ply:GetNeededXP())
+	ply:SetNWInt("level", ply.Char.level)
 end
 
 hook.Add( "PlayerSpawn", "SetPlayerStats", playerRespawn ) 
