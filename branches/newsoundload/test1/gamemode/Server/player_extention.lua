@@ -26,7 +26,7 @@ function Player:SaveChars()
 		-- Why is this here ? what is it doing ? creating a new local table EACH time, and then merging the current
 		--Character table, and then .... what ? what is this actually doing ?!!
 		
-		--local CharsTable = {}
+		local CharsTable = {}
 		--table.Merge(CharsTable, CharTable)
 
 		self.Chars = CharTable
@@ -45,12 +45,13 @@ function Player:MakeChar(CharTable)
 		self.Chars = contents
 		file.Write(FilePath,util.TableToKeyValues(contents))
 	else
-		--local CharsTable = {}
-		--table.Merge(CharsTable, CharTable)
+		local CharsTable = {}
+		table.Merge(CharsTable, CharTable)
 
-		self.Chars = CharTable
+		self.Chars = CharsTable
 		file.Write(FilePath,util.TableToKeyValues(CharTable))
-		contents = CharTable
+		--SHouldn't be required as contents is LOCAL only, and reasigned every time.
+		--contents = CharTable
 	end
 	
 	datastream.StreamToClients(self,"chardata",{Chars = self.Chars})
@@ -60,16 +61,17 @@ function IncomingHook( pl, handler, id, encoded, decoded )
 
 	print( "GLON Encoded: " .. encoded );
 	print( "Decoded:" );
+	
 	PrintTable( decoded );
 	
 	pl:MakeChar(decoded)
- 
+
 end
 datastream.Hook( "PlayerChar", IncomingHook );
 
 function Player:Load(charkey)
 	self:SetNWInt("char",charkey)
-	self:Kill()
+	self:KillSilent()
 end
 
 function LoadPlyCon(ply, cmd, args)
@@ -136,11 +138,11 @@ end
 function Player:GetMaxForce()
 	--@meeces2911 SHOULD be MaxForce, but seems to be added to table as 'force' and i cant find where
 	-- it has been added.
-	return self.Char.force or 100
+	return SWO.Round(self.Char.force,1) or 100
 end
 
 function Player:GetTakeForce()
 --@meeces2911
 --makes sure 0.3 is rounded to 0.3, not 0.299xxxxxxxxx lua/gmod numbers fails :(
-	return math.Round( self.Char.takeforce * (10 ^ 1) ) / (10 ^ 1) or 1;
+	return SWO.Round(self.Char.takeforce,1) or 1;
 end

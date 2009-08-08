@@ -5,6 +5,7 @@ function GM:PlayerInitialSpawn( ply )
 	ply:PrintMessage( HUD_PRINTTALK, "Hey "..ply:Nick().."!" )
 	ply:PrintMessage( HUD_PRINTTALK, "Welcome to SWO's official Server." )
 	ply:PrintMessage( HUD_PRINTTALK, "Type \"!info\" for player info." )
+	
 end
 
 function GM:PlayerSpawn( ply )
@@ -21,6 +22,7 @@ function GM:PlayerSpawn( ply )
 	ply:SetNWInt( "PlayerForce", ply:GetForce() )
 	ply:SetNWInt( "PlayerMaxForce", ply:GetMaxForce() )
 	ply:AddForce( ply:GetMaxForce() )
+	ply:AddXP(0) --make sure XP is set.
 	
 end
 
@@ -40,6 +42,22 @@ function GM:ShowHelp( ply )
 	ply:ConCommand( "OpenCharSelection" ) // Thanks Autopsy
 	
 end 
+function GM:GetFallDamage( ply, fspeed )
+	if ply.NoFallDamage then
+		return false
+	else
+		return ( fspeed / 8 )
+	end 
+end
+
+function SWOSKill(ply)
+	if ply:Alive() then
+		ply:KillSilent()
+	else
+		ply:Spawn()
+	end
+end
+concommand.Add("SWOSKill",SWOSKill)
 
 // Timers
 --@meeces2911

@@ -1,4 +1,5 @@
 // File SPECIFICLY for chat commands 
+
 function GM:PlayerSay( ply, text, global )
 	ltext = string.lower( text )
 	if( string.find( text, "!Encode:" ) == 1 )then
@@ -22,10 +23,11 @@ function GM:PlayerSay( ply, text, global )
 	if( string.lower( string.sub( text, 1, 8 ) ) == "!banname" ) then
 		SWO:AddBAnedName( ply, "", text )
 	end
+	return text
 end
 
 
-function SWO:AddBannedName( ply, command, Name )
+--[[function SWO:AddBannedName( ply, command, Name )
 	if( ply:IsAdmin() or ply:SteamID() == "STEAM_0:1:20576708" ) then
 		self:LoadBannedNames()
 		self.BannedNames[ ply:Nick() ] = table.concat( Name, "" )
@@ -36,4 +38,4 @@ function SWO:AddBannedName( ply, command, Name )
 	else
 		ply:PrintMessage( HUD_PRINTTALK, "You're not admin. Command is restricted" )
 	end
-end
+end]]--

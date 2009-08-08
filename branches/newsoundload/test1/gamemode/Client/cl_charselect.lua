@@ -192,6 +192,9 @@ hook.Add("HUDPaint", "SWOHUDPaint", SWOHUDPaint)
 -- Open Char Selection Menu --
 
 function OpenCharSelection()
+	
+	LocalPlayer():ConCommand( "SWOSKill")
+	
 	CharPanelIsOpen = true
 	CharsList = vgui.Create("CharsPanel")
 	CharsList:SetSize(200, ScrH() - 10)
@@ -247,6 +250,7 @@ function OpenCharSelection()
 		
 		if CharText == "" then return end
 		RunConsoleCommand("SWOLoadChar", CharText)
+		RunConsoleCommand("SWOSKill")
 		print(CharText)
 		CharPanelIsOpen = false
 		CharsList:Close()
@@ -332,17 +336,19 @@ function NewCharacter()
 		CName:SetEditable(true)
 		
 		local ClassPictures = {}
-		ClassPictures[0] = {Name = "Wookie", Image = "swo/wookie"}
-		ClassPictures[1] = {Name = "Jawa", Image = "swo/jawa"}
-		ClassPictures[2] = {Name = "Human", Image = "npc_citizen"}
-		ClassPictures[3] = {Name = "Rodian", Image = "swo/rodian"}
+		ClassPictures[0] = {Name = "Wookie", Image = "swo/wookie", Model = "models/player/combine_super_soldier.mdl"}
+		ClassPictures[1] = {Name = "Jawa", Image = "swo/jawa", Model = "models/player/barney.mdl"}
+		ClassPictures[2] = {Name = "Human", Image = "npc_citizen", Model = "models/player/gman_high.mdl"}
+		ClassPictures[3] = {Name = "Rodian", Image = "swo/rodian", Model = "models/player/alyx.mdl"}
 		
 		for k, v in pairs(ClassPictures) do
 			CharClassImages[k] = vgui.Create("ClassImageButton", NewCharPanel)
 			CharClassImages[k]:SetPos(k*85+10, 75)
 			CharClassImages[k]:SetIt(v.Name, v.Image)
+			CharClassImages[k].Model = v.Model
 		end
 		
+		local faction = nil
 		FactionDrop = vgui.Create("DMultiChoice",NewCharPanel)
 		FactionDrop:SetText("Proffesions")
 		FactionDrop:SetSize(190,20)
@@ -353,32 +359,41 @@ function NewCharacter()
 				FactionDrop:AddChoice(v.Name)
 			end
 		end
+		function FactionDrop:OnSelect(index,value,data)
+			--hehehe, let be sneeky here :P
+			faction = value;
+		end
 		
-		
-				local okbutton = vgui.Create("DButton", NewCharPanel)
+		local okbutton = vgui.Create("DButton", NewCharPanel)
 		okbutton:SetSize(50,15)
 		okbutton:SetPos(5, 275)
 		okbutton:SetText("Ok")
 		okbutton.DoClick = function(okbutton)
-			local TheSelected = false
-			for k, v in pairs(CharClassImages) do
-				if v.Selected then
-					TheSelected = v.Image
-				end
-			end
-			if TheSelected != false then
-				local lol = string.lower(CName:GetValue())
-				MCharTable = {}
-				MCharTable[lol] = {}
-				MCharTable[lol].name = CName:GetValue()
-				MCharTable[lol].image = TheSelected
-				MCharTable[lol].proffesion = FactionDrop:GetValue()
-			
-				NewCharPanel:Close()
-			
-				datastream.StreamToServer( "PlayerChar", MCharTable)
-			else
-				LocalPlayer():ChatPrint("Must Select A Image")
+		local TheSelected = false
+		local TheModel = false
+		for k, v in pairs(CharClassImages) do
+			if v.Selected then
+				TheSelected = v.Image
+				TheModel	= v.Model
 			end
 		end
+		if TheSelected != false then
+			local lol = string.lower(CName:GetValue())
+			MCharTable = {}
+			MCharTable[lol] = {}
+			MCharTable[lol].name = CName:GetValue()
+			MCharTable[lol].image = TheSelected
+			MCharTable[lol].proffesion = faction
+			MCharTable[lol].xp = 0
+			MCharTable[lol].model = TheModel
+			
+			--PrintTable(MCharTable)
+			
+			NewCharPanel:Close()
+				
+			datastream.StreamToServer( "PlayerChar", MCharTable)
+		else
+			LocalPlayer():ChatPrint("Must Select A Image")
+		end
+	end
 end
