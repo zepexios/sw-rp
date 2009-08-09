@@ -23,6 +23,9 @@ function GM:PlayerSay( ply, text, global )
 	if( string.lower( string.sub( text, 1, 8 ) ) == "!banname" ) then
 		SWO:AddBAnedName( ply, "", text )
 	end
+	if( string.find( text, "!info" ) == 1 )then
+		return GAMEMODE:ShowHelp()
+	end
 	return text
 end
 
