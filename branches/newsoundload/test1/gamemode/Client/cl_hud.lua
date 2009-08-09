@@ -38,14 +38,14 @@ local Colors =
 		Border = Color( 255, 255, 255, 255 ),
 		Background = Color( 255, 255, 255, 200 ),
 		Shade = Color( 225, 225, 225, 255 ),
-		Fill = Color( 0, 0, 0, 255 )
+		Fill = Color( 235, 0, 0, 255 )
 	},
 	SuitBar =
 	{
 		Border = Color( 255, 255, 255, 255 ),
 		Background = Color( 255, 255, 255, 200 ),
 		Shade = Color( 225, 225, 225, 255 ),
-		Fill = Color( 0, 0, 0, 255 )
+		Fill = Color( 0, 0, 235, 255 )
 	}
 }
 
@@ -138,7 +138,7 @@ function GM:HUDPaint( )
  
 	local text = string.format( "Health: %iHP", client:Health( ) )	-- get health text
 	GHud:PaintText( cx, cy, text, Vars.Font, Colors.Text )	-- paint health text and health bar
-	GHud:PaintBar( cx, cy + by, BarWidth, Vars.BarHeight, Colors.HealthBar, client:Health( ) / 100 )
+	GHud:PaintBar( cx, cy + by, BarWidth, Vars.BarHeight, Colors.HealthBar, client:Health( ) / client:GetMaxHealth( ) )
  
 	by = by + Vars.BarHeight + Vars.BarSpacing			-- increment text position
  

@@ -27,7 +27,7 @@ function Player:SaveChars()
 		--Character table, and then .... what ? what is this actually doing ?!!
 		
 		local CharsTable = {}
-		--table.Merge(CharsTable, CharTable)
+		table.Merge(CharsTable, CharTable)
 
 		self.Chars = CharTable
 		file.Write(FilePath,util.TableToKeyValues(CharTable))
@@ -95,6 +95,7 @@ function Player:GetForce()
 	self.Char.Force = self.Char.Force or 100
 	return self.Char.Force
 end
+
 function Player:TakeForce( NumForce, DontRegen )
 	if( !NumForce ) then
 		NumForce = 1
@@ -104,31 +105,20 @@ function Player:TakeForce( NumForce, DontRegen )
 		self.Char.Force = 0
 	end
 	if( DontRegen != true ) then
-		if( timer.IsTimer( "ForceBackUpTimer" ) ) then
-			timer.Destroy( "ForceBackUpTimer" )
-			timer.Create( "ForceBackUpTimer", 0.1, 0, function()
-				self:AddForce( 1 )
-				self:SetNWInt( "PlayerForce", self:GetForce() )
-				self:SetNWInt( "PlayerMaxForce", self:GetMaxForce() )
-				if( self:GetForce() >= self:GetMaxForce() ) then
-					timer.Destroy( "ForceBackUpTimer" )
-				end
-			end )
-		else
-			timer.Create( "ForceBackUpTimer", 0.1, 0, function()
-				self:AddForce( 1 )
-				self:SetNWInt( "PlayerForce", self:GetForce() )
-				self:SetNWInt( "PlayerMaxForce", self:GetMaxForce() )
-				if( self:GetForce() >= self:GetMaxForce() ) then
-					timer.Destroy( "ForceBackUpTimer" )
-				end
-			end )
-		end
+		timer.Create( "ForceBackUpTimer", 0.1, 0, function()
+			self:AddForce( 1 )
+			self:SetNWInt( "PlayerForce", self:GetForce() )
+			self:SetNWInt( "PlayerMaxForce", self:GetMaxForce() )
+			if( self:GetForce() >= self:GetMaxForce() ) then
+				timer.Destroy( "ForceBackUpTimer" )
+			end
+		end )
 	end
 	self:SetNWInt( "PlayerForce", self:GetForce() )
 end
 
 function Player:AddForce( NumForce )
+	if self.Char == nil then return end
 	self.Char.Force = self.Char.Force + NumForce
 	if( self.Char.Force > self:GetMaxForce() ) then
 		self.Char.Force = self:GetMaxForce()

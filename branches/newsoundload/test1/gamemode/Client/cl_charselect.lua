@@ -236,7 +236,7 @@ function OpenCharSelection()
 		NewCharacter()
 	end
 	
-	local SizeX = (ScrW() - 200) - 405
+	local SizeX = (ScrW() - 200) - 410
 	
 	UseCharButton = vgui.Create("SOWButton")
 	UseCharButton:SetSize(SizeX - 10,40)
@@ -257,6 +257,54 @@ function OpenCharSelection()
 		MOTDPanel:Close()
 		UseCharButton:SetVisible(false)
 		newcharbutton:SetVisible(false)
+	end
+	
+	CharInfoPanel = vgui.Create("CharsPanel", CharsList)
+	CharInfoPanel:SetSize(405, ScrH()-60)
+	CharInfoPanel:SetTitle("Character")
+	CharInfoPanel:SetPos(410, 5)
+	CharInfoPanel:ShowCloseButton(false)
+	CharInfoPanel:SetTitle("Character Info")
+	CharInfoPanel:SetDraggable(false)
+	CharInfoPanel:MakePopup()
+	
+	local CharSelected = nil
+	local tid = nil
+	CIPInfo = vgui.Create("DPanel", CharInfoPanel)
+	CIPInfo:SetSize(405, ScrH()-60)
+	function CIPInfo:Paint()
+		for _, v in pairs(CharButtons) do
+			if v.Selected then CharSelected = v end
+		end
+		tid = surface.GetTextureID(CharSelected.image.ImageName)
+		surface.SetDrawColor( 50, 50, 50, 255 ) -- colour of pic frame
+		surface.SetTextColor(255, 255, 255, 255)
+		surface.DrawRect( 100, 50, CharInfoPanel:GetWide()-200, 200 )
+		surface.SetDrawColor( 255, 255, 255, 255 ) -- 'brightness' of picture
+		surface.SetTexture( tid )
+		if not (tid == nil) then
+			surface.DrawTexturedRect(105, 55, CharInfoPanel:GetWide()-210, 190)
+		end
+		draw.DrawText("Character Name: "..CharSelected.Text, "big", 40, 300, Color(255,255,255,255),0)
+		draw.DrawText("Character Level: "..CharSelected:GetTable().level, "big", 40, 320, Color(255,255,255,255),0)
+		draw.DrawText("Character XP: "..CharSelected:GetTable().xp, "big", 40, 340, Color(255,255,255,255),0)
+		draw.DrawText("Character Proffesion: "..CharSelected:GetTable().proffesion, "big", 40, 360, Color(255,255,255,255),0)
+		draw.DrawText("Current Location: <Location>", "big", 40, 380, Color(255,255,255,255),0)
+	end
+	
+	CIPDelete = vgui.Create("SOWButton", CharInfoPanel)
+	CIPDelete:SetSize(CharInfoPanel:GetWide() - 20,40)
+	CIPDelete:SetPos(10, ScrH()/2 + 50)
+	CIPDelete:SetText("Erase This Character")
+	CIPDelete.DoClick = function()
+		for _,v in pairs(Chars) do
+			if v.name == CharSelected.Text then
+				print("Deleting "..CharSelected.Text)
+				v = nil
+				LocalPlayer():ChatPrint("Make Shared Delete function and insert here!!")
+				print("Done!")
+			end
+		end
 	end
 	
 	--[[CharViewModel = vgui.Create( "DModelPanel" )
@@ -307,6 +355,10 @@ function AddCharsToList()
 		Charbox:SetSize(180,60)
 		Charbox:SetName(v["name"])
 		Charbox:SetImage(v["image"])
+		--hacky way to do this, but oh well, will look into it later
+		Charbox:GetTable().level = v["level"] or 1
+		Charbox:GetTable().xp = v["xp"] or 0
+		Charbox:GetTable().proffesion = v["proffesion"] or "<none>"
 		CharsDList:AddItem(Charbox)
 		NotFirstTime = true
 		if not autoselect then
@@ -360,7 +412,6 @@ function NewCharacter()
 			end
 		end
 		function FactionDrop:OnSelect(index,value,data)
-			--hehehe, let be sneeky here :P
 			faction = value;
 		end
 		

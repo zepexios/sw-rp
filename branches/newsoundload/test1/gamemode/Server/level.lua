@@ -61,6 +61,7 @@ function _R.Player:Levelup( recur )
 		self:SetNWInt("level", self.Char.level)
 		self:SetNWInt("XP",self:GetXP())
 		self:SetNWInt("XPNextLevel",self:GetNeededXP())
+		self:SetNWInt( "MaxHealth", self:Health( ) )
 		self:Levelup( true )
 
 		if not recur then

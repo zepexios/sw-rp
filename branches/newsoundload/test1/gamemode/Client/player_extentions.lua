@@ -19,3 +19,7 @@ end
 function Player:GetLevel()
 	return self:GetNWInt( "level" ) or  0
 end
+
+function Player:GetMaxHealth()
+	return self:GetNWInt( "MaxHealth") or 100
+end

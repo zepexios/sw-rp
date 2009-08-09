@@ -23,7 +23,7 @@ function GM:PlayerSpawn( ply )
 	ply:SetNWInt( "PlayerMaxForce", ply:GetMaxForce() )
 	ply:AddForce( ply:GetMaxForce() )
 	ply:AddXP(0) --make sure XP is set.
-	
+	ply:SetNWInt( "MaxHealth", ply:Health( ) )
 end
 
 function GM:PlayerLoadout(ply)
