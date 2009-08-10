@@ -1,4 +1,0 @@
------------------------------
--- Flood By iRzilla
------------------------------
--- Server/EntityDamage.lua
