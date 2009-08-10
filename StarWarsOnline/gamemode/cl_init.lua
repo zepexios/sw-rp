@@ -1,7 +1,6 @@
-require( "datastream" ) // Datastream Module. DONT touch
 
-include(  "shared.lua" )
-SWO.LoadDirectory( "Client" )
+require("datastream")
 
-// Lack of code you say?
-// This file simply includes other files. Great for modules, not so sure about lag ^^
+include("shared.lua")
+
+SWO.LoadDir("client/stand_alone/")
