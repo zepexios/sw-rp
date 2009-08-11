@@ -76,8 +76,58 @@ end
 concommand.Add("SWOLoadChar", LoadPlyCon)
 
 function Player:GetClass()
+	return self.Char.Class or "Unknown"
 end
-
+function Player:Incapacitate( duration )
+	if( sefl:GetNWBool( "IsInRagdoll" ) ) then
+		if( PlayerRagdoll:IsValid() ) then
+			PlayerRagdoll:Remove()
+			
+			self:SetPos( PlayerRagdoll:GetPos() + Vector( 0, 0, 50 ) )
+			self:Spawn()
+			
+		end
+		self:SetModel( PlayerRagdoll:GetModel() )
+		self:SetNWBool( "IsInRagdoll", false )
+		self:DrawViewModel( true )
+		self:DrawWorldModel( true )
+		self:SetColor( 255, 255, 255, 255 )
+		self:Freeze( false )
+		
+	else
+		if( self:InVehicle() )then
+			self:ExitVehicle()
+			self:GetParent():Remove()
+		end
+		if( self:GetMoveType() == MOVETYPE_NOCLIP )
+			self:SetMoveType( MOVETYPE_WALK )
+		end
+		self:SetNWBool( "IsInRagdoll", true )
+		self:StripWeapons()
+		self:DrawViewModel( false )
+		self:DrawWorldModel( false )
+		self:SetColor( 255, 255, 255, 0 )
+		
+		PlayerRagdoll = ents.Create( "prop_ragdoll" )
+		PlayerRagdoll:SetPos( TO_RAG:GetPos() )
+		PlayerRagdoll:SetModel( TO_RAG:GetModel() )
+		PlayerRagdoll:SetAngles( TO_RAG:GetAngles() )
+		PlayerRagdoll:Spawn()
+		PlayerRagdoll:Activate()
+		
+		self:Spectate( OBS_MODE_ROAMING )
+		self:Freeze( true )
+		duration = duration or 30
+		timer.Create( "RagdollTimer"..tostring( self:UniqueID() ).."", , 1, function()
+			if( self:GetNWBool( "IsInRagdoll") ) then
+				self:SetNWBool( "IsInRagdoll", false )
+				self:Incapacitate()
+			end
+		end )
+	end
+end
+function Player:IsIncapacitated()
+	return self:GetNWBool( "IsInRagdoll" )
 
 
 
