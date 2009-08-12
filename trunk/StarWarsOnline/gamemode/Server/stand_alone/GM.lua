@@ -1,15 +1,11 @@
 function GM:PlayerInitialSpawn( ply )
 	ply:LoadChars()
-	ply:ConCommand( "OpenCharSelection" )
 	
-	ply:PrintMessage( HUD_PRINTTALK, "Hey "..ply:Nick().."!" )
+	ply:PrintMessage( HUD_PRINTTALK, "Hello "..ply:Nick().."!" )
 	ply:PrintMessage( HUD_PRINTTALK, "Welcome to SWO's official Server." )
-	ply:PrintMessage( HUD_PRINTTALK, "Type \"!info\" for player info." )
 end
 
 function GM:PlayerSpawn( ply )
-
-	
 	--check to see if player has joined before and have a Char table
 	if ply.Char == nil then ply.Char = {}; end
 	--@meeces2911, change this to refer to a default model setting somewhere
@@ -23,46 +19,14 @@ function GM:PlayerSpawn( ply )
 	
 end
 
-function GM:PlayerLoadout(ply)
-
-	ply:GiveAllWeapons()
-	ply:GiveAllAmmo()
-	
-end
-
-function GM:PlayerBindPress( ply, BIND )	// Blocks ConCommands, Add a new line with the format below to block a Cmd ..MGinshe..
-	if( string.find( BIND, "kill" ) ) then return false end //Doubled with the "GM:CanPlayerSuicide" func, but meh..
-end
-
-function GM:KeyPress( ply, KEY )
-	if( KEY == IN_WALK ) then
-		ply:ConCommand( "+MouseInput" )
-	end
-end
-
-function GM:KeyRelease( ply, KEY )
-	if( KEY == IN_WALK ) then
-		ply:ConCommand( "-MouseInput" )
-	end
-end
-
 function GM:CanPlayerSuicide( ply )
 	return false
 end
 
 function GM:AcceptStream ( pl, handler, id )
-
     return true
-	
 end
 
-function GM:ShowHelp( ply )
-
-	ply:ConCommand( "OpenCharSelection" ) // Thanks Autopsy
-	
-end 
-
-// Timers
 local songs = {"imperial.mp3", "duel.mp3", "heroes.mp3","luke.mp3","force.mp3","anakin.mp3"}
 
 function PlayTehSongs()
@@ -74,5 +38,3 @@ function PlayTehSongs()
 	end
 end
 timer.Simple(1,function() if( PlayeSongs ) then PlayTehSongs() end end)
-
-SWO.LoadPROFs()
