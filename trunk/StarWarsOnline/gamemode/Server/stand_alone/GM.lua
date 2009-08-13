@@ -19,6 +19,30 @@ function GM:PlayerSpawn( ply )
 	
 end
 
+function GM:PlayerLoadout(ply)
+
+	ply:GiveAllWeapons()
+	ply:GiveAllAmmo()
+	
+end
+
+function GM:PlayerBindPress( ply, BIND, pressed )	// Blocks ConCommands; Add a new line with the format below to block a Cmd ..MGinshe..
+	if( string.find( BIND, "<Command>" ) ) then return false end
+	if( string.find( BIND, "kill" ) ) then ply:PrintMessage( HUD_PRINTCONSOLE, "Suicice is NOT the way!" ) end
+end
+
+function GM:KeyPress( ply, KEY )
+	if( KEY == IN_WALK ) then
+		ply:ConCommand( "+MouseInput" )
+	end
+end
+
+function GM:KeyRelease( ply, KEY )
+	if( KEY == IN_WALK ) then
+		ply:ConCommand( "-MouseInput" )
+	end
+end
+
 function GM:CanPlayerSuicide( ply )
 	return false
 end
