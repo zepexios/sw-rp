@@ -9,23 +9,20 @@
 	/*
 		TODO:
 			Set other basic information to the table
-				1. Species/model
-				2. Inventory
-				3. Quests
-				4. Location
-				5. More
+				1. Inventory
+				2. Quests
+				3. More
 	*/
-
+	include("advbox.lua")
+	
 	SWO.classes = {}
-
-	function registerClassDefaults(name, tbl)
-		SWO.classes[name] = tbl
-	end
-	include("../advbox.lua")
 	SWO.LoadDir("../class_defaults/") //Load all class defaults plugins
 	
-	//Stage 2
-	local function createSWOTable(ply, selections)
+	SWO.species = {}
+	SWO.LoadDir("../species_defaults/") //Load all class defaults plugins
+	
+	local function createSWOTable(ply, selections) //This function will handle stages 2 & 3 of character creation
+		//STAGE 2
 		ply.swo = {}
 		
 		ply.swo.attrib = {}
@@ -50,13 +47,48 @@
 		
 		ply.swo.titles = {} //True/false(nil) - do they have the title - Doesn't require a default
 		
-		local class = classDefaults[selections.class]
+		ply.swo.species = { selections.species }
+		ply.swo.model = selections.species
+		
+		local species = SWO.species[selections.species]
+		for i, attr in pairs(species.attrib) do //Add the species modifier to the attributes to the base value
+			ply.swo.attrib[i] = ply.swo.attrib[i] + attr
+		end
+		for i, stat in pairs(species.stats) do //Add the species modifier to the stats to the base value
+			ply.swo.stats[i] = ply.swo.stats[i] + stat
+		end
+		for i, skill in pairs(species.skills) do //Set species skills to true
+			ply.swo.skills[skill] = true
+		end
+		
+		ply.swo.classes = { selections.class }
+		
+		local class = SWO.classes[selections.class]
 		for i, attr in pairs(class.attrib) do //Add the class modifier to the attributes to the base value
 			ply.swo.attrib[i] = ply.swo.attrib[i] + attr
 		end
+		
+		ply.swo.boxes = {} //True/false(nil) - has the box - Doesn't require a default
+		ply.swo.boxes[class.novice] = true
+		
+		ply.swo.inventory = {} //Will contain item data objects
+		for i, item in pairs(class.equip) do //Copy all items over
+			table.insert(ply.swo.inventory, table.Copy(item))
+		end
+		
+		ply.swo.quests = {} //Will contain quest data objects
 		
 		//c is the prefix for 'current' - this is set after any modifications to these stats occur
 		ply.swo.attrib.chealth = ply.swo.attrib.health
 		ply.swo.attrib.cact = ply.swo.attrib.act
 		ply.swo.attrib.cmind = ply.swo.attrib.mind
+		
+		ply.swo.loc = selections.loc //Set the player location
+
+		//STAGE 3
+		//TODO: Call function to save table to game server
+		if ply.swo.loc.planet != SWO.planet then
+			//TODO: Save to the SQL server
+			ply:ConCommand("connect " .. SWO.serverIPs[ply.swo.loc.planet] .. "\n")
+		end
 	end
