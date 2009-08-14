@@ -1,9 +1,9 @@
 
---This alows me to add functions to the player object
-local Player = FindMetaTable("Player")
+--This alows me to add functions to the ply object
+local ply = FindMetaTable("ply")
 
 --This is only called at the begining so that the char sellection can display the name and such
-function Player:LoadChars()
+function ply:LoadChars()
 	local FilePath = "starwarsonline/"..self:UniqueID().."/chars.txt"
 	if file.Exists(FilePath) then
 		print("realy?")
@@ -15,7 +15,7 @@ function Player:LoadChars()
 	end
 end
 
-function Player:SaveChars()
+function ply:SaveChars()
 	local FilePath = "starwarsonline/"..self:UniqueID().."/chars.txt"
 	if file.Exists(FilePath) then
 		print("realy?")
@@ -31,7 +31,7 @@ function Player:SaveChars()
 	end
 end
 
-function Player:MakeChar(CharTable)
+function ply:MakeChar(CharTable)
 	local FilePath = "starwarsonline/"..self:UniqueID().."/chars.txt"
 	if file.Exists(FilePath) then
 		print("realy?")
@@ -60,9 +60,9 @@ function IncomingHook( pl, handler, id, encoded, decoded )
 	
 	pl:MakeChar(decoded)
 end
-datastream.Hook( "PlayerChar", IncomingHook );
+datastream.Hook( "plyChar", IncomingHook );
 
-function Player:Load(charkey)
+function ply:Load(charkey)
 	self:SetNWInt("char",charkey)
 	self:Kill()
 end
@@ -75,7 +75,7 @@ function LoadPlyCon(ply, cmd, args)
 end
 concommand.Add("SWOLoadChar", LoadPlyCon)
 
-function Player:GetClass()
+function ply:GetClass()
 	return self.Char.Class or "Unknown"
 end
 
