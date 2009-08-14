@@ -1,5 +1,6 @@
 
 local marksman = {}
+marksman.novice = "novice_marksman"
 
 marksman.attrib = {}
 marksman.attrib.health = 700
@@ -17,6 +18,10 @@ marksman.xp.rifle_weaps = 0
 marksman.xp.pistol_weaps = 0
 marksman.xp.carbine_weaps = 0
 marksman.xp.combat = 0
+
+//TODO: Look up actual equiptment
+marksman.equip = {} //Starting equiptment
+table.insert(marksman.equip, SWO.createItemData("shirt", 1)) //EXAMPLE
 
 
 local gives = {} //Will be reset and reused for the creation of all advancement boxes for this class
@@ -337,4 +342,5 @@ XP["apprenticeship"] = 620
 SWO.createAdvBox("master_marksman", "Master Marksman", { "rifles_iv", "pistols_iv", "carbines_iv", "ranged_defense_iv" }, XP, gives)
 
 
-registerClassDefaults("marksman", marksman)
+//Set it to the table
+SWO.classes["marksman"] = marksman

@@ -8,7 +8,7 @@
 
 SWO.advBoxes = {}
 
-function SWO.createAdvBox(name, dname, requires, XP, gives)
+SWO.createAdvBox = function(name, dname, requires, XP, gives)
 	local box = {}
 	box["dname"] = dname //The display name
 	//Requires is a table filled with the names of all other boxes that must be unlocked for this to be available
@@ -45,6 +45,9 @@ function SWO.createAdvBox(name, dname, requires, XP, gives)
 			for i, cert in pairs gives.certs do
 				ply.swo.certs[i] = true
 			end
+			for i, cert in pairs gives.titles do
+				ply.swo.titles[i] = true
+			end
 		else //Relock
 			ply.swo.boxes[self.name] = true
 			
@@ -56,6 +59,9 @@ function SWO.createAdvBox(name, dname, requires, XP, gives)
 			end
 			for i, cert in pairs gives.certs do
 				ply.swo.certs[cert] = false
+			end
+			for i, cert in pairs gives.titles do
+				ply.swo.titles[i] = false
 			end
 		end
 	end
