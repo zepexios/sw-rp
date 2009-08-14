@@ -18,8 +18,6 @@ marksman.xp.pistol_weaps = 0
 marksman.xp.carbine_weaps = 0
 marksman.xp.combat = 0
 
-marksman.boxes = {}
-
 
 local gives = {} //Will be reset and reused for the creation of all advancement boxes for this class
 
@@ -44,7 +42,7 @@ table.insert(gives.certs, "dlt20rifle")
 gives.titles = {}
 table.insert(gives.titles, "novicemarksman")
 
-marksman.boxes.novice_marksman = SWO.createAdvBox("Novice Marksman", {}, {}, gives)
+SWO.createAdvBox("novice_marksman", "Novice Marksman", {}, {}, gives)
 
 gives.stats = {}
 gives.stats.rifle_acc = 10
@@ -63,7 +61,7 @@ gives.titles = {}
 local XP = {}
 XP["rifle_weaps"] = 1000
 
-marksman.boxes.rifles_i = SWO.createAdvBox("Rifles I", { "novice_marksman" }, XP, gives)
+SWO.createAdvBox("rifles_i", "Rifles I", { "novice_marksman" }, XP, gives)
 
 gives.stats = {}
 gives.stats.rifle_acc = 10
@@ -81,7 +79,7 @@ gives.titles = {}
 
 XP["rifle_weaps"] = 5000
 
-marksman.boxes.rifles_ii = SWO.createAdvBox("Rifles II", { "rifles_i" }, XP, gives)
+SWO.createAdvBox("rifles_ii", "Rifles II", { "rifles_i" }, XP, gives)
 
 gives.stats = {}
 gives.stats.rifle_acc = 10
@@ -98,7 +96,7 @@ gives.titles = {}
 
 XP["rifle_weaps"] = 15000
 
-marksman.boxes.rifles_iii = SWO.createAdvBox("Rifles III", { "rifles_ii" }, XP, gives)
+SWO.createAdvBox("rifles_iii", "Rifles III", { "rifles_ii" }, XP, gives)
 
 gives.stats = {}
 gives.stats.rifle_acc = 10
@@ -118,7 +116,7 @@ table.insert(gives.titles, "apprenticesharpshooter")
 
 XP["rifle_weaps"] = 70000
 
-marksman.boxes.rifles_iv = SWO.createAdvBox("Rifles IV", { "rifles_iii" }, XP, gives)
+SWO.createAdvBox("rifles_iv", "Rifles IV", { "rifles_iii" }, XP, gives)
 
 gives.stats = {}
 gives.stats.pistol_acc = 10
@@ -136,7 +134,7 @@ gives.titles = {}
 XP = {}
 XP["pistol_weaps"] = 1000
 
-marksman.boxes.pistols_i = SWO.createAdvBox("Pistols I", { "novice_marksman" }, XP, gives)
+SWO.createAdvBox("pistols_i", "Pistols I", { "novice_marksman" }, XP, gives)
 
 gives.stats = {}
 gives.stats.pistol_acc = 10
@@ -154,7 +152,7 @@ table.insert(gives.certs, "scoutblaster")
 
 XP["pistol_weaps"] = 5000
 
-marksman.boxes.pistols_ii = SWO.createAdvBox("Pistols II", { "pistols_i" }, XP, gives)
+SWO.createAdvBox("pistols_ii", "Pistols II", { "pistols_i" }, XP, gives)
 
 gives.stats = {}
 gives.stats.pistol_acc = 10
@@ -169,7 +167,7 @@ table.insert(gives.certs, "strikerpistol")
 
 XP["pistol_weaps"] = 15000
 
-marksman.boxes.pistols_iii = SWO.createAdvBox("Pistols III", { "pistols_ii" }, XP, gives)
+SWO.createAdvBox("pistols_iii", "Pistols III", { "pistols_ii" }, XP, gives)
 
 gives.stats = {}
 gives.stats.pistol_acc = 10
@@ -189,7 +187,7 @@ table.insert(gives.titles, "Apprentice Gunfighter")
 
 XP["pistol_weaps"] = 70000
 
-marksman.boxes.pistols_iv = SWO.createAdvBox("Pistols IV", { "pistols_iii" }, XP, gives)
+SWO.createAdvBox("pistols_iv", "Pistols IV", { "pistols_iii" }, XP, gives)
 
 gives.stats = {}
 gives.stats.carbine_acc = 10
@@ -206,7 +204,7 @@ gives.titles = {}
 XP = {}
 XP["carbine_weaps"] = 1000
 
-marksman.boxes.carbines_i = SWO.createAdvBox("Carbines I", { "novice_marksman" }, XP, gives)
+SWO.createAdvBox("carbines_i", "Carbines I", { "novice_marksman" }, XP, gives)
 
 gives.stats = {}
 gives.stats.carbine_acc = 10
@@ -220,7 +218,7 @@ table.insert(gives.certs, "e11carbine")
 
 XP["carbine_weaps"] = 5000
 
-marksman.boxes.carbines_ii = SWO.createAdvBox("Carbines II", { "carbines_i" }, XP, gives)
+SWO.createAdvBox("carbines_ii", "Carbines II", { "carbines_i" }, XP, gives)
 
 gives.stats = {}
 gives.stats.carbine_acc = 10
@@ -234,7 +232,7 @@ table.insert(gives.certs, "lasercarbine")
 
 XP["carbine_weaps"] = 15000
 
-marksman.boxes.carbines_iii = SWO.createAdvBox("Carbines III", { "carbines_ii" }, XP, gives)
+SWO.createAdvBox("carbines_iii", "Carbines III", { "carbines_ii" }, XP, gives)
 
 gives.stats = {}
 gives.stats.carbine_acc = 10
@@ -253,7 +251,7 @@ table.insert(gives.titles, "Apprentice Carbine Specialist")
 
 XP["carbine_weaps"] = 70000
 
-marksman.boxes.carbines_iv = SWO.createAdvBox("Carbines IV", { "carbines_iii" }, XP, gives)
+SWO.createAdvBox("carbines_iv", "Carbines IV", { "carbines_iii" }, XP, gives)
 
 gives.stats = {}
 gives.stats.rifle_acc = 10
@@ -272,7 +270,7 @@ gives.titles = {}
 XP = {}
 XP["combat"] = 300
 
-marksman.boxes.ranged_defense_i = SWO.createAdvBox("Ranged Defense I", { "novice_marksman" }, XP, gives)
+SWO.createAdvBox("ranged_defense_i", "Ranged Defense I", { "novice_marksman" }, XP, gives)
 
 gives.stats = {}
 gives.stats.rifle_acc = 10
@@ -287,7 +285,7 @@ table.insert(gives.skills, "tumbletostanding")
 
 XP["combat"] = 2250
 
-marksman.boxes.ranged_defense_ii = SWO.createAdvBox("Ranged Defense II", { "ranged_defense_i" }, XP, gives)
+SWO.createAdvBox("ranged_defense_ii", "Ranged Defense II", { "ranged_defense_i" }, XP, gives)
 
 gives.stats = {}
 gives.stats.rifle_acc = 5
@@ -300,7 +298,7 @@ table.insert(gives.skills, "warningshot")
 
 XP["combat"] = 6000
 
-marksman.boxes.ranged_defense_iii = SWO.createAdvBox("Ranged Defense III", { "ranged_defense_ii" }, XP, gives)
+SWO.createAdvBox("ranged_defense_iii", "Ranged Defense III", { "ranged_defense_ii" }, XP, gives)
 
 gives.stats = {}
 gives.stats.rifle_acc = 5
@@ -316,7 +314,7 @@ table.insert(gives.titles, "guardsman")
 
 XP["combat"] = 22000
 
-marksman.boxes.ranged_defense_iiv = SWO.createAdvBox("Ranged Defense IV", { "ranged_defense_iii" }, XP, gives)
+SWO.createAdvBox("ranged_defense_i", "Ranged Defense IV", { "ranged_defense_iii" }, XP, gives)
 
 gives.stats = {}
 gives.stats.rifle_acc = 10
@@ -336,7 +334,7 @@ table.insert(gives.titles, "mastermarksman")
 XP = {}
 XP["apprenticeship"] = 620
 
-marksman.boxes.master_marksman = SWO.createAdvBox("Master Marksman", { "rifles_iv", "pistols_iv", "carbines_iv", "ranged_defense_iv" }, XP, gives)
+SWO.createAdvBox("master_marksman", "Master Marksman", { "rifles_iv", "pistols_iv", "carbines_iv", "ranged_defense_iv" }, XP, gives)
 
 
 registerClassDefaults("marksman", marksman)
