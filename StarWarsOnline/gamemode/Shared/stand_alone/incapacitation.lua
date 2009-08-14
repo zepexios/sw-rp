@@ -1,6 +1,8 @@
 
 if SERVER then
-	function Player:Incapacitate(duration)
+	local ply = FindMetaTable("Player")
+
+	function ply:Incapacitate(duration)
 		umsg.Start("swo_incapacitation") //More efficient to toggle this way than to use a networked int
 		umsg.End("swo_incapacitation")
 		
