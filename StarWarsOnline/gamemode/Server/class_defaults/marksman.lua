@@ -12,6 +12,12 @@ marksman.attrib.mind = 300
 marksman.attrib.focus = 0
 marksman.attrib.will = 0
 
+marksman.xp = {}
+marksman.xp.rifle_weaps = 0
+marksman.xp.pistol_weaps = 0
+marksman.xp.carbine_weaps = 0
+marksman.xp.combat = 0
+
 marksman.boxes = {}
 
 
