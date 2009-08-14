@@ -6,7 +6,7 @@
 		-The only data stored on the player regarding the box is whether or not they have it unlocked
 */
 
-local advBoxes = {}
+SWO.advBoxes = {}
 
 function SWO.createAdvBox(name, dname, requires, XP, gives)
 	local box = {}
