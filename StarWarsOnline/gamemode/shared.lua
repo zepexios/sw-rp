@@ -1,4 +1,3 @@
-y
 SWO = {}
 
 SWO.Version = 0.001
