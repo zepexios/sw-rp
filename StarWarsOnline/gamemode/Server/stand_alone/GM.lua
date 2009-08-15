@@ -31,13 +31,13 @@ end
 
 function GM:KeyPress( ply, KEY )
 	if( KEY == IN_WALK ) then
-		ply:ConCommand( "+MouseInput" )
+		ply:ConCommand( "MouseInput" )
 	end
 end
 
 function GM:KeyRelease( ply, KEY )
 	if( KEY == IN_WALK ) then
-		ply:ConCommand( "-MouseInput" )
+		ply:ConCommand( "MouseInput" )
 	end
 end
 

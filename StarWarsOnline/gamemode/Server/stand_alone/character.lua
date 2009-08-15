@@ -13,16 +13,16 @@
 				2. Quests
 				3. More
 	*/
-	include("advbox.lua")
+	--include("advbox.lua")
 	
 	SWO.classes = {}
 	--SWO.Debug("Loading Class Plugins")
-	--SWO.LoadDir("server/class_defaults/") //Load all class defaults plugins
+	SWO.LoadDir(GM.FolderName .. "gamemode/server/class_defaults/") //Load all class defaults plugins
 	--Changed as its now loading recursively else where
 	
 	SWO.species = {}
 	--SWO.Debug("Loading Species Plugins")
-	--SWO.LoadDir("server/species_defaults/") //Load all class defaults plugins
+	SWO.LoadDir(GM.FolderName .. "gamemode/server/species_defaults/") //Load all class defaults plugins
 	--Changed as its now loading recursively else where
 	
 	local function createSWOTable(ply, selections) //This function will handle stages 2 & 3 of character creation

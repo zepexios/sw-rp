@@ -1,6 +1,5 @@
-
 --This alows me to add functions to the ply object
-local ply = FindMetaTable("ply")
+local ply = FindMetaTable("Player")
 
 --This is only called at the begining so that the char sellection can display the name and such
 function ply:LoadChars()
