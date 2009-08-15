@@ -1,5 +1,6 @@
 function GM:PlayerInitialSpawn( ply )
-	ply:LoadChars()
+	--Scrapped, Add new function here!
+	--ply:LoadChars()
 	
 	ply:PrintMessage( HUD_PRINTTALK, "Hello "..ply:Nick().."!" )
 	ply:PrintMessage( HUD_PRINTTALK, "Welcome to SWO's official Server." )
@@ -13,9 +14,6 @@ function GM:PlayerSpawn( ply )
 
 	util.PrecacheModel( ply.Char.Model )
 	ply:SetModel( ply.Char.Model )
-	ply:SetNWInt( "PlayerForce", ply:GetForce() )
-	ply:SetNWInt( "PlayerMaxForce", ply:GetMaxForce() )
-	ply:AddForce( ply:GetMaxForce() )
 	
 end
 

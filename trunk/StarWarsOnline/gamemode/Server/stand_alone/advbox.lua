@@ -33,34 +33,34 @@ SWO.createAdvBox = function(name, dname, requires, XP, gives)
 		if not val then //Unlock
 			ply.swo.boxes[self.name] = false
 			
-			for i, stat in pairs gives.stats do
+			for i, stat in pairs(gives.stats) do
 				if not ply.swo.stats[i] then
 					ply.swo.stats[i] = 0
 				end
 				ply.swo.stats[i] = ply.swo.stats[i] + stat
 			end
-			for i, skill in pairs gives.skills do
+			for i, skill in pairs(gives.skills) do
 				ply.swo.skills[i] = true
 			end
-			for i, cert in pairs gives.certs do
+			for i, cert in pairs(gives.certs) do
 				ply.swo.certs[i] = true
 			end
-			for i, cert in pairs gives.titles do
+			for i, cert in pairs(gives.titles) do
 				ply.swo.titles[i] = true
 			end
 		else //Relock
 			ply.swo.boxes[self.name] = true
 			
-			for i, stat in pairs gives.stats do
+			for i, stat in pairs(gives.stats) do
 				ply.swo.stats[i] = ply.swo.stats[i] - stat
 			end
-			for i, skill in pairs gives.skills do
+			for i, skill in pairs(gives.skills) do
 				ply.swo.skills[i] = false
 			end
-			for i, cert in pairs gives.certs do
+			for i, cert in pairs(gives.certs) do
 				ply.swo.certs[cert] = false
 			end
-			for i, cert in pairs gives.titles do
+			for i, cert in pairs(gives.titles) do
 				ply.swo.titles[i] = false
 			end
 		end
@@ -69,7 +69,8 @@ SWO.createAdvBox = function(name, dname, requires, XP, gives)
 	box.xpreq = function(ply)
 		for typ, val in pairs(self["XP"]) do
 			if ply.swo.xp[typ] < val then
-			return false
+				return false
+			end
 		end
 		return true
 	end
@@ -97,5 +98,5 @@ SWO.createAdvBox = function(name, dname, requires, XP, gives)
 		end
 	end
 	
-	advBoxes[name] = box
+	SWO.advBoxes[name] = box
 end

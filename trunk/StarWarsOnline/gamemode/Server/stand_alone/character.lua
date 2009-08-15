@@ -16,10 +16,12 @@
 	include("advbox.lua")
 	
 	SWO.classes = {}
-	SWO.LoadDir("../class_defaults/") //Load all class defaults plugins
+	SWO.Debug("Loading Class Plugins")
+	SWO.LoadDir("server/class_defaults/") //Load all class defaults plugins
 	
 	SWO.species = {}
-	SWO.LoadDir("../species_defaults/") //Load all class defaults plugins
+	SWO.Debug("Loading Species Plugins")
+	SWO.LoadDir("server/species_defaults/") //Load all class defaults plugins
 	
 	local function createSWOTable(ply, selections) //This function will handle stages 2 & 3 of character creation
 		//STAGE 2
