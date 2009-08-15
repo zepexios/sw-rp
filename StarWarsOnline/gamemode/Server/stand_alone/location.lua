@@ -5,7 +5,7 @@
 		2. Planets - We need to know what planet the player is on
 */
 
-SWO.vecToLocation(vec, planet)
+function SWO.vecToLocation(vec, planet)
 	local loc = {}
 	loc.x = vec.x
 	loc.y = vec.y
@@ -14,11 +14,11 @@ SWO.vecToLocation(vec, planet)
 	return loc
 end
 
-SWO.locationToVec(loc)
+function SWO.locationToVec(loc)
 	return Vector(loc.x, loc.y, loc.z)
 end
 
-SWO.updateLocation(loc, vec)
+function SWO.updateLocation(loc, vec)
 	loc.x = vec.x
 	loc.y = vec.y
 	loc.z = vec.z

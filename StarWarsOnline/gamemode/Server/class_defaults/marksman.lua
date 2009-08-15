@@ -21,7 +21,9 @@ marksman.xp.combat = 0
 
 //TODO: Look up actual equiptment
 marksman.equip = {} //Starting equiptment
-table.insert(marksman.equip, SWO.createItemData("shirt", 1)) //EXAMPLE
+--Please dont leave half finished functions in there...
+--At least create a dummy function so the code can continue!
+--table.insert(marksman.equip, SWO.createItemData("shirt", 1)) //EXAMPLE
 
 
 local gives = {} //Will be reset and reused for the creation of all advancement boxes for this class
