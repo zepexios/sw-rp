@@ -12,6 +12,7 @@ local function GUIMouse()
 end
 local function GUIMouseEnable()
 	SWO.Mouse.Active = true
+	SWO.MouseActive = true
 	gui.EnableScreenClicker( SWO.Mouse.Active )
 	if( SWO.Mouse.LastPosX and SWO.Mouse.LastPosY ) then
 		gui.SetMousePos( SWO.Mouse.LastPosX, SWO.Mouse.LastPosY )
@@ -19,6 +20,7 @@ local function GUIMouseEnable()
 end
 local function GUIMouseDisable()
 	SWO.Mouse.Active = false
+	SWO.MouseActive = false
 	SWO.Mouse.LastPosX, SWO.Mouse.LastPosY = gui.MousePos()
 	gui.EnableScreenClicker( SWO.Mouse.Active )
 end
