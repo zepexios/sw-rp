@@ -69,7 +69,7 @@ function SWO.Chat:AddChat( TabName, TabDescription, TabFlags )
 		local _, lineHeight = surface.GetTextSize( "H" )
 		local curX = 10
 		local curY = 10
-		for i = 0, SWO.Chat.MaxLines or 10 do
+		for i = 0, SWO.Chat.MaxLines or 23 do
 			local line = SWO.Chat.Lines[ #SWO.Chat.Lines - i ]
 			if( line )then
 				for k, v in pairs( self.Chats[ TabName ].Data.Flags ) do
@@ -191,84 +191,12 @@ function SWO.Chat:ParseText( Text )
 	local id = 1
 	local FlagStart, FlagEnd, FlagTag, Flag = string.find( Text, "(%[f=(%a*)%])" )
 	local ColorStart, ColorEnd, ColorTag, ColorR, ColorG, ColorB, ColorA = string.find( Text, "(%[c=(%d+),(%d+),(%d+),(%d+)%])" )
-	local EmoteStart, EmoteEnd, EmoteTag, Emote = string.find( Text, "(%[e=(%a*)%])" )
-	local HasFlags = true
-	local LolTimer = 1
+	print( ColorStart, ColorEnd, ColorTag, ColorR, ColorG, ColorB, ColorA )
 	while( Text != "" ) do
-		if( Flag ) then
-			print( Flag )
-		end
-		while( Flag and HasFlags and LolTimer < 20 ) do
-			print( "Has Flags: "..Flag )
-			table.insert( LineValues.Flags, id, Flag )
-			Text = string.Replace( Text, FlagTag, "" )
-			local FlagStart, FlagEnd, FlagTag, Flag = string.find( Text, "(%[f=(%a*)%])" )
-			if( !string.find( Text, "(%[f=(%a*)%])" ) ) then
-				HasFlag = false
-				print( Ended )
-			end
-			LolTimer = LolTimer + 1
-		end
-		if( ColorStart and EmoteStart ) then
-			if( ColorStart < EmoteStart ) then
-				if( ColorStart == 1 ) then
-					ColorEndStart, ColorEndEnd, ColorEndTag = string.find( Text, "(%[/c%])" )
-					if( ColorEndStart) then
-						ColorEndStart = ColorEndStart - 1
-					else
-						ColorEndStart =  string.len( Text )
-					end
-					ColorEndEnd = ColorEndEnd or string.len( Text )
-					local NewText = string.sub( Text, tonumber( ColorEnd ) + 1, ColorEndStart )
-					local w, h = surface.GetTextSize( NewText )
-					table.insert( LineValues.Type, id, TEXT_TYPE_COLOR )
-					table.insert( LineValues.Value, id, Color( ColorR, ColorG, ColorB, COlorA ) )
-					table.insert( LineValues.Text, id, NewText )
-					table.insert( LineValues.Width, id, w )
-					if( ColorEndEnd ) then 
-						Text = string.sub( Text, ColorEndEnd + 1 )
-					else 
-						Text = "" 
-					end
-				elseif( ColorStart > 1 ) then
-					local NewText = string.sub( Text, 1, ColorStart - 1 )
-					local w, h = surface.GetTextSize( Text )
-					table.insert( LineValues.Width, id, w )
-					table.insert( LineValues.Type, id, TEXT_TYPE_NONE )
-					table.insert( LineValues.Text, id, NewText )
-					Text = string.sub( Text, ColorStart, string.len( Text ) )
-				end
-			elseif( EmoteStart < ColorStart ) then
-				if( EmoteStart == 1 ) then
-					for k, v in pairs( SWO.Chat.Emotes ) do
-						if( k == Emote ) then
-							table.insert( LineValues.Value, id, v )
-							break
-						else
-							table.insert( LineValues.Value, id, SWO.Chat.Emotes["happy"] )
-							break
-						end
-					end
-					table.insert( LineValues.Type, id, TEXT_TYPE_EMOTE )
-					table.insert( LineValues.Text, id, text )
-					table.insert( LineValues.Width, id, 18 )
-					Text = string.sub( Text, EmoteEnd + 1 )
-				elseif( EmoteStart > 1 ) then
-					local NewText = string.sub( Text, 1, EmoteStart - 1 )
-					local w, h = surface.GetTextSize( NewText )
-					table.insert( LineValues.Width, id, w )
-					table.insert( LineValues.Type, id, TEXT_TYPE_NONE )
-					table.insert( LineValues.Text, id, NewText )
-					Text = string.sub( Text, EmoteStart, string.len( Text ) )
-				end
-			end
-			local FlagStart, FlagEnd, FlagTag, Flag = string.find( Text, "(%[f=(%a*)%])" )
-			local ColorStart, ColorEnd, ColorTag, ColorR, ColorG, ColorB, ColorA = string.find( Text, "(%[c=(%d+),(%d+),(%d+),(%d+)%])" )
-			local EmoteStart, EmoteEnd, EmoteTag, Emote = string.find( Text, "(%[e=(%a*)%])" )
-		elseif( ColoreStart and !EmoteStart ) then
+		if( ColorStart ) then
 			if( ColorStart == 1 ) then
-				ColorEndStart, ColorEndEnd, ColorEnd = string.find( Text, "(%[/c%])" )
-				if( ColorEndStart) then
+				ColorEndStart, ColorEndEnd, ColorEndTag = string.find( Text, "(%[/c%])" )
+				if( ColorEndStart ) then
 					ColorEndStart = ColorEndStart - 1
 				else
 					ColorEndStart =  string.len( Text )
@@ -277,9 +205,10 @@ function SWO.Chat:ParseText( Text )
 				local NewText = string.sub( Text, ColorEnd + 1, ColorEndStart )
 				local w, h = surface.GetTextSize( NewText )
 				table.insert( LineValues.Type, id, TEXT_TYPE_COLOR )
-				table.insert( LineValues.Value, id, Color( ColorR, ColorG, ColorB, COlorA ) )
+				table.insert( LineValues.Value, id, Color( ColorR, ColorG, ColorB, 255 ) )
 				table.insert( LineValues.Text, id, NewText )
 				table.insert( LineValues.Width, id, w )
+				print( Text )
 				if( ColorEndEnd ) then 
 					Text = string.sub( Text, ColorEndEnd + 1 )
 				else 
@@ -287,45 +216,16 @@ function SWO.Chat:ParseText( Text )
 				end
 			elseif( ColorStart > 1 ) then
 				local NewText = string.sub( Text, 1, ColorStart - 1 )
-				local w, h = surface.GetTextSize( Text )
-				table.insert( LineValues.Width, id, w )
-				table.insert( LineValues.Type, id, TEXT_TYPE_NONE )
-				table.insert( LineValues.Text, id, NewText )
-				Text = string.sub( Text, ColorStart, string.len( Text ) )
-			end
-		elseif( EmoteStart and !ColorStart ) then
-			if( EmoteStart == 1 ) then
-				for k, v in pairs( SWO.Chat.Emotes ) do
-					if( k == Emote ) then
-						table.insert( LineValues.Value, id, v )
-						break
-					else
-						table.insert( LineValues.Value, id, SWO.Chat.Emotes["happy"] )
-						break
-					end
-				end
-				table.insert( LineValues.Type, id, TEXT_TYPE_EMOTE )
-				table.insert( LineValues.Text, id, text )
-				table.insert( LineValues.Width, id, 18 )
-				Text = string.sub( Text, EmoteEnd + 1 )
-			elseif( EmoteStart > 1 ) then
-				local NewText = string.sub( Text, 1, EmoteStart - 1 )
 				local w, h = surface.GetTextSize( NewText )
 				table.insert( LineValues.Width, id, w )
 				table.insert( LineValues.Type, id, TEXT_TYPE_NONE )
 				table.insert( LineValues.Text, id, NewText )
-				Text = string.sub( Text, EmoteStart, string.len( Text ) )
+				Text = string.sub( Text, ColorStart, string.len( Text ) )
+				print( Text )
 			end
-		else
-			local w, h = surface.GetTextSize( Text )
-			table.insert( LineValues.Type, id, TEXT_TYPE_NONE )
-			table.insert( LineValues.Text, id, Text )
-			table.insert( LineValues.Width, id, w )
-			Text = ""
-			id = id + 1
-		end	
-		print( LineValues.Text[ 1 ] )
+		end
 	end
+	PrintTable( LineValues )
 	LineValues.Length = id
 	table.insert( SWO.Chat.Lines, LineValues )
 	Text = ""
@@ -334,14 +234,12 @@ function SWO.Chat:GetSetting( Setting )
 	return SWO.Chat.Settings[ Setting ] or true
 end
 function SWO.Chat:DrawLine( x, y, TheLine )
-	local StringLength = surface.GetTextSize( "h" ) * string.len( TheLine.Text[ 1 ] )
-	local CharLength = math.floor( SWO.Chat.ChatTabs:GetActiveTab():GetPanel():GetWide() / surface.GetTextSize( "h" ) - 2 )
-	local DrawNewLine = false
-	if( StringLength > SWO.Chat.ChatTabs:GetActiveTab():GetPanel():GetWide() ) then
-		local newLine = TheLine
-		newLine.Text[ 1 ] = string.sub( newLine.Text[ 1 ], CharLength )
-		DrawNewLine = true
-	end
+//	local StringLength = surface.GetTextSize( "h" ) * string.len( TheLine.Text[ 1 ] )
+//	local CharLength = math.floor( SWO.Chat.ChatTabs:GetActiveTab():GetPanel():GetWide() / surface.GetTextSize( "h" ) - 2 )
+//	local DrawNewLine = false
+//	if( StringLength > SWO.Chat.ChatTabs:GetActiveTab():GetPanel():GetWide() ) then
+//		DrawNewLine = true
+//	end
 	local curX = x
 	local curY = y
 	local num = TheLine.Length
@@ -364,10 +262,13 @@ function SWO.Chat:DrawLine( x, y, TheLine )
 			surface.DrawTexturedRect( curX + 1, curY, 16, 16 )
 		end
 		if w then curX = curX + w or curX end
-		if( DrawNewLine ) then
-			SWO.Chat:DrawLine( x, y, newLine )
-		end
 	end
+//	if( DrawNewLine ) then
+//		local _, TextHeight = surface.GetTextSize( "H" )
+//		local newLine = TheLine
+//		newLine.Text[ 2 ] = string.sub( newLine.Text[ 2 ], CharLength )
+//		SWO.Chat:DrawLine( curX, curY + TextHeight + 5 , newLine )
+//	end
 end
 function GM:StartChat()
 	SWO.ChatOpen = true
@@ -399,16 +300,14 @@ function GM:ChatText( plyInd, PlyName, Text, Type )
 			TheText = string.Replace( Text, k, v )
 		end
 		Time = ""
-		//if( SWO.Chat:GetSetting( "TimeStamps" ) ) then
-			local Time = string.lower( os.date( "%I:%M %p" ) )
-			if( string.sub( Time, 1, 1 ) == "0" ) then
-				Time = string.sub( Time, 2 )
-			end
-			Time = string.Replace( Time, "pm", "p.m." )
-			Time = string.Replace( Time, "am", "a.m." )
-			Time = Time.." "
-		//end
-		TheText = Time.."[c="..TextColor.r..","..TextColor.g..","..TextColor.b..","..TextColor.a.."]"..PlyName.."[/c]: "..TheText..""
+		local Time = string.lower( os.date( "%I:%M %p" ) )
+		if( string.sub( Time, 1, 1 ) == "0" ) then
+			Time = string.sub( Time, 2 )
+		end
+		Time = string.Replace( Time, "pm", "p.m." )
+		Time = string.Replace( Time, "am", "a.m." )
+		Time = Time.." "
+		TheText = "[c="..TextColor.r..","..TextColor.g..","..TextColor.b..","..TextColor.a.."]"..Time.." "..PlyName.."[/c]: "..TheText..""
 		SWO.Chat:ParseText( TheText )
 	elseif( Type == "none" and !SWO.Chat.FilterNone ) then
 	
@@ -448,44 +347,6 @@ ffafasfafas = "any_1_on@hotmail.com"
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-/*
-function self:AddChat( Name, Description, Flags )
-		SWO.Chat.Chats[ Name ] = vgui.Create( "DPanel", SWO.Chat.ChatTabs )
-		SWO.Chat.Chats[ Name ]:SetPos( 5, 5 )
-		SWO.Chat.Chats[ Name ]:SetSize( SWO.Chat.ChatTabs:GetWide() - 10, SWO.Chat.ChatTabs:GetTall() - 70 )
-		SWO.Chat.ChatTabs:AddSheet( Name, SWO.Chat.Chats[ Name ], "gui/silkicons/comment", false, false, Description )
-end
-
-function self:AddChat( Name, Description, Flags )
-		print( "Building "..Name.." Tab: "..Description )
-		SWO.Chat.Chats[ Name ] = vgui.Create( "DPanel", SWO.Chat.ChatTabs )
-		SWO.Chat.Chats[ Name ]:SetPos( 5, 5 )
-		SWO.Chat.Chats[ Name ]:SetSize( SWO.Chat.ChatTabs:GetWide() - 10, SWO.Chat.ChatTabs:GetTall() - 170 )
-		SWO.Chat.Chats[ Name ].Paint = function()
-		
-		end
-		SWO.Chat.Chats[ Name ].Data.Text = vgui.Create( "DTextEntry", SWO.Chat.Chats[ Name ] )
-		SWO.Chat.Chats[ Name ].Data.Text:SetSize( SWO.Chat.Chats[ Name ]:GetWide() - 4, 40 )
-		SWO.Chat.Chats[ Name ].Data.Text:SetPos( 2, SWO.Chat.Chats[ Name ]:GetTall() - 44 )
-		SWO.Chat.Chats[ Name ].Data.Text:SetEditable( false )
-	
-		SWO.Chat.Chats[ Name ].Data.Flags = Flags
-	
-		local CurrObj = SWO.Chat.Chats[ Name ]
-		SWO.Chat.ChatTabs:AddSheet( Name, CurrObj, "gui/silkicons/comment", false, false, Description )
-end
-*/
 
 
 
