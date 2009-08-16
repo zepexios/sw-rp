@@ -188,6 +188,7 @@ function SWO.Chat:ParseText( Text )
 	LineValues.Text = {}
 	LineValues.Width = {}
 	LineValues.Flags = {}
+	LineValues.Length = 0
 	local id = 1
 	local FlagStart, FlagEnd, FlagTag, Flag = string.find( Text, "(%[f=(%a*)%])" )
 	local ColorStart, ColorEnd, ColorTag, ColorR, ColorG, ColorB, ColorA = string.find( Text, "(%[c=(%d+),(%d+),(%d+),(%d+)%])" )
@@ -195,6 +196,7 @@ function SWO.Chat:ParseText( Text )
 	while( Text != "" ) do
 		if( ColorStart ) then
 			if( ColorStart == 1 ) then
+				print( "Nok......" )
 				ColorEndStart, ColorEndEnd, ColorEndTag = string.find( Text, "(%[/c%])" )
 				if( ColorEndStart ) then
 					ColorEndStart = ColorEndStart - 1
@@ -215,6 +217,7 @@ function SWO.Chat:ParseText( Text )
 					Text = "" 
 				end
 			elseif( ColorStart > 1 ) then
+				print( "Ok......" )
 				local NewText = string.sub( Text, 1, ColorStart - 1 )
 				local w, h = surface.GetTextSize( NewText )
 				table.insert( LineValues.Width, id, w )
@@ -223,10 +226,19 @@ function SWO.Chat:ParseText( Text )
 				Text = string.sub( Text, ColorStart, string.len( Text ) )
 				print( Text )
 			end
+			ColorStart, ColorEnd, ColorTag, ColorR, ColorG, ColorB, ColorA = string.find( Text, "(%[c=(%d+),(%d+),(%d+),(%d+)%])" )
+			id = id + 1
+		else
+			local w, h = surface.GetTextSize( Text )
+			table.insert( LineValues.Type, id, TEXT_TYPE_NONE )
+			table.insert( LineValues.Text, id, Text )
+			table.insert( LineValues.Width, id, w )
+			Text = ""
+			id = id + 1
 		end
 	end
-	PrintTable( LineValues )
 	LineValues.Length = id
+	PrintTable( LineValues )
 	table.insert( SWO.Chat.Lines, LineValues )
 	Text = ""
 end
