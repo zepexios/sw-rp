@@ -1,5 +1,9 @@
-SWO = {}
+--Now basing this game off sandbox, but disabling almost everything.
+--Just for the premade functions really :P
+DeriveGamemode( "sandbox" )
 
+SWO = {}
+SWO.DebugMode = true
 SWO.Version = 0.001
 
 --Debug Message function. Easier than print, as can use search on conlog from server
@@ -22,11 +26,26 @@ function SWO.LoadDir(base, client)
 				include( base .. thefile)
 			end
 		end
+	end
+end
+
+function SWO.LoadResources(dir)
+--Load resources from the SWO gamemode CONTENT FOLDER only
+	local relative = "../gamemodes/"..GM.FolderName.."/content/"
+	SWO.Debug("Loading Resources for dir: "..dir)
+	
+	for _,file in pairs(file.Find(relative..dir.."/*")) do
+		local name = string.lower(string.sub(file,-3))
 		if (name == "mp3" or name == "wav") then
-			if client then SWO.Debug("Client Loaded Sound Files") return end
-			SWO.Debug("Adding Sound: "..thefile)
-			resource.AddFile(GM.FolderName .. "/gamemode/" .. base .. folder .. "/" .. thefile)
+			SWO.Debug("Adding Sound: "..file)
 		end
+		if (name == "mat") then
+			SWO.Debug("Adding Material: "..file)
+		end
+		if (name == "mdl") then
+			SWO.Debug("Adding Model: "..file)
+		end
+		resource.AddFile(dir .. "/" .. file)
 	end
 end
 
