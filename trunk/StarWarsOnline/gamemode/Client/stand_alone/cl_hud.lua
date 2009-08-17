@@ -33,6 +33,11 @@ local Colors =
 		Shadow = Color( 0, 0, 0, 200 ),
 		Text = Color( 255, 255, 255, 255 )
 	},
+	Debug =
+	{
+		Shadow = Color( 255, 255, 255, 200 ),
+		Text = Color( 235, 0, 0, 255 )
+	},
 	HealthBar =
 	{
 		Border = Color( 255, 255, 255, 255 ),
@@ -141,7 +146,10 @@ function GM:HUDPaint( )
 	GHud:PaintBar( cx, cy + by, BarWidth, Vars.BarHeight, Colors.HealthBar, client:Health( ) / 100 )
  
 	by = by + Vars.BarHeight + Vars.BarSpacing
- 
+	
+	if SWO.DebugMode then
+		GHud:PaintText( ScrW() - 200, 20, "Debug Mode ACTIVE", Vars.Font, Colors.Debug )
+	end
 end
 
 

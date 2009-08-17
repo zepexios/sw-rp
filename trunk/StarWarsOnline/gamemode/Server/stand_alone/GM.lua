@@ -24,10 +24,8 @@ function GM:PlayerLoadout(ply)
 	
 end
 
-function GM:PlayerBindPress( ply, BIND, pressed )	// Blocks ConCommands; Add a new line with the format below to block a Cmd ..MGinshe..
-	if( string.find( BIND, "<Command>" ) ) then return false end
-	if( string.find( BIND, "kill" ) ) then ply:PrintMessage( HUD_PRINTCONSOLE, "Suicice is NOT the way!" ) end
-end
+--Moved GM:PlayerBindPress as its a client side function (DONT know why... it shouldn't be :(  ) its now in shared/GM.lua
+--MG remove this comment when you see it. I just put this here, just in case you didn't read the change log :P
 
 function GM:KeyPress( ply, KEY )
 	if( KEY == IN_WALK ) then
@@ -42,6 +40,9 @@ function GM:KeyRelease( ply, KEY )
 end
 
 function GM:CanPlayerSuicide( ply )
+	if SWO.DebugMode then return true end
+	ply:PrintMessage( HUD_PRINTCONSOLE , "Suicice is NOT the way!" )
+	ply:PrintMessage( HUD_PRINTTALK , "Suicice is NOT the way!" )
 	return false
 end
 
