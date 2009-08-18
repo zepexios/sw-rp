@@ -1,28 +1,29 @@
 // this is A WIP chat by MGinshe.
 // Im not sure how its gona go for lag.. but.. meh
+// Im just gona post some "Updates" on the chat up here..
+
+// Works a charm, all i need to do now is make it so flags are placed on your message
 
 SWO.Chat = {}
 SWO.Chat.Chats = {}
+SWO.Chat.Lines = {}
+SWO.Chat.Settings = {}
 
 SWO.Chat.Shortcuts = {} // Pretty simple realy; This next line will replace all instances of "Faggot" With "F***t". NOTE This IS case sensitive
-SWO.Chat.Shortcuts["Faggot"] 	= "F***t"
-SWO.Chat.Shortcuts["gay"]		= "homosexual"
-
-SWO.Chat.Emotes = {}
-
-SWO.Chat.Lines = {}
-if( file.Read( "StarWarsOnline/ChatSettings" ) ) then
-	SWO.Chat.Settings = util.KeyValuesToTable( file.Read( "StarWarsOnline/ChatSettings" ) )
-else
-	SWO.Chat.Settings = {}
-end
-SWO.Chat.Settings[ "TimeStamps" ] = true
+SWO.Chat.Shortcuts["[c=red]"] 		= "[c=255,0,0,255]"
+SWO.Chat.Shortcuts["[c=green]"]		= "[c=0,255,0,255]"
+SWO.Chat.Shortcuts["[c=blue]"]		= "[c=0,0,255,255]"
+SWO.Chat.Shortcuts["[c=white]"]		= "[c=255,255,255,255]"
+SWO.Chat.Shortcuts["[c=black]"]		= "[c=0,0,0,255]"
 
 local TEXT_TYPE_NONE	= 1
 local TEXT_TYPE_COLOR	= 2
-local TEXT_TYPE_EMOTE	= 3
 function SWO.Chat:Init()
 	// Sorry for the lack of comments.. Ill make some later
+	// Meh, shouldn't be too hard to folow.\
+	if( LocalPlayer() ) then
+		LocalPlayer():ConCommand( "gm_clearfonts" )
+	end
 	
 	self.MainFrame = vgui.Create( "DFrame" )
 	self.MainFrame:SetPos( 0, ScrH() / 2 )
@@ -53,7 +54,7 @@ function SWO.Chat:Init()
 	
 	self:ChatSettingsTab()
 	self:ChatAddTab()
-	self:AddChat( "Global", "Global Chat", { } )
+	self:AddChat( "Global", "Global Chat", { "all" } )
 	self:AddChat( "Team", "Team Chat", { "Team" } )
 	self:AddChat( "PM", "Private Message", { "PM" } )
 end
@@ -68,23 +69,28 @@ function SWO.Chat:AddChat( TabName, TabDescription, TabFlags )
 		surface.SetFont( "ChatFont" )
 		local _, lineHeight = surface.GetTextSize( "H" )
 		local curX = 10
-		local curY = 10
-		for i = 0, SWO.Chat.MaxLines or 23 do
+		local curY = self.ChatTabs:GetTall() - 74
+		for i = 0, SWO.Chat.MaxLines or 100 do
 			local line = SWO.Chat.Lines[ #SWO.Chat.Lines - i ]
-			if( line )then
-				for k, v in pairs( self.Chats[ TabName ].Data.Flags ) do
-					for e, a in pairs( line.Flags ) do
-						if( v == a) then
-							local RightFlags = true 
-						end
-					end
-				end
-			end
 			RightFlags = true
+//			if( line ) then
+//				if( line.Flags ) then		
+//					for k, v in pairs( line.Flags ) do
+//						if( string.find( string.lower( self.Chats[ TabName ].Data.Flags ), v ) or self.Chats[ TabName ].Data.Flags == "all" or type( line.Flags ) != "string" ) then
+//							RightFlags = true
+//						end
+//					end
+//				else
+//					RightFlags = false
+//				end
+//			end
 			if( line and RightFlags )then
+				local TWidth, _ = surface.GetTextSize( line.Text[ 1 ] )
+				
 				curX = 10
 				SWO.Chat:DrawLine( curX, curY, line )
-				curY = curY + 10 + 5
+				curY = curY - 10 - 5
+//				RightFlags = false
 			end
 		end
 	end
@@ -103,11 +109,17 @@ function SWO.Chat:AddChat( TabName, TabDescription, TabFlags )
 	self.Chats[ TabName ].Data.Text.OnEnter = function()
 		print( "Entered " )
 	end
-	
-	self.Chats[ TabName ].Data.Flags = TabFlags
+	self.Chats[ TabName ].Data.Flags = ""
+	for k, v in pairs( TabFlags ) do
+		self.Chats[ TabName ].Data.Flags = self.Chats[ TabName ].Data.Flags.." "..v
+	end
 	
 	local CurrObj = self.Chats[ TabName ]
 	self.ChatTabs:AddSheet( TabName, CurrObj, "gui/silkicons/comment", false, false, TabDescription )
+//	if(string.find( TabFlags, "Default" ) )then
+//		self.ChatTabs:SetActiveTab( self.Chats[ TabName ] )
+//	end
+		
 end
 function SWO.Chat:ChatAddTab()	
 	self.ChatAddTab = vgui.Create( "DPanelList", self.ChatTabs )
@@ -190,13 +202,19 @@ function SWO.Chat:ParseText( Text )
 	LineValues.Flags = {}
 	LineValues.Length = 0
 	local id = 1
+	local fid = 1
 	local FlagStart, FlagEnd, FlagTag, Flag = string.find( Text, "(%[f=(%a*)%])" )
 	local ColorStart, ColorEnd, ColorTag, ColorR, ColorG, ColorB, ColorA = string.find( Text, "(%[c=(%d+),(%d+),(%d+),(%d+)%])" )
-	print( ColorStart, ColorEnd, ColorTag, ColorR, ColorG, ColorB, ColorA )
 	while( Text != "" ) do
+		if( Flag ) then
+			print( Flag )
+			table.insert( LineValues.Flags, fid, Flag )
+			Text = string.Replace( Text, FlagTag, "" )
+			FlagStart, FlagEnd, FlagTag, Flag = string.find( Text, "(%[f=(%a*)%])" )
+			fid = fid + 1
+		end
 		if( ColorStart ) then
 			if( ColorStart == 1 ) then
-				print( "Nok......" )
 				ColorEndStart, ColorEndEnd, ColorEndTag = string.find( Text, "(%[/c%])" )
 				if( ColorEndStart ) then
 					ColorEndStart = ColorEndStart - 1
@@ -210,21 +228,19 @@ function SWO.Chat:ParseText( Text )
 				table.insert( LineValues.Value, id, Color( ColorR, ColorG, ColorB, 255 ) )
 				table.insert( LineValues.Text, id, NewText )
 				table.insert( LineValues.Width, id, w )
-				print( Text )
 				if( ColorEndEnd ) then 
 					Text = string.sub( Text, ColorEndEnd + 1 )
 				else 
 					Text = "" 
 				end
 			elseif( ColorStart > 1 ) then
-				print( "Ok......" )
 				local NewText = string.sub( Text, 1, ColorStart - 1 )
 				local w, h = surface.GetTextSize( NewText )
 				table.insert( LineValues.Width, id, w )
 				table.insert( LineValues.Type, id, TEXT_TYPE_NONE )
 				table.insert( LineValues.Text, id, NewText )
 				Text = string.sub( Text, ColorStart, string.len( Text ) )
-				print( Text )
+				TextBackup = Text
 			end
 			ColorStart, ColorEnd, ColorTag, ColorR, ColorG, ColorB, ColorA = string.find( Text, "(%[c=(%d+),(%d+),(%d+),(%d+)%])" )
 			id = id + 1
@@ -238,20 +254,20 @@ function SWO.Chat:ParseText( Text )
 		end
 	end
 	LineValues.Length = id
-	PrintTable( LineValues )
 	table.insert( SWO.Chat.Lines, LineValues )
 	Text = ""
 end
-function SWO.Chat:GetSetting( Setting )
-	return SWO.Chat.Settings[ Setting ] or true
+function SWO.Chat:AddFlagTags( TheText, TheFalgTags )
+	if( type( TheFlagText ) == "table" ) then
+		for k, v in pairs( TheFlagTags ) do
+			TheText = "[f="..v.."]"..TheText
+		end
+	else
+		TheText = "[f="..TheFlagTags.."]"..TheText
+	end
+	return TheText
 end
 function SWO.Chat:DrawLine( x, y, TheLine )
-//	local StringLength = surface.GetTextSize( "h" ) * string.len( TheLine.Text[ 1 ] )
-//	local CharLength = math.floor( SWO.Chat.ChatTabs:GetActiveTab():GetPanel():GetWide() / surface.GetTextSize( "h" ) - 2 )
-//	local DrawNewLine = false
-//	if( StringLength > SWO.Chat.ChatTabs:GetActiveTab():GetPanel():GetWide() ) then
-//		DrawNewLine = true
-//	end
 	local curX = x
 	local curY = y
 	local num = TheLine.Length
@@ -268,19 +284,15 @@ function SWO.Chat:DrawLine( x, y, TheLine )
 			surface.SetTextColor( val )
 			surface.SetTextPos( curX, curY )
 			surface.DrawText( text )
-		elseif t == TEXT_TYPE_EMOTE then
-			surface.SetTexture( surface.GetTextureID( val ) )
-			surface.SetDrawColor( 255, 255, 255, 255 )
-			surface.DrawTexturedRect( curX + 1, curY, 16, 16 )
 		end
 		if w then curX = curX + w or curX end
 	end
-//	if( DrawNewLine ) then
-//		local _, TextHeight = surface.GetTextSize( "H" )
-//		local newLine = TheLine
-//		newLine.Text[ 2 ] = string.sub( newLine.Text[ 2 ], CharLength )
-//		SWO.Chat:DrawLine( curX, curY + TextHeight + 5 , newLine )
-//	end
+end
+function SWO.Chat:DoTextWrapping( Text, Len, Gap, CharLen )
+	if( CharLen ) then
+		
+	end
+	
 end
 function GM:StartChat()
 	SWO.ChatOpen = true
@@ -301,11 +313,18 @@ function GM:FinishChat( Text )
 end
 function GM:ChatTextChanged( Text )
 	if( SWO.Chat.ChatTabs:GetActiveTab():GetPanel().Data.Text ) then
-		SWO.Chat.ChatTabs:GetActiveTab():GetPanel().Data.Text:SetText( Text )
+		local TextW, TextH = surface.GetTextSize( Text )
+		if( TextW > SWO.Chat.ChatTabs:GetActiveTab():GetPanel().Data.Text:GetWide() ) then
+			TextL = ( TextW / string.len( Text ) / TextW * string.len( Text ) ) * string.len( Text )
+			local NText = string.sub( Text, -TextL )
+			SWO.Chat.ChatTabs:GetActiveTab():GetPanel().Data.Text:SetText( NText )
+		else
+			SWO.Chat.ChatTabs:GetActiveTab():GetPanel().Data.Text:SetText( Text )
+		end
 	else
 	end
 end
-function GM:ChatText( plyInd, PlyName, Text, Type )
+function GM:ChatText( plyInd, PlyName, Text, Type, Other )
 	if( Type == "chat" and !SWO.Chat.FilterChat ) then
 		local TextColor = team.GetColor( player.GetByID( plyInd ):Team() ) or Color( 200, 200, 200, 255 )
 		for k, v in pairs( SWO.Chat.Shortcuts ) do
@@ -325,7 +344,7 @@ function GM:ChatText( plyInd, PlyName, Text, Type )
 	
 		SWO.Chat:ParseText( "[f=Global]"..Text )
 	elseif( Type == "joinleave" and !SWO.Chat.FilterJoinLeave ) then
-		SWO.Chat:ParseText( "[f=Global][c=200,200,200,255]"..Text.."[/c]" )
+		SWO.Chat:ParseText( "[c=200,200,200,255]"..Text.."[/c]" )
 	end
 end
 function GM:OnPlayerChat( ply, Text, teamchat, alive )
@@ -347,6 +366,27 @@ function GM:OnPlayerChat( ply, Text, teamchat, alive )
 end
 concommand.Add( "StartSWOChat", SWO.Chat:Init() )
 
+
+function SWO.Chat:GetSetting( Setting )
+	return SWO.Chat.Settings[ Setting ] or true
+end
+function SWO.Chat:LoadChatSettings()
+	if( file.Find( "StarWarsOnline/ChatSettings.txt" ) ) then
+		local Settings = file.Read( "StarWarsOnline/ChatSettings.txt" )
+		Settings = util.KeyValuesToTable( Settings )
+		SWO.Chat.Settings = Settings
+	else
+		//Setup new settings.. just to avoid ERRORs
+		SWO.Chat.Settings[ "TimeStamps" ] 	= true
+		SWO.Chat.Settings[ "Width" ]		= 500
+		SWO.Chat.Settings[ "Height" ]		= 200
+	end
+end
+function SWO.Chat:SaveChatSettings()
+	local Settings = SWO.Chat.Settings
+	Settings = util.TableToKeyValues( Settings )
+	file.Write( "StarWarsOnline/ChatSettings", Settings )
+end
 
 
 
