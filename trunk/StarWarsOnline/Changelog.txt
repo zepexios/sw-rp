@@ -1,0 +1,26 @@
+To make it eaiser for everyone to see what you have changed.
+Please write things down here!
+If not, i will hunt you down on steam and make you!
+--@meeces2911
+p.s. Have a nice day :P
+
+*************************************************************************
+
+@meeces2911
+Moved GM:PlayerBindPress as its a client side function, DONT know why... it shouldn't be :(
+its now in shared/GM.lua
+
+Added Suicide message to player when they type in 'kill' in the console
+As well as fixed MG's message to console when a player pressed a key to kill themselves
+(Changed it to a chat message)
+
+Added a DebugMode variable to the SWO table (SWO.DebugMode, return bool)
+
+Allowed console commands to NOT be blocked while running in DebugMode
+
+Added Client Hud Message showing debug mode is active
+
+Added Resource Loader for SWO content folder.
+(SWO.LoadResources(String <FolderName>))
+
+**************************************************************************
