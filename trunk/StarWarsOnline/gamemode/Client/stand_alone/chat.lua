@@ -10,6 +10,7 @@ SWO.Chat.Lines = {}
 SWO.Chat.Settings = {}
 
 SWO.Chat.Shortcuts = {} // Pretty simple realy; This next line will replace all instances of "Faggot" With "F***t". NOTE This IS case sensitive
+SWO.Chat.Shortcuts["Fagggot"]		= "F****t"
 SWO.Chat.Shortcuts["[c=red]"] 		= "[c=255,0,0,255]"
 SWO.Chat.Shortcuts["[c=green]"]		= "[c=0,255,0,255]"
 SWO.Chat.Shortcuts["[c=blue]"]		= "[c=0,0,255,255]"
@@ -20,9 +21,9 @@ local TEXT_TYPE_NONE	= 1
 local TEXT_TYPE_COLOR	= 2
 function SWO.Chat:Init()
 	// Sorry for the lack of comments.. Ill make some later
-	// Meh, shouldn't be too hard to folow.\
+	// Meh, shouldn't be too hard to folow.
 	if( LocalPlayer() ) then
-		LocalPlayer():ConCommand( "gm_clearfonts" )
+		LocalPlayer():ConCommand( "gm_clearfonts" ) // More for Debugging. BUT if we ever change a font, Players won't haveto restart GMod.
 	end
 	
 	self.MainFrame = vgui.Create( "DFrame" )
@@ -45,7 +46,8 @@ function SWO.Chat:Init()
 	self.ChatTabs:SetSize( self.MainFrame:GetWide() - 25, self.MainFrame:GetTall() )
 	self.ChatTabs.Paint = function()
 		if( !SWO.MouaseActive ) then
-			surface.SetDrawColor( 55, 55, 55, 20 )
+			local Alpha = SWO.Chat.BackgroundTrancparency or 20
+			surface.SetDrawColor( 55, 55, 55, Alpha )
 			surface.DrawRect( 2 + 1, 22 + 1, self.MainFrame:GetWide() - 4, self.ChatTabs:GetTall() - 23 )
 		else
 			
@@ -54,9 +56,11 @@ function SWO.Chat:Init()
 	
 	self:ChatSettingsTab()
 	self:ChatAddTab()
-	self:AddChat( "Global", "Global Chat", { "all" } )
+	self:AddChat( "Global", "Global Chat", { "GLOBAL" } )
 	self:AddChat( "Team", "Team Chat", { "Team" } )
 	self:AddChat( "PM", "Private Message", { "PM" } )
+	
+	SWO.Chat:SetChatLines( SWO.Chat.ChatTabs:GetActiveTab():GetPanel():GetTall() - 54 , 5 )
 end
 function SWO.Chat:AddChat( TabName, TabDescription, TabFlags )
 	local self = SWO.Chat
@@ -70,26 +74,34 @@ function SWO.Chat:AddChat( TabName, TabDescription, TabFlags )
 		local _, lineHeight = surface.GetTextSize( "H" )
 		local curX = 10
 		local curY = self.ChatTabs:GetTall() - 74
-		for i = 0, SWO.Chat.MaxLines or 100 do
+		for i = 0, self.MaxLines do
 			local line = SWO.Chat.Lines[ #SWO.Chat.Lines - i ]
-			RightFlags = true
-//			if( line ) then
-//				if( line.Flags ) then		
-//					for k, v in pairs( line.Flags ) do
-//						if( string.find( string.lower( self.Chats[ TabName ].Data.Flags ), v ) or self.Chats[ TabName ].Data.Flags == "all" or type( line.Flags ) != "string" ) then
-//							RightFlags = true
-//						end
-//					end
-//				else
-//					RightFlags = false
-//				end
-//			end
+			local RightFlags = false
+			local TempFlags = ""
+			if( line ) then
+				if( self.Chats[ TabName ].Data.Text.Flags == "GLOBAL" or line.Flags[ 1 ] == "GLOBAL" or line.Flags == "" ) then
+					RightFlags = true
+				else
+					if( line.Flags ) then		
+						for _, Flag in pairs( line.Flags ) do
+							TempFlags = TempFlags.." "..Flag
+						end
+						for k, v in pairs( self.Chats[ TabName ].Data.Text.Flags  ) do
+							if( string.find( TempFlags, v ) ) then
+								RightFlags = true
+							end
+						end
+					else
+						RightFlags = false
+					end
+				end
+			end
 			if( line and RightFlags )then
 				local TWidth, _ = surface.GetTextSize( line.Text[ 1 ] )
 				
 				curX = 10
 				SWO.Chat:DrawLine( curX, curY, line )
-				curY = curY - 10 - 5
+				curY = curY - lineHeight - 5
 //				RightFlags = false
 			end
 		end
@@ -109,10 +121,13 @@ function SWO.Chat:AddChat( TabName, TabDescription, TabFlags )
 	self.Chats[ TabName ].Data.Text.OnEnter = function()
 		print( "Entered " )
 	end
-	self.Chats[ TabName ].Data.Flags = ""
-	for k, v in pairs( TabFlags ) do
-		self.Chats[ TabName ].Data.Flags = self.Chats[ TabName ].Data.Flags.." "..v
-	end
+	
+	self.Chats[ TabName ].Data.Text.Flags = TabFlags
+//	self.Chats[ TabName ].Data.Text.Flags = ""
+//	local Indexer = 1
+//	for _, Flag in pairs( TabFlags ) do
+//		self.Chats[ TabName ].Data.Text.Flags[ Indexer ] = Flag
+//	end
 	
 	local CurrObj = self.Chats[ TabName ]
 	self.ChatTabs:AddSheet( TabName, CurrObj, "gui/silkicons/comment", false, false, TabDescription )
@@ -166,10 +181,22 @@ function SWO.Chat:ChatSettingsTab()
 	self.ChatSettingsTab.Data.NumSlider2.OnValueChanged = function()
 		self.MainFrame:SetTall( self.ChatSettingsTab.Data.NumSlider2:GetValue() )
 		SWO.Chat:UpdateSizes()
+		SWO.Chat:SetChatLines( SWO.Chat.ChatTabs:GetActiveTab():GetPanel():GetTall() - 54 , 5 )
 	end
+	self.ChatSettingsTab.Data.NumSlider3 = vgui.Create( "DNumSlider", self.ChatSettingsTab )
+	self.ChatSettingsTab.Data.NumSlider3:SetPos( 4, 114 )
+	self.ChatSettingsTab.Data.NumSlider3:SetSize( 150, 50 )
+	self.ChatSettingsTab.Data.NumSlider3:SetText( "Chat Background Opacity" )
+	self.ChatSettingsTab.Data.NumSlider3:SetMin( 0 )
+	self.ChatSettingsTab.Data.NumSlider3:SetMax( 255 )
+	self.ChatSettingsTab.Data.NumSlider3:SetDecimals( 0 )
+	self.ChatSettingsTab.Data.NumSlider3:SetValue( 20 )
+	self.ChatSettingsTab.Data.NumSlider3.OnValueChanged = function()
+		SWO.Chat.BackgroundTrancparency = self.ChatSettingsTab.Data.NumSlider3:GetValue()
+	end
+	
 	self.ChatSettingsTab.Data.Button1 = vgui.Create( "DButton", self.ChatSettingsTab )
 	self.ChatSettingsTab.Data.Button1:SetText( "Reset Chat Size" )
-	
 	self.ChatSettingsTab.Data.Button1.DoClick = function()
 		self.MainFrame:SetTall( 200 )
 		self.ChatSettingsTab.Data.NumSlider2:SetValue( 200 )
@@ -179,6 +206,7 @@ function SWO.Chat:ChatSettingsTab()
 	end
 	self.ChatSettingsTab:AddItem( self.ChatSettingsTab.Data.NumSlider1 )
 	self.ChatSettingsTab:AddItem( self.ChatSettingsTab.Data.NumSlider2 )
+	self.ChatSettingsTab:AddItem( self.ChatSettingsTab.Data.NumSlider3 )
 	self.ChatSettingsTab:AddItem( self.ChatSettingsTab.Data.Button1 )
 	self.ChatTabs:AddSheet( "", self.ChatSettingsTab, "gui/silkicons/cog", false, false, "Chat Settings" )
 end
@@ -212,6 +240,8 @@ function SWO.Chat:ParseText( Text )
 			Text = string.Replace( Text, FlagTag, "" )
 			FlagStart, FlagEnd, FlagTag, Flag = string.find( Text, "(%[f=(%a*)%])" )
 			fid = fid + 1
+		else
+			table.insert( LineValues.Flags, fid, "GLOBAL" )
 		end
 		if( ColorStart ) then
 			if( ColorStart == 1 ) then
@@ -288,11 +318,11 @@ function SWO.Chat:DrawLine( x, y, TheLine )
 		if w then curX = curX + w or curX end
 	end
 end
-function SWO.Chat:DoTextWrapping( Text, Len, Gap, CharLen )
-	if( CharLen ) then
-		
-	end
-	
+function SWO.Chat:SetChatLines( Height, Padding )
+	local _, TextHeight = surface.GetTextSize( "H" )
+	TextHeight = TextHeight + Padding
+	SWO.Chat.MaxLines = math.floor( Height / TextHeight )
+	print( math.floor( Height / TextHeight ) )
 end
 function GM:StartChat()
 	SWO.ChatOpen = true
