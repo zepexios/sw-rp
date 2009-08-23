@@ -6,6 +6,7 @@
 SWO.FunctionDump = {}
 
 function SWO:PopupWindow( Title, Text, Fade, Font )
+	print( "OH MY FUCKING GAWD" )
 	if( Font ) then
 		if( Font == "_" ) then
 		
@@ -13,11 +14,11 @@ function SWO:PopupWindow( Title, Text, Fade, Font )
 			TheFont = true 
 		end
 		if( TheFont ) then
-			surface.SetFont( TheFont )
+			surface.SetFont( Font )
 		end
 	end
 	local TheTextHeight = 0
-	local TheTextWidth = )
+	local TheTextWidth = 0
 	for _, LoopText in pairs( Text ) do
 		local CurWidth, CurHeight = surface.GetTextSize( LoopText )
 		TheTextHeight = TheTextHeight + CurHeight + 5
@@ -25,7 +26,6 @@ function SWO:PopupWindow( Title, Text, Fade, Font )
 			TheTextWidth = CurWidth
 		end
 	end
-	
 	local MainHeight = 23 + TheTextHeight + 35 + 5 + 5 + 5 + 10	// Main Height = that little bar at the top + The Total Text Height + 35 ( Button Height ) + 5 + 5 + 5 ( Padding ) + 10 ( Text Padding )
 	local MaingWidth = TheTextWidth + 5 + 5 + 10 			// Main Width = Total Text Width + 5 + 5 ( Padding ) + 10 ( Text Padding )
 	
@@ -33,6 +33,7 @@ function SWO:PopupWindow( Title, Text, Fade, Font )
 	SWO.FunctionDump.PopUp:SetTitle( Title )
 	SWO.FunctionDump.PopUp:SetSize( MainWidth, MainHeight )
 	SWO.FunctionDump.PopUp:Center()
+	SWO.FunctionDump.PopUp:MakePopup()
 	SWO.FunctionDump.PopUp:SetBackgroundBlur( true )
 	SWO.FunctionDump.PopUp:SetVisible( true )
 	SWO.FunctionDump.PopUp:SetDraggable( false )
@@ -50,26 +51,19 @@ function SWO:PopupWindow( Title, Text, Fade, Font )
 	SWO.FunctionDump.PopUpPanel:SetPos( 5, 5 )
 	SWO.FunctionDump.PopUpPanel:SetSize( TheTextWidth + 10, TheTextHeight + 10 )
 	SWO.FunctionDump.PopUpPanel.Paint = function()
-		local y = 5			// Y ( From top )
+		local y = 5	
 		for _, DrawText in pairs( Text ) do
-			SWO.FunctionDump:DrawLine( 5, y, DrawText )
-			local _, DrawTextHeight = surface.GetTextSize
+			self.FunctionDump:DrawLine( 5, y, DrawText )
+			local _, DrawTextHeight = surface.GetTextSize( Text )
 			y = y + DrawTextHeight + 5
 		end
 	end
-	
 end
 function SWO.FunctionDump:DrawLine( x, y, text )
 	surface.SetTextPos( x, y )
 	surface.SetTextColor( 255, 255, 255, 255 )
-	surface.DrawText( text 0
+	surface.DrawText( text )
 end
-local TestText = {
-	"This is line one. Allso the first elemnt in the table",
-	"This is line two. Line two is longer than line one, so the pop-up..",
-	".. Will be the length of lines two ( This being line 3 )"
-}
-SWO:PopupWindow( "MGinshe's Test", TestText, true, "UiBold" )
 
 
 
