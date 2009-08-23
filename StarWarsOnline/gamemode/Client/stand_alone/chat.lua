@@ -182,7 +182,6 @@ function SWO.Chat:ChatAddTab()
 	end
 	self.ChatAddTab.Data = {}
 	
-	self.ChatAddTab.Data.
 	
 	self.ChatTabs:AddSheet( "", self.ChatAddTab, "gui/silkicons/comment_add", false, false, "Add Chat" )
 end
@@ -369,6 +368,40 @@ function SWO.Chat:SetChatLines( Height, Padding )
 	SWO.Chat.MaxLines = math.floor( Height / TextHeight )
 	print( math.floor( Height / TextHeight ) )
 end
+function SWO.Chat:DoLineWrapping( Text, WMax )
+	local TWidth, THeight = surface.GetTextSize( Text )
+	local TLength = string.len( Text )
+	local TextIndex = 1
+	local ReturnTable = {}
+	local Break = false
+	while( !Break ) do
+		if( TWidth >= WMax and string.find( Text, "%s" ) ) then
+			local MaxLine = WMax / TWidthH
+			local Index = 1
+			local Kill = false
+			local TempText = ""
+			local LastSpace = 1
+			while( !Kill ) do
+				if( Index >= MaxLine ) then
+					Kill = true
+					break
+				end
+				TempText = string.sub( Text, Index, Index )
+				if( TempText == "%s" ) then
+					LastSpace = Index
+				end
+				Index = Index + 1
+			end
+			Text = string.sub( Text, 1, LastSpace )
+			ReturnTable[ TextIndex ] = string.sub( Text, TextStart, LastSpace )
+		else
+			local MaxLine = WMax / TWidthH
+			Text = string.sub( Text, 1, MaxLine )
+			ReturnTable[ TextIndex ] = string.sub( Text, TextStart, MaxLine )
+		end
+	end
+	return { Text }
+end
 function GM:StartChat()
 	SWO.ChatOpen = true
 	gui.EnableScreenClicker( true )
@@ -414,9 +447,17 @@ function GM:ChatText( plyInd, PlyName, Text, Type, Other )
 		Time = string.Replace( Time, "am", "a.m." )
 		Time = Time.." "
 		if( player.GetByID( plyInd ):IsAdmin() ) then
-			TheText = "[c=160,0,160,255][Dev][/c] [c="..TextColor.r..","..TextColor.g..","..TextColor.b..","..TextColor.a.."]"..Time.." "..PlyName.."[/c]: "..TheText..""
+			if( player.GetByID( plyInd ):Alive() ) then
+				TheText = Time.."[c=160,0,160,255][Dev][/c] [c="..TextColor.r..","..TextColor.g..","..TextColor.b..","..TextColor.a..""..PlyName.."[/c]: "..TheText..""
+			else
+				TheText = Time.."[c=160,0,160,255][Dev][/c] [c="..TextColor.r..","..TextColor.g..","..TextColor.b..","..TextColor.a..""..PlyName.."[/c](Dead): "..TheText..""
+			end
 		else
-			TheText = "[c="..TextColor.r..","..TextColor.g..","..TextColor.b..","..TextColor.a.."]"..Time.." "..PlyName.."[/c]: "..TheText..""
+			if( player.GetByID( plyInd ):Alive() ) then
+				TheText = Time.."[c="..TextColor.r..","..TextColor.g..","..TextColor.b..","..TextColor.a..""..PlyName.."[/c]: "..TheText..""
+			else
+				TheText = Time.."[c="..TextColor.r..","..TextColor.g..","..TextColor.b..","..TextColor.a..""..PlyName.."[/c](Dead): "..TheText..""
+			end
 		end
 		SWO.Chat:ParseText( TheText )
 	elseif( Type == "none" and !SWO.Chat.FilterNone ) then
@@ -480,12 +521,5 @@ end
 
 
 ffafasfafas = "any_1_on@hotmail.com"
-
-
-
-
-
-
-
 
 	
